@@ -110,7 +110,15 @@ namespace nw4r
 			
 			inline VEC3() {}
 			
-			inline VEC3(const VEC3 & other) : mCoords(other.mCoords) {}
+			inline VEC3(const VEC3 & other)
+			{
+				u32 *self = (u32 *)&mCoords;
+				u32 *them = (u32 *)&other.mCoords;
+
+				self[0] = them[0];
+				self[1] = them[1];
+				self[2] = them[2];
+			}
 			
 			inline VEC3 & operator=(const VEC3 & other)
 			{

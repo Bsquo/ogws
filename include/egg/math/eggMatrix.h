@@ -8,7 +8,7 @@ namespace EGG
     {
         Matrix34f() {}
         Matrix34f(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32, f32);
-        ~Matrix34f();
+        ~Matrix34f() {}
 
         void makeZero()
         {
@@ -22,6 +22,19 @@ namespace EGG
         void makeS(const Vector3f&);
         void setAxisRotation(const Vector3f &, f32);
         void loadPosMtx(u32);
+
+        f32& operator()(int i, int j) { return tbl[i][j]; }        
+
+        void operator=(const Matrix34f& rhs)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    tbl[i][j] = rhs.tbl[i][j];
+                }
+            }
+        }
 
         f32 tbl[3][4];
 

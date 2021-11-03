@@ -4,6 +4,15 @@
 
 namespace EGG
 {
+    struct CoreStatus;
+    struct CoreController;
+    struct NullController;
+    struct CoreControllerMgr;
+    struct ControllerRumbleUnit;
+    struct ControllerRumbleMgr;
+    
+    template <typename T> struct TBuffer;
+
     struct G3DUtility;
     struct IScnProc;
 

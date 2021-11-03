@@ -56,8 +56,8 @@ lbl_800A1C98:
 /* 800A1CA8 0009CBA8  38 21 00 10 */	addi r1, r1, 0x10
 /* 800A1CAC 0009CBAC  4E 80 00 20 */	blr 
 
-.global func_800A1CB0
-func_800A1CB0:
+.global cross__Q23EGG8Vector3fCFRCQ23EGG8Vector3f
+cross__Q23EGG8Vector3fCFRCQ23EGG8Vector3f:
 /* 800A1CB0 0009CBB0  C0 E4 00 08 */	lfs f7, 8(r4)
 /* 800A1CB4 0009CBB4  C0 C5 00 04 */	lfs f6, 4(r5)
 /* 800A1CB8 0009CBB8  C0 84 00 04 */	lfs f4, 4(r4)

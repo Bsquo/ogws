@@ -35,8 +35,8 @@ lbl_804C0A3C:
 
 .section .sbss, "wa"
 .balign 0x8
-.global sStaticDisposer__Q33EGG17CoreControllerMgr11T__Disposer
-sStaticDisposer__Q33EGG17CoreControllerMgr11T__Disposer:
+.global sInstance__Q23EGG17CoreControllerMgr
+sInstance__Q23EGG17CoreControllerMgr:
 	.skip 0x4
 .global sCoreControllerFactory__Q23EGG17CoreControllerMgr
 sCoreControllerFactory__Q23EGG17CoreControllerMgr:
@@ -229,8 +229,8 @@ lbl_800A5B80:
 /* 800A5B94 000A0A94  38 21 00 10 */	addi r1, r1, 0x10
 /* 800A5B98 000A0A98  4E 80 00 20 */	blr 
 
-.global sceneReset__Q23EGG14CoreControllerFv
-sceneReset__Q23EGG14CoreControllerFv:
+.global __ct__Q23EGG14CoreControllerFv
+__ct__Q23EGG14CoreControllerFv:
 /* 800A5B9C 000A0A9C  94 21 FF E0 */	stwu r1, -0x20(r1)
 /* 800A5BA0 000A0AA0  7C 08 02 A6 */	mflr r0
 /* 800A5BA4 000A0AA4  3C 80 80 3A */	lis r4, lbl_803982B8@ha
@@ -279,7 +279,7 @@ sceneReset__Q23EGG14CoreControllerFv:
 /* 800A5C50 000A0B50  80 7E 00 1C */	lwz r3, 0x1c(r30)
 /* 800A5C54 000A0B54  38 80 00 00 */	li r4, 0
 /* 800A5C58 000A0B58  80 63 00 04 */	lwz r3, 4(r3)
-/* 800A5C5C 000A0B5C  48 02 7E DD */	bl func_800CDB38
+/* 800A5C5C 000A0B5C  48 02 7E DD */	bl WPADControlMotor
 /* 800A5C60 000A0B60  48 00 00 2C */	b lbl_800A5C8C
 lbl_800A5C64:
 /* 800A5C64 000A0B64  38 7E 00 04 */	addi r3, r30, 4
@@ -310,7 +310,7 @@ lbl_800A5C98:
 stopMotor__Q23EGG14CoreControllerFv:
 /* 800A5CB8 000A0BB8  80 63 00 04 */	lwz r3, 4(r3)
 /* 800A5CBC 000A0BBC  38 80 00 00 */	li r4, 0
-/* 800A5CC0 000A0BC0  48 02 7E 78 */	b func_800CDB38
+/* 800A5CC0 000A0BC0  48 02 7E 78 */	b WPADControlMotor
 
 .global createRumbleMgr__Q23EGG14CoreControllerFUc
 createRumbleMgr__Q23EGG14CoreControllerFUc:
@@ -558,7 +558,7 @@ stopRumbleMgr__Q23EGG14CoreControllerFv:
 /* 800A602C 000A0F2C  80 7E 00 1C */	lwz r3, 0x1c(r30)
 /* 800A6030 000A0F30  38 80 00 00 */	li r4, 0
 /* 800A6034 000A0F34  80 63 00 04 */	lwz r3, 4(r3)
-/* 800A6038 000A0F38  48 02 7B 01 */	bl func_800CDB38
+/* 800A6038 000A0F38  48 02 7B 01 */	bl WPADControlMotor
 /* 800A603C 000A0F3C  48 00 00 2C */	b lbl_800A6068
 lbl_800A6040:
 /* 800A6040 000A0F40  38 7E 00 04 */	addi r3, r30, 4
@@ -656,19 +656,21 @@ lbl_800A612C:
 /* 800A6184 000A1084  D0 61 00 88 */	stfs f3, 0x88(r1)
 /* 800A6188 000A1088  C1 7E 08 C0 */	lfs f11, 0x8c0(r30)
 /* 800A618C 000A108C  C1 5E 08 B0 */	lfs f10, 0x8b0(r30)
-/* 800A6190 000A1090  EC 03 02 F2 */	fmuls f0, f3, f11
+/* 800A6190 000A1090  EC 03 02 F2 */	fmuls f0, f3, f11 # zero * 8C0
 /* 800A6194 000A1094  C1 9E 08 D0 */	lfs f12, 0x8d0(r30)
 /* 800A6198 000A1098  C0 9E 08 A8 */	lfs f4, 0x8a8(r30)
 /* 800A619C 000A109C  C0 BE 08 B8 */	lfs f5, 0x8b8(r30)
-/* 800A61A0 000A10A0  EC 03 02 BA */	fmadds f0, f3, f10, f0
+/* 800A61A0 000A10A0  EC 03 02 BA */	fmadds f0, f3, f10, f0 # zero * 8B0
 /* 800A61A4 000A10A4  C0 DE 08 C8 */	lfs f6, 0x8c8(r30)
 /* 800A61A8 000A10A8  C0 FE 08 AC */	lfs f7, 0x8ac(r30)
 /* 800A61AC 000A10AC  C1 1E 08 BC */	lfs f8, 0x8bc(r30)
-/* 800A61B0 000A10B0  ED A1 03 3A */	fmadds f13, f1, f12, f0
+/* 800A61B0 000A10B0  ED A1 03 3A */	fmadds f13, f1, f12, f0 # f1 * 8D0
 /* 800A61B4 000A10B4  C1 3E 08 CC */	lfs f9, 0x8cc(r30)
-/* 800A61B8 000A10B8  EC 02 03 3A */	fmadds f0, f2, f12, f0
+/* 800A61B8 000A10B8  EC 02 03 3A */	fmadds f0, f2, f12, f0 # one * 8D0
 /* 800A61BC 000A10BC  D0 81 00 74 */	stfs f4, 0x74(r1)
 /* 800A61C0 000A10C0  D0 A1 00 78 */	stfs f5, 0x78(r1)
+#                                       f0 = zero * m[1][1] + zero * m[0][1];
+#                                       (one * m[2][1] + f0 < -1.0 * m[1][1] + f0)
 /* 800A61C4 000A10C4  FC 00 68 40 */	fcmpo cr0, f0, f13
 /* 800A61C8 000A10C8  D0 C1 00 7C */	stfs f6, 0x7c(r1)
 /* 800A61CC 000A10CC  D0 E1 00 68 */	stfs f7, 0x68(r1)
@@ -691,18 +693,25 @@ lbl_800A620C:
 /* 800A620C 000A110C  C0 C1 00 48 */	lfs f6, 0x48(r1)
 /* 800A6210 000A1110  C0 21 00 78 */	lfs f1, 0x78(r1)
 /* 800A6214 000A1114  C0 01 00 84 */	lfs f0, 0x84(r1)
+#                                       f3 = sp44.y * sp74.y;
 /* 800A6218 000A1118  EC 66 00 72 */	fmuls f3, f6, f1
 /* 800A621C 000A111C  C0 A1 00 44 */	lfs f5, 0x44(r1)
+#                                       f1 = sp80.y * sp74.y;
 /* 800A6220 000A1120  EC 20 00 72 */	fmuls f1, f0, f1
 /* 800A6224 000A1124  C0 41 00 74 */	lfs f2, 0x74(r1)
 /* 800A6228 000A1128  C0 01 00 80 */	lfs f0, 0x80(r1)
+#                                       f4 = sp44.x * sp74.x + (sp44.y * sp74.y);
 /* 800A622C 000A112C  EC 85 18 BA */	fmadds f4, f5, f2, f3
+#                                       f1 = sp80.x * sp74.x + (sp80.y * sp74.y);
 /* 800A6230 000A1130  EC 20 08 BA */	fmadds f1, f0, f2, f1
 /* 800A6234 000A1134  C0 61 00 4C */	lfs f3, 0x4c(r1)
 /* 800A6238 000A1138  C0 41 00 7C */	lfs f2, 0x7c(r1)
 /* 800A623C 000A113C  C0 01 00 88 */	lfs f0, 0x88(r1)
+#                                       f4 = sp44.z * sp74.z + f4;
 /* 800A6240 000A1140  EC 83 20 BA */	fmadds f4, f3, f2, f4
+#                                       f0 = sp80.z * sp74.z + f1;
 /* 800A6244 000A1144  EC 00 08 BA */	fmadds f0, f0, f2, f1
+#                                       (f0 < f4)
 /* 800A6248 000A1148  FC 00 20 40 */	fcmpo cr0, f0, f4
 /* 800A624C 000A114C  40 80 00 10 */	bge lbl_800A625C
 /* 800A6250 000A1150  D0 A1 00 80 */	stfs f5, 0x80(r1)
@@ -712,13 +721,17 @@ lbl_800A625C:
 /* 800A625C 000A115C  C0 21 00 9C */	lfs f1, 0x9c(r1)
 /* 800A6260 000A1160  C0 01 00 84 */	lfs f0, 0x84(r1)
 /* 800A6264 000A1164  C0 61 00 98 */	lfs f3, 0x98(r1)
+#                                       f4 = sp98.y * sp80.y;
 /* 800A6268 000A1168  EC 81 00 32 */	fmuls f4, f1, f0
 /* 800A626C 000A116C  C0 01 00 80 */	lfs f0, 0x80(r1)
 /* 800A6270 000A1170  C0 41 00 A0 */	lfs f2, 0xa0(r1)
 /* 800A6274 000A1174  C0 21 00 88 */	lfs f1, 0x88(r1)
+#                                       f3 = (sp98.x * sp80.x) + (sp98.y * sp80.y);
 /* 800A6278 000A1178  EC 63 20 3A */	fmadds f3, f3, f0, f4
 /* 800A627C 000A117C  C0 02 90 10 */	lfs f0, lbl_804C0A30-_SDA2_BASE_(r2)
+#                                       f5 = (sp98.z * sp80.z) + f3;
 /* 800A6280 000A1180  EC A2 18 7A */	fmadds f5, f2, f1, f3
+# 
 /* 800A6284 000A1184  FC 05 00 40 */	fcmpo cr0, f5, f0
 /* 800A6288 000A1188  40 81 00 08 */	ble lbl_800A6290
 /* 800A628C 000A118C  48 00 00 08 */	b lbl_800A6294
@@ -728,25 +741,30 @@ lbl_800A6294:
 /* 800A6294 000A1194  C0 21 00 9C */	lfs f1, 0x9c(r1)
 /* 800A6298 000A1198  C0 01 00 90 */	lfs f0, 0x90(r1)
 /* 800A629C 000A119C  C0 61 00 98 */	lfs f3, 0x98(r1)
+# r4 = sp98.y * sp8C.y;
 /* 800A62A0 000A11A0  EC 81 00 32 */	fmuls f4, f1, f0
 /* 800A62A4 000A11A4  C0 01 00 8C */	lfs f0, 0x8c(r1)
 /* 800A62A8 000A11A8  C0 41 00 A0 */	lfs f2, 0xa0(r1)
 /* 800A62AC 000A11AC  C0 21 00 94 */	lfs f1, 0x94(r1)
+# f3 = (sp98.x * sp8C.x) + (sp98.y * sp8C.y);
 /* 800A62B0 000A11B0  EC 63 20 3A */	fmadds f3, f3, f0, f4
 /* 800A62B4 000A11B4  C0 02 90 10 */	lfs f0, lbl_804C0A30-_SDA2_BASE_(r2)
+# f1 = (sp98.z * sp8C.z) + f3;
 /* 800A62B8 000A11B8  EC 22 18 7A */	fmadds f1, f2, f1, f3
+# f1 = abs(f1)
 /* 800A62BC 000A11BC  FC 01 00 40 */	fcmpo cr0, f1, f0
 /* 800A62C0 000A11C0  40 81 00 08 */	ble lbl_800A62C8
 /* 800A62C4 000A11C4  48 00 00 08 */	b lbl_800A62CC
 lbl_800A62C8:
 /* 800A62C8 000A11C8  FC 20 08 50 */	fneg f1, f1
 lbl_800A62CC:
+# (f1 < f5)
 /* 800A62CC 000A11CC  FC 01 28 40 */	fcmpo cr0, f1, f5
 /* 800A62D0 000A11D0  40 80 00 68 */	bge lbl_800A6338
 /* 800A62D4 000A11D4  38 61 00 2C */	addi r3, r1, 0x2c
 /* 800A62D8 000A11D8  38 81 00 98 */	addi r4, r1, 0x98
 /* 800A62DC 000A11DC  38 A1 00 8C */	addi r5, r1, 0x8c
-/* 800A62E0 000A11E0  4B FF B9 D1 */	bl func_800A1CB0
+/* 800A62E0 000A11E0  4B FF B9 D1 */	bl cross__Q23EGG8Vector3fCFRCQ23EGG8Vector3f
 /* 800A62E4 000A11E4  C0 41 00 2C */	lfs f2, 0x2c(r1)
 /* 800A62E8 000A11E8  38 61 00 80 */	addi r3, r1, 0x80
 /* 800A62EC 000A11EC  C0 21 00 30 */	lfs f1, 0x30(r1)
@@ -758,7 +776,7 @@ lbl_800A62CC:
 /* 800A6304 000A1204  38 61 00 20 */	addi r3, r1, 0x20
 /* 800A6308 000A1208  38 81 00 80 */	addi r4, r1, 0x80
 /* 800A630C 000A120C  38 A1 00 98 */	addi r5, r1, 0x98
-/* 800A6310 000A1210  4B FF B9 A1 */	bl func_800A1CB0
+/* 800A6310 000A1210  4B FF B9 A1 */	bl cross__Q23EGG8Vector3fCFRCQ23EGG8Vector3f
 /* 800A6314 000A1214  C0 41 00 20 */	lfs f2, 0x20(r1)
 /* 800A6318 000A1218  38 61 00 8C */	addi r3, r1, 0x8c
 /* 800A631C 000A121C  C0 21 00 24 */	lfs f1, 0x24(r1)
@@ -772,7 +790,7 @@ lbl_800A6338:
 /* 800A6338 000A1238  38 61 00 14 */	addi r3, r1, 0x14
 /* 800A633C 000A123C  38 81 00 80 */	addi r4, r1, 0x80
 /* 800A6340 000A1240  38 A1 00 98 */	addi r5, r1, 0x98
-/* 800A6344 000A1244  4B FF B9 6D */	bl func_800A1CB0
+/* 800A6344 000A1244  4B FF B9 6D */	bl cross__Q23EGG8Vector3fCFRCQ23EGG8Vector3f
 /* 800A6348 000A1248  C0 41 00 14 */	lfs f2, 0x14(r1)
 /* 800A634C 000A124C  38 61 00 8C */	addi r3, r1, 0x8c
 /* 800A6350 000A1250  C0 21 00 18 */	lfs f1, 0x18(r1)
@@ -784,7 +802,7 @@ lbl_800A6338:
 /* 800A6368 000A1268  38 61 00 08 */	addi r3, r1, 8
 /* 800A636C 000A126C  38 81 00 98 */	addi r4, r1, 0x98
 /* 800A6370 000A1270  38 A1 00 8C */	addi r5, r1, 0x8c
-/* 800A6374 000A1274  4B FF B9 3D */	bl func_800A1CB0
+/* 800A6374 000A1274  4B FF B9 3D */	bl cross__Q23EGG8Vector3fCFRCQ23EGG8Vector3f
 /* 800A6378 000A1278  C0 41 00 08 */	lfs f2, 8(r1)
 /* 800A637C 000A127C  38 61 00 80 */	addi r3, r1, 0x80
 /* 800A6380 000A1280  C0 21 00 0C */	lfs f1, 0xc(r1)
@@ -1011,12 +1029,12 @@ lbl_800A6658:
 /* 800A6698 000A1598  41 82 00 14 */	beq lbl_800A66AC
 /* 800A669C 000A159C  80 7E 00 04 */	lwz r3, 4(r30)
 /* 800A66A0 000A15A0  38 80 00 01 */	li r4, 1
-/* 800A66A4 000A15A4  48 02 74 95 */	bl func_800CDB38
+/* 800A66A4 000A15A4  48 02 74 95 */	bl WPADControlMotor
 /* 800A66A8 000A15A8  48 00 00 10 */	b lbl_800A66B8
 lbl_800A66AC:
 /* 800A66AC 000A15AC  80 7E 00 04 */	lwz r3, 4(r30)
 /* 800A66B0 000A15B0  38 80 00 00 */	li r4, 0
-/* 800A66B4 000A15B4  48 02 74 85 */	bl func_800CDB38
+/* 800A66B4 000A15B4  48 02 74 85 */	bl WPADControlMotor
 lbl_800A66B8:
 /* 800A66B8 000A15B8  88 7E 08 71 */	lbz r3, 0x871(r30)
 /* 800A66BC 000A15BC  2C 03 00 00 */	cmpwi r3, 0
@@ -1035,7 +1053,7 @@ lbl_800A66DC:
 /* 800A66E8 000A15E8  40 82 00 18 */	bne lbl_800A6700
 /* 800A66EC 000A15EC  80 7E 00 04 */	lwz r3, 4(r30)
 /* 800A66F0 000A15F0  38 80 00 00 */	li r4, 0
-/* 800A66F4 000A15F4  48 02 74 45 */	bl func_800CDB38
+/* 800A66F4 000A15F4  48 02 74 45 */	bl WPADControlMotor
 /* 800A66F8 000A15F8  38 00 00 00 */	li r0, 0
 /* 800A66FC 000A15FC  98 1E 08 68 */	stb r0, 0x868(r30)
 lbl_800A6700:
@@ -1090,7 +1108,7 @@ __dt__Q33EGG17CoreControllerMgr11T__DisposerFv:
 /* 800A67A4 000A16A4  38 A5 82 A8 */	addi r5, r5, __vt__Q33EGG17CoreControllerMgr11T__Disposer@l
 /* 800A67A8 000A16A8  38 80 00 00 */	li r4, 0
 /* 800A67AC 000A16AC  90 A3 00 00 */	stw r5, 0(r3)
-/* 800A67B0 000A16B0  90 0D 99 68 */	stw r0, sStaticDisposer__Q33EGG17CoreControllerMgr11T__Disposer-_SDA_BASE_(r13)
+/* 800A67B0 000A16B0  90 0D 99 68 */	stw r0, sInstance__Q23EGG17CoreControllerMgr-_SDA_BASE_(r13)
 /* 800A67B4 000A16B4  48 00 58 E9 */	bl __dt__Q23EGG8DisposerFv
 /* 800A67B8 000A16B8  2C 1F 00 00 */	cmpwi r31, 0
 /* 800A67BC 000A16BC  40 81 00 0C */	ble lbl_800A67C8
@@ -1377,7 +1395,7 @@ lbl_800A6B10:
 /* 800A6B98 000A1A98  80 73 00 1C */	lwz r3, 0x1c(r19)
 /* 800A6B9C 000A1A9C  38 80 00 00 */	li r4, 0
 /* 800A6BA0 000A1AA0  80 63 00 04 */	lwz r3, 4(r3)
-/* 800A6BA4 000A1AA4  48 02 6F 95 */	bl func_800CDB38
+/* 800A6BA4 000A1AA4  48 02 6F 95 */	bl WPADControlMotor
 /* 800A6BA8 000A1AA8  48 00 00 2C */	b lbl_800A6BD4
 lbl_800A6BAC:
 /* 800A6BAC 000A1AAC  38 73 00 04 */	addi r3, r19, 4
@@ -1930,13 +1948,13 @@ lbl_800A7314:
 /* 800A732C 000A222C  80 7D 00 1C */	lwz r3, 0x1c(r29)
 /* 800A7330 000A2230  38 80 00 01 */	li r4, 1
 /* 800A7334 000A2234  80 63 00 04 */	lwz r3, 4(r3)
-/* 800A7338 000A2238  48 02 68 01 */	bl func_800CDB38
+/* 800A7338 000A2238  48 02 68 01 */	bl WPADControlMotor
 /* 800A733C 000A223C  48 00 00 14 */	b lbl_800A7350
 lbl_800A7340:
 /* 800A7340 000A2240  80 7D 00 1C */	lwz r3, 0x1c(r29)
 /* 800A7344 000A2244  38 80 00 00 */	li r4, 0
 /* 800A7348 000A2248  80 63 00 04 */	lwz r3, 4(r3)
-/* 800A734C 000A224C  48 02 67 ED */	bl func_800CDB38
+/* 800A734C 000A224C  48 02 67 ED */	bl WPADControlMotor
 lbl_800A7350:
 /* 800A7350 000A2250  E3 E1 00 48 */	psq_l f31, 72(r1), 0, qr0
 /* 800A7354 000A2254  CB E1 00 40 */	lfd f31, 0x40(r1)
@@ -2192,7 +2210,7 @@ __sinit_$$3eggController_cpp:
 /* 800A766C 000A256C  80 7D 00 1C */	lwz r3, 0x1c(r29)
 /* 800A7670 000A2570  38 80 00 00 */	li r4, 0
 /* 800A7674 000A2574  80 63 00 04 */	lwz r3, 4(r3)
-/* 800A7678 000A2578  48 02 64 C1 */	bl func_800CDB38
+/* 800A7678 000A2578  48 02 64 C1 */	bl WPADControlMotor
 /* 800A767C 000A257C  48 00 00 2C */	b lbl_800A76A8
 lbl_800A7680:
 /* 800A7680 000A2580  38 7D 00 04 */	addi r3, r29, 4
