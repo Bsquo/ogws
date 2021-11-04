@@ -10,7 +10,8 @@ namespace EGG
 		virtual UNKTYPE VIRT_0xC(UNKTYPE) = 0; // at 0xc
 		virtual Display * getDisplay() = 0; // at 0x10
 		virtual XfbManager * getXfbMgr() = 0; // at 0x14
-		
+		virtual PerformanceView * getPerfView() = 0; // at 0x18
+
 		char UNK_0x4[0x14];
 		Heap * mRootHeapMem1; // at 0x18
 		Heap * mRootHeapMem2; // at 0x1c
@@ -49,6 +50,11 @@ namespace EGG
 		static inline XfbManager * getXfbManager()
 		{
 			return mConfigData->getXfbMgr();
+		}
+
+		static inline PerformanceView * getPerfView()
+		{
+			return mConfigData->getPerfView();
 		}
 	};
 }

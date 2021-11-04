@@ -13,6 +13,10 @@ typedef struct _GXFifoObj
 } GXFifoObj;
 
 void GXGetGPStatus(u8 *, u8 *, u8 *, u8 *, u8 *);
+UNKTYPE GXGetCPUFifo(UNKTYPE *);
+UNKTYPE GXGetFifoPtrs(UNKTYPE *, UNKTYPE *, UNKTYPE *);
+UNKTYPE GXEnableBreakPt(UNKTYPE *);
+UNKTYPE GXDisableBreakPt(UNKTYPE *);
 
 #ifdef __cplusplus
 }

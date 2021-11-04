@@ -53,14 +53,14 @@ __vt__Q23EGG12ProcessMeter:
     .long $$244$$2measureEndFrame__Q23EGG12ProcessMeterFv
     .long $$244$$2measureBeginRender__Q23EGG12ProcessMeterFv
     .long $$244$$2measureEndRender__Q23EGG12ProcessMeterFv
-    .long $$244$$2func_800AB864
+    .long $$244$$2callbackDrawSync__Q23EGG12ProcessMeterFUs
     .long func_800ABFAC
     .long $$244$$2draw__Q23EGG12ProcessMeterFv
     .long $$244$$2setVisible__Q23EGG12ProcessMeterFb
     .long $$244$$2isVisible__Q23EGG12ProcessMeterFv
     .long setVisible__Q23EGG12ProcessMeterFb
     .long isVisible__Q23EGG12ProcessMeterFv
-    .long func_800AB864
+    .long callbackDrawSync__Q23EGG12ProcessMeterFUs
     .long measureBeginFrame__Q23EGG12ProcessMeterFv
     .long measureEndFrame__Q23EGG12ProcessMeterFv
     .long measureBeginRender__Q23EGG12ProcessMeterFv
@@ -283,7 +283,7 @@ measureBegin__Q33EGG12ProcessMeter12CpuGpMonitorFv:
 /* 800AB32C 000A622C  80 7F 00 58 */	lwz r3, 0x58(r31)
 /* 800AB330 000A6230  90 BF 00 10 */	stw r5, 0x10(r31)
 /* 800AB334 000A6234  B0 1F 00 54 */	sth r0, 0x54(r31)
-/* 800AB338 000A6238  48 00 06 2D */	bl func_800AB964
+/* 800AB338 000A6238  48 00 06 2D */	bl setDrawSync__Q23EGG12ProcessMeterFPQ33EGG12ProcessMeter14UnkStruct_0x68
 /* 800AB33C 000A623C  80 01 00 14 */	lwz r0, 0x14(r1)
 /* 800AB340 000A6240  83 E1 00 0C */	lwz r31, 0xc(r1)
 /* 800AB344 000A6244  7C 08 03 A6 */	mtlr r0
@@ -305,7 +305,7 @@ measureEnd__Q33EGG12ProcessMeter12CpuGpMonitorFv:
 lbl_800AB378:
 /* 800AB378 000A6278  80 7F 00 58 */	lwz r3, 0x58(r31)
 /* 800AB37C 000A627C  38 9F 00 6C */	addi r4, r31, 0x6c
-/* 800AB380 000A6280  48 00 05 E5 */	bl func_800AB964
+/* 800AB380 000A6280  48 00 05 E5 */	bl setDrawSync__Q23EGG12ProcessMeterFPQ33EGG12ProcessMeter14UnkStruct_0x68
 /* 800AB384 000A6284  80 01 00 14 */	lwz r0, 0x14(r1)
 /* 800AB388 000A6288  83 E1 00 0C */	lwz r31, 0xc(r1)
 /* 800AB38C 000A628C  7C 08 03 A6 */	mtlr r0
@@ -658,8 +658,8 @@ measureEndRender__Q23EGG12ProcessMeterFv:
 /* 800AB85C 000A675C  7D 89 03 A6 */	mtctr r12
 /* 800AB860 000A6760  4E 80 04 20 */	bctr 
 
-.global func_800AB864
-func_800AB864:
+.global callbackDrawSync__Q23EGG12ProcessMeterFUs
+callbackDrawSync__Q23EGG12ProcessMeterFUs:
 /* 800AB864 000A6764  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 800AB868 000A6768  7C 08 02 A6 */	mflr r0
 /* 800AB86C 000A676C  90 01 00 14 */	stw r0, 0x14(r1)
@@ -680,6 +680,9 @@ lbl_800AB89C:
 /* 800AB8A4 000A67A4  7C 08 03 A6 */	mtlr r0
 /* 800AB8A8 000A67A8  38 21 00 10 */	addi r1, r1, 0x10
 /* 800AB8AC 000A67AC  4E 80 00 20 */	blr 
+
+.global run__Q23EGG12ProcessMeterFv
+run__Q23EGG12ProcessMeterFv:
 /* 800AB8B0 000A67B0  94 21 FF D0 */	stwu r1, -0x30(r1)
 /* 800AB8B4 000A67B4  7C 08 02 A6 */	mflr r0
 /* 800AB8B8 000A67B8  90 01 00 34 */	stw r0, 0x34(r1)
@@ -732,8 +735,8 @@ lbl_800AB958:
 /* 800AB95C 000A685C  B3 FC 00 54 */	sth r31, 0x54(r28)
 /* 800AB960 000A6860  4B FF FF 6C */	b lbl_800AB8CC
 
-.global func_800AB964
-func_800AB964:
+.global setDrawSync__Q23EGG12ProcessMeterFPQ33EGG12ProcessMeter14UnkStruct_0x68
+setDrawSync__Q23EGG12ProcessMeterFPQ33EGG12ProcessMeter14UnkStruct_0x68:
 /* 800AB964 000A6864  94 21 FF 60 */	stwu r1, -0xa0(r1)
 /* 800AB968 000A6868  7C 08 02 A6 */	mflr r0
 /* 800AB96C 000A686C  90 01 00 A4 */	stw r0, 0xa4(r1)
@@ -1167,6 +1170,8 @@ drawSetting__Q23EGG12ProcessMeterFff:
 func_800ABFAC:
 /* 800ABFAC 000A6EAC  4E 80 00 20 */	blr 
 
+.global __dt__Q23EGG12ProcessMeterFv
+__dt__Q23EGG12ProcessMeterFv:
 /* 800ABFB0 000A6EB0  94 21 FF F0 */	stwu r1, -0x10(r1)
 /* 800ABFB4 000A6EB4  7C 08 02 A6 */	mflr r0
 /* 800ABFB8 000A6EB8  2C 03 00 00 */	cmpwi r3, 0
@@ -1209,11 +1214,11 @@ $$244$$2draw__Q23EGG12ProcessMeterFv:
 /* 800AC018 000A6F18  38 63 FF BC */	addi r3, r3, -68
 /* 800AC01C 000A6F1C  4B FF FC F4 */	b draw__Q23EGG12ProcessMeterFv
 
-# @44@func_800AB864
-.global $$244$$2func_800AB864
-$$244$$2func_800AB864:
+# @44@callbackDrawSync__Q23EGG12ProcessMeterFUs
+.global $$244$$2callbackDrawSync__Q23EGG12ProcessMeterFUs
+$$244$$2callbackDrawSync__Q23EGG12ProcessMeterFUs:
 /* 800AC020 000A6F20  38 63 FF BC */	addi r3, r3, -68
-/* 800AC024 000A6F24  4B FF F8 40 */	b func_800AB864
+/* 800AC024 000A6F24  4B FF F8 40 */	b callbackDrawSync__Q23EGG12ProcessMeterFUs
 
 # @44@measureEndRender__Q23EGG12ProcessMeterFv
 .global $$244$$2measureEndRender__Q23EGG12ProcessMeterFv

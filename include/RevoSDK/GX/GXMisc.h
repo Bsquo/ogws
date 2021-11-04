@@ -9,6 +9,8 @@ typedef void (* GXDrawDoneCallback)(void);
 
 UNKTYPE GXFlush(void);
 
+UNKTYPE GXSetDrawSync(u16);
+
 UNKTYPE GXDrawDone(void);
 
 UNKTYPE GXSetDrawDoneCallback(GXDrawDoneCallback);

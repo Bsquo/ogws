@@ -4,6 +4,12 @@
 
 namespace EGG
 {
+    struct ProcessMeter;
+    struct PerformanceView;
+
+    struct Watch;
+    struct Stopwatch;
+
     struct G3DUtility;
     struct IScnProc;
 
