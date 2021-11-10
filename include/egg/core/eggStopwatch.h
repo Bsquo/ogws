@@ -9,7 +9,8 @@ namespace EGG
     {
     public:
         Stopwatch() {}
-        void start() {
+        void start()
+        {
             mStartWatch.start();
             mEndWatch.reset();
         }

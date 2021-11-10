@@ -1,9 +1,11 @@
+#pragma ipa file
 #pragma use_lmw_stmw on
 
 #include "eggProcessMeter.h"
 #include "eggSystem.h"
 #include "eggVideo.h"
 #include "eggDisplay.h"
+#include "eggAssert.h"
 #include <GX/GXLight.h>
 #include <GX/GXMisc.h>
 #include <GX/GXFifo.h>
@@ -13,17 +15,18 @@
 #include <GX/GXAttr.h>
 #include <GX/GXGeometry.h>
 #include <GX/GXPixel.h>
+#include <GX/GXVert.h>
 #include <OS/OS.h>
 #include <OS/OSTime.h>
 #include <OS/OSMessage.h>
 #include <OS/OSInterrupt.h>
+#include <OS/OSThread.h>
 #include <math/mtx.h>
 #include <math/mtx44.h>
 
 /*
     Nonmatchings:
 
-    ProcessMeter::ProcessMeter (Idek)
     ProcessMeter::measureBeginFrame (Some inline stuff going on i think)
     ProcessMeter::draw (This will be bad)
 */
@@ -32,6 +35,16 @@ using namespace nw4r;
 
 namespace
 {
+    void drawBox(f32 x1, f32 x2, f32 y1, f32 y2)
+    {
+
+    }
+
+    void drawLine(f32 f1, f32 f2, f32 f3, f32 f4)
+    {
+
+    }
+
     void drawColor(ut::Color c)
     {
         GXSetChanMatColor(GX_CHANNEL_ID_4, c);
@@ -40,23 +53,29 @@ namespace
 
 namespace EGG
 {
-    ProcessMeter::ProcessBar::ProcessBar(ut::Color c, f32 f1, f32 f2)
-        : mColor(c), FLOAT_0x0(0.0f), FLOAT_0x4(0.0f), mStopwatch(),
-        FLOAT_0x14(f1), FLOAT_0x18(f2), mFlags(0) {}
+    ProcessMeter::ProcessBar::ProcessBar(ut::Color c, f32 y, f32 height)
+        : mColor(c), mPosX(0.0f), mWidth(0.0f), mStopwatch(),
+        mPosY(y), mHeight(height), mFlags(0) {}
 
-    void ProcessMeter::ProcessBar::update(u32 r4)
+    void ProcessMeter::ProcessBar::update(u32 tick)
     {
-        update((f32)r4 / ((BUS_SPEED >> 2) / 1000));
+        update((f32)tick / ((BUS_SPEED >> 2) / 1000));
     }
 
-    void ProcessMeter::ProcessBar::update(f32 r4)
+    void ProcessMeter::ProcessBar::update(f32 x)
     {
-        FLOAT_0x0 = r4;
+        mPosX = x;
         u32 tick = mStopwatch.getMeasureTick();
-        FLOAT_0x4 = (f32)tick / ((BUS_SPEED >> 2) / 1000);
+        mWidth = (f32)tick / ((BUS_SPEED >> 2) / 1000);
     }
 
-    ProcessMeter::CpuMonitor::CpuMonitor(ut::Color c, f32 f1) : mProcessBar(c, f1, 1.0f) {}
+    // to-do
+    void ProcessMeter::ProcessBar::draw(f32 width, f32 height)
+    {
+        
+    }
+
+    ProcessMeter::CpuMonitor::CpuMonitor(ut::Color c, f32 y) : mProcessBar(c, y, 1.0f) {}
 
     void ProcessMeter::CpuMonitor::measureBegin()
     {
@@ -79,25 +98,25 @@ namespace EGG
         mProcessBar.hide();
     }
 
-    ProcessMeter::CpuGpMonitor::CpuGpMonitor(ut::Color c1, ut::Color c2, f32 f1, f32 f2)
-        : CpuMonitor(c1, f1), mGpProcessBar(c2, f2, 1.0f)
+    ProcessMeter::CpuGpMonitor::CpuGpMonitor(ut::Color cpuColor, ut::Color gpColor, f32 cpuY, f32 gpY)
+        : CpuMonitor(cpuColor, cpuY), mGpProcessBar(gpColor, gpY, 1.0f)
     {
-        UNK_0x68.GP_0x0 = this;
-        SHORT_0x54 = 0;
-        UNK_0x68.GP_0xC = this;
+        DRAW_SYNC_0x68.GP_0x0 = this;
+        mNextDrawSyncCmd = DrawSync::IDLE;
+        DRAW_SYNC_0x68.GP_0xC = this;
     }
 
     void ProcessMeter::CpuGpMonitor::measureBegin()
     {
         CpuMonitor::measureBegin();
-        SHORT_0x54 = 1;
-        mProcessMeter->setDrawSync(&UNK_0x5C);
+        mNextDrawSyncCmd = DrawSync::START;
+        mProcessMeter->setDrawSync(&DRAW_SYNC_0x5C);
     }
 
     void ProcessMeter::CpuGpMonitor::measureEnd()
     {
         CpuMonitor::measureEnd();
-        mProcessMeter->setDrawSync(&UNK_0x5C);
+        mProcessMeter->setDrawSync(&DRAW_SYNC_0x5C);
     }
 
     void ProcessMeter::CpuGpMonitor::show()
@@ -113,11 +132,41 @@ namespace EGG
     }
 
     // nonmatching
-    ProcessMeter::ProcessMeter(bool b) : Thread(0x1000, 4, 0, NULL), mColor(0xCCCCCCFF), FLOAT_0x4C(5.0f),
-        FLOAT_0x50(5.0f), FLOAT_0x54(90.0f), FLOAT_0x58(1.0f), mProcessBar(0x000032C8, 0.0f, 1.0f),
+    ProcessMeter::ProcessMeter(bool bSetDrawSyncCallback) : Thread(0x1000, 4, 0, NULL), mColor(0xCCCCCCFF), mPosX(5.0f),
+        mPosY(5.0f), mWidth(90.0f), mHeight(1.0f), mProcessBar(0x000032C8, 0.0f, 1.0f),
         mCpuMonitor(0xFF5050FF, 0.0f), mCpuGpMonitor(0x50FF50FF, 0x5050FFFF, 1.0f, 2.0f)
     {
-        ut::List_Init(&mProcessBarList, offsetof(ProcessMeter, mNode));
+        DRAW_SYNC_0x68 = NULL;
+        DRAW_SYNC_0x6C = NULL;
+
+        append(&mCpuMonitor);
+        append(&mCpuGpMonitor);
+        mCpuGpMonitor.mProcessMeter = this;
+
+        hide();
+
+        if (bSetDrawSyncCallback)
+        {
+            GXSetDrawSyncCallback(callbackDrawSyncStatic);
+        }
+
+        OSThread *pGXThread = GXGetCurrentGXThread();
+        #line 319
+        EGG_ASSERT(pGXThread->priority > 0);
+
+        OSSetThreadPriority(mOSThread, pGXThread->priority - 1);
+        OSResumeThread(mOSThread);
+    }
+
+    void ProcessMeter::append(CpuMonitor *monitor)
+    {
+        mProcessBarList.append(&monitor->mProcessBar);
+    }
+
+    void ProcessMeter::append(CpuGpMonitor *monitor)
+    {
+        mProcessBarList.append(&monitor->mProcessBar);
+        mProcessBarList.append(&monitor->mGpProcessBar);
     }
 
     void ProcessMeter::callbackDrawSyncStatic(u16 s)
@@ -135,26 +184,26 @@ namespace EGG
 
         ProcessBar *node = NULL;
         f32 flt = 0.0f;
-        while (node = (ProcessBar *)ut::List_GetNext(&mProcessBarList, node))
+        while (node = mProcessBarList.getNext(node))
         {
             node->update(node->mStopwatch.getStartTick() -
                 mProcessBar.mStopwatch.getStartTick());
 
-            f32 flt2;
-            if (node->FLOAT_0x4 > 0.0f)
+            f32 newX;
+            if (node->mWidth > 0.0f)
             {
-                flt2 = node->FLOAT_0x0 + node->FLOAT_0x4;
+                newX = node->mPosX + node->mWidth;
             }
             else
             {
-                flt2 = 0.0f;
+                newX = 0.0f;
             }
 
-            if (node->isVisible() && flt2 > flt)
-                flt = flt2;
+            if (node->isVisible() && newX > flt)
+                flt = newX;
         }
 
-        mProcessBar.FLOAT_0x4 = 1.0f + flt;
+        mProcessBar.mWidth = 1.0f + flt;
         mProcessBar.mStopwatch.start();
 
         mCpuMonitor.measureBegin();
@@ -177,7 +226,7 @@ namespace EGG
 
     void ProcessMeter::callbackDrawSync(u16 s)
     {
-        if (UNK_0x68->SHORT_0x4 == s)
+        if (DRAW_SYNC_0x68->mToken == s)
             OSSendMessage(&mMesgQueue, (OSMessage)OSGetTick(), 0);
     }
 
@@ -191,10 +240,10 @@ namespace EGG
             
             UNKWORD r28 = OSDisableInterrupts();
 
-            UnkStruct_0x68 *unk = UNK_0x68->UNK_0x8;
-            if (unk)
+            DrawSync *unk = DRAW_SYNC_0x68->UNK_0x8;
+            if (unk != NULL)
             {
-                if (unk->UNK_0x8)
+                if (unk->UNK_0x8 != NULL)
                 {
                     GXDisableBreakPt(unk->UNK_0x8->GP_0x0);
                 }
@@ -204,28 +253,28 @@ namespace EGG
                 GXDisableBreakPt(unk);
             }
 
-            CpuGpMonitor *gp = UNK_0x68->GP_0xC;
-            UNK_0x68 = UNK_0x68->UNK_0x8;
+            CpuGpMonitor *gp = DRAW_SYNC_0x68->GP_0xC;
+            DRAW_SYNC_0x68 = DRAW_SYNC_0x68->UNK_0x8;
 
             OSRestoreInterrupts(r28);
 
-            switch(gp->SHORT_0x54)
+            switch(gp->mNextDrawSyncCmd)
             {
-                case UnkStruct_0x68::START:
+                case DrawSync::START:
                     gp->mGpProcessBar.mStopwatch.setStartTick(tick);
-                    gp->SHORT_0x54 = 2;
+                    gp->mNextDrawSyncCmd = DrawSync::STOP;
                     break;
-                case UnkStruct_0x68::STOP:
+                case DrawSync::STOP:
                     gp->mGpProcessBar.mStopwatch.setStopTick(tick);
-                    gp->SHORT_0x54 = 0;
+                    gp->mNextDrawSyncCmd = DrawSync::IDLE;
                     break;
-                case UnkStruct_0x68::INACTIVE:
+                case DrawSync::IDLE:
                     break;
             }
         }
     }
 
-    void ProcessMeter::setDrawSync(UnkStruct_0x68 *data)
+    void ProcessMeter::setDrawSync(DrawSync *drawSync)
     {
         char buf[0x80];
         char buf2[0x8];
@@ -237,25 +286,25 @@ namespace EGG
             SHORT_0x148 = 0xD000;
         }
 
-        data->SHORT_0x4 = SHORT_0x148;
-        data->UNK_0x8 = NULL;
+        drawSync->mToken = SHORT_0x148;
+        drawSync->UNK_0x8 = NULL;
 
-        if (UNK_0x68)
+        if (DRAW_SYNC_0x68 != NULL)
         {
             GXGetCPUFifo(buf);
-            GXGetFifoPtrs(buf, buf2, data);
+            GXGetFifoPtrs(buf, buf2, drawSync);
 
-            if (!UNK_0x68->UNK_0x8)
+            if (DRAW_SYNC_0x68->UNK_0x8 == NULL)
             {
-                GXEnableBreakPt(data->GP_0x0);
+                GXEnableBreakPt(drawSync->GP_0x0);
 
-                UNK_0x6C->UNK_0x8 = data;
-                UNK_0x6C = data;
+                DRAW_SYNC_0x6C->UNK_0x8 = drawSync;
+                DRAW_SYNC_0x6C = drawSync;
             }
         }
         else
         {
-            UNK_0x6C = UNK_0x68 = data;
+            DRAW_SYNC_0x6C = DRAW_SYNC_0x68 = drawSync;
         }
 
         GXSetDrawSync(SHORT_0x148);
@@ -276,14 +325,18 @@ namespace EGG
 
     bool ProcessMeter::isVisible()
     {
-        return mFlags & 1;
+        return mFlags.onBit(0);
     }
 
     // nonmatching
-    // void ProcessMeter::draw(f32 width, f32 height, u32 rate)
-    // {
+    void ProcessMeter::draw(f32 width, f32 height, u32 rate)
+    {
+        if (!isVisible()) return;
 
-    // }
+        drawSetting(width, height);
+
+        mProcessBar.draw(mProcessBar.mWidth, FLOAT_0x140);
+    }
 
     void ProcessMeter::draw()
     {
@@ -293,24 +346,24 @@ namespace EGG
         draw((f32)rmo->mFbWidth, (f32)rmo->mEfbHeight, tickRate);
     }
 
-    void ProcessMeter::drawSetting(f32 f1, f32 f2)
+    void ProcessMeter::drawSetting(f32 width, f32 height)
     {
         Mtx44 stack_104;
         Mtx stack_152;
         Mtx stack_200;
         Mtx stack_248;
 
-        GXSetViewport(0.0f, 0.0f, f1, f2, 0.0f, 1.0f);
-        GXSetScissor(0, 0, (u32)f1, (u32)f2);
+        GXSetViewport(0.0f, 0.0f, width, height, 0.0f, 1.0f);
+        GXSetScissor(0, 0, (u32)width, (u32)height);
 
         C_MTXOrtho(stack_104, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f);
 
         GXSetProjection(stack_104, 1);
 
-        PSMTXTrans(stack_248, FLOAT_0x4C / 100.0f, FLOAT_0x50 / 100.0f, 0.0f);
-        PSMTXScale(stack_200, FLOAT_0x54 / 100.0f, FLOAT_0x58 / 100.0f, 0.0f);
+        PSMTXTrans(stack_248, mPosX / 100.0f, mPosY / 100.0f, 0.0f);
+        PSMTXScale(stack_200, mWidth / 100.0f, mHeight / 100.0f, 0.0f);
         PSMTXConcat(stack_248, stack_200, stack_152);
-        PSMTXScale(stack_200, 1.0f / mProcessBar.FLOAT_0x4, 1.0f, 1.0f);
+        PSMTXScale(stack_200, 1.0f / mProcessBar.mWidth, 1.0f, 1.0f);
         PSMTXConcat(stack_152, stack_200, stack_152);
 
         GXLoadPosMtxImm(stack_152, 0);

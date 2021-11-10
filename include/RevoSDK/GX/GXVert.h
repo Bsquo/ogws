@@ -21,6 +21,11 @@ static void GXCmd1u32(u32 ul)
     WGPIPE.i = ul;
 }
 
+static void GXParam1f32(f32 f)
+{
+    WGPIPE.f = f;
+}
+
 static void GXPosition3f32(f32 x, f32 y, f32 z)
 {
     WGPIPE.f = x;

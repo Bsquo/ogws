@@ -2,6 +2,7 @@
 #define REVOSDK_GX_FIFO_H
 #include <types.h>
 #include <GX.h>
+#include <OS/OSThread.h>
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -17,6 +18,8 @@ UNKTYPE GXGetCPUFifo(UNKTYPE *);
 UNKTYPE GXGetFifoPtrs(UNKTYPE *, UNKTYPE *, UNKTYPE *);
 UNKTYPE GXEnableBreakPt(UNKTYPE *);
 UNKTYPE GXDisableBreakPt(UNKTYPE *);
+
+OSThread * GXGetCurrentGXThread();
 
 #ifdef __cplusplus
 }

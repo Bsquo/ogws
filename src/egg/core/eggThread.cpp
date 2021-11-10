@@ -32,8 +32,8 @@ namespace EGG
     {
         mHeap = NULL;
         mOSThread = pThread;
-        mStackSize = ut::GetOffsetFromPtr(pThread->mStackTop, pThread->mStackBottom);
-        mStackMemory = pThread->mStackTop;
+        mStackSize = ut::GetOffsetFromPtr(pThread->stackTop, pThread->stackBottom);
+        mStackMemory = pThread->stackTop;
         
         setCommonMesgQueue(mesgCount, Heap::sCurrentHeap);
     }

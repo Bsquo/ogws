@@ -4,6 +4,8 @@
 
 namespace EGG
 {
+    template <typename T> struct TNw4rList;
+
     struct ProcessMeter;
     struct PerformanceView;
 

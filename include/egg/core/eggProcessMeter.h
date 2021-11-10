@@ -4,6 +4,8 @@
 #include "eggPerfView.h"
 #include "eggThread.h"
 #include "eggStopwatch.h"
+#include "eggList.h"
+#include "eggBitFlag.h"
 #include "types_nw4r.h"
 #include "ut_Color.h"
 
@@ -18,38 +20,45 @@ namespace EGG
         struct CpuMonitor;
         struct CpuGpMonitor;
 
-        struct UnkStruct_0x68
+        struct DrawSync
         {
             enum
             {
-                INACTIVE,
+                IDLE,
                 START,
                 STOP
             };
             
             CpuGpMonitor *GP_0x0;
-            u16 SHORT_0x4;
-            struct UnkStruct_0x68 *UNK_0x8;
+            u16 mToken; // at 0x4
+            DrawSync *UNK_0x8;
             CpuGpMonitor *GP_0xC;
         };
 
         struct ProcessBar
         {
+			static u16 getLinkOffset()
+			{
+				return offsetof(ProcessBar, mNode);
+			}
+
             ProcessBar(nw4r::ut::Color, f32, f32);
             void update(u32);
             void update(f32);
+
+            void draw(f32, f32);
 
             // Unofficial symbiols
             void show() { mFlags &= 0xFE; }
             void hide() { mFlags |= 1; }
             bool isVisible() { return !(mFlags & 1); }
 
-            f32 FLOAT_0x0;
-            f32 FLOAT_0x4;
+            f32 mPosX; // at 0x0
+            f32 mWidth; // at 0x4
             Stopwatch mStopwatch; // at 0x8
             nw4r::ut::Color mColor; // at 0x10
-            f32 FLOAT_0x14;
-            f32 FLOAT_0x18;
+            f32 mPosY; // at 0x14
+            f32 mHeight; // at 0x18
             u8 mFlags; // at 0x1C
             nw4r::ut::Node mNode; // at 0x20
         };
@@ -82,11 +91,11 @@ namespace EGG
             virtual void measureEnd(); // at 0x14
 
             ProcessBar mGpProcessBar; // at 0x2C
-            u16 SHORT_0x54;
+            u16 mNextDrawSyncCmd; // at 0x54
             char UNK_0x56[0x2];
             ProcessMeter *mProcessMeter; // at 0x58
-            UnkStruct_0x68 UNK_0x5C;
-            UnkStruct_0x68 UNK_0x68;
+            DrawSync DRAW_SYNC_0x5C;
+            DrawSync DRAW_SYNC_0x68;
         };
 
         virtual UNKWORD run(void);
@@ -100,32 +109,34 @@ namespace EGG
         virtual bool isVisible(); // at 0x28
         virtual void VMT_UNUSED() {}
 
+		void append(CpuMonitor *);
+		void append(CpuGpMonitor *);
+
         static void callbackDrawSyncStatic(u16);
-        // Unofficial argument
-        void setDrawSync(UnkStruct_0x68 *);
+        void setDrawSync(DrawSync *);
         void draw(f32, f32, u32);
         void drawSetting(f32, f32);
         UNKTYPE func_800ABFAC(UNKTYPE);
 
-        // Unofficial symbols
-        void show() { mFlags |= 1; }
-        void hide() { mFlags &= 0xFE; }
+        // Unofficial
+        void show() { mFlags.resetBit(0); }
+        void hide() { mFlags.setBit(0); }
 
         nw4r::ut::Color mColor; // at 0x48
-        f32 FLOAT_0x4C;
-        f32 FLOAT_0x50;
-        f32 FLOAT_0x54;
-        f32 FLOAT_0x58;
-        nw4r::ut::List mProcessBarList; // at 0x5C
-        UnkStruct_0x68 *UNK_0x68;
-        UnkStruct_0x68 *UNK_0x6C;
-        ProcessBar mProcessBar;
-        CpuMonitor mCpuMonitor;
-        CpuGpMonitor mCpuGpMonitor;
+        f32 mPosX; // at 0x4C
+        f32 mPosY; // at 0x50
+        f32 mWidth; // at 0x54
+        f32 mHeight; // at 0x58
+        TNw4rList<ProcessBar> mProcessBarList; // at 0x5C
+        DrawSync *DRAW_SYNC_0x68;
+        DrawSync *DRAW_SYNC_0x6C;
+        ProcessBar mProcessBar; // at 0x70
+        CpuMonitor mCpuMonitor; // at 0x98
+        CpuGpMonitor mCpuGpMonitor; // at 0xC4
+        f32 FLOAT_0x140;
         UNKWORD WORD_0x144;
         u16 SHORT_0x148;
-        u16 SHORT_0x14A;
-        u8 mFlags;
+        TBitFlag<u8> mFlags; // at 0x14A
     };
 }
 

@@ -6,12 +6,15 @@ extern "C" {
 #endif
 
 typedef void (* GXDrawDoneCallback)(void);
+typedef void (* GXDrawSyncCallback)(u16);
 
 UNKTYPE GXFlush(void);
 
 UNKTYPE GXSetDrawSync(u16);
 
 UNKTYPE GXDrawDone(void);
+
+UNKTYPE GXSetDrawSyncCallback(GXDrawSyncCallback);
 
 UNKTYPE GXSetDrawDoneCallback(GXDrawDoneCallback);
 
