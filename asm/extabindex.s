@@ -188,11 +188,11 @@ _index___dec2num:
     .long 0x000007b0
     .long _unwind___dec2num
 
-.global _index_func_800B43E0
-_index_func_800B43E0:
-    .long func_800B43E0
+.global _index___flush_buffer
+_index___flush_buffer:
+    .long __flush_buffer
     .long 0x000000b8
-    .long _unwind_func_800B43E0
+    .long _unwind___flush_buffer
 
 .global _index_func_800B4498
 _index_func_800B4498:

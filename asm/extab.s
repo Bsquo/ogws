@@ -169,8 +169,8 @@ _unwind___dec2num:
     .long 0x684a0000
     .long 0x00000000
 
-.global _unwind_func_800B43E0
-_unwind_func_800B43E0:
+.global _unwind___flush_buffer
+_unwind___flush_buffer:
     .long 0x10080000
     .long 0x00000000
 
