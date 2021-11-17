@@ -288,6 +288,7 @@ TRK_O_FILES := \
 
 STL_O_FILES := \
 	build/asm/STL/alloc.o \
+	build/asm/STL/ansi_files.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
