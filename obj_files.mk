@@ -282,6 +282,7 @@ TRK_O_FILES := \
 	build/asm/RevoSDK/TRK/NMWException.o \
 	build/asm/RevoSDK/TRK/ptmf.o \
 	build/asm/RevoSDK/TRK/runtime.o \
+	build/asm/RevoSDK/TRK/__init_cpp_exceptions.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
