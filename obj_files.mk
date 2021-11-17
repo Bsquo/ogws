@@ -290,6 +290,7 @@ STL_O_FILES := \
 	build/asm/STL/alloc.o \
 	build/asm/STL/ansi_files.o \
 	build/asm/STL/ansi_fp.o \
+	build/asm/STL/arith.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
