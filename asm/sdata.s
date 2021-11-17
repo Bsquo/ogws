@@ -10,14 +10,14 @@ lbl_804BD538:
 .global lbl_804BD540
 lbl_804BD540:
 	.incbin "baserom.dol", 0x3C71C0, 0x8
-.global lbl_804BD548
-lbl_804BD548:
+.global __float_nan
+__float_nan:
 	.incbin "baserom.dol", 0x3C71C8, 0x4
-.global lbl_804BD54C
-lbl_804BD54C:
+.global __float_huge
+__float_huge:
 	.incbin "baserom.dol", 0x3C71CC, 0x4
-.global lbl_804BD550
-lbl_804BD550:
+.global __double_huge
+__double_huge:
 	.incbin "baserom.dol", 0x3C71D0, 0x8
 .global lbl_804BD558
 lbl_804BD558:
