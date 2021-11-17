@@ -273,6 +273,7 @@ EGG_O_FILES := \
 	build/asm/egg/util/eggMsgRes.o \
 	build/egg/util/eggEffect.o \
 	build/egg/util/eggException.o \
+	build/asm/egg/egg_8037B248.o \
 
 TRK_O_FILES := \
 	build/asm/RevoSDK/TRK/__mem.o \
@@ -280,6 +281,7 @@ TRK_O_FILES := \
 	build/asm/RevoSDK/TRK/global_destructor_chain.o \
 	build/asm/RevoSDK/TRK/NMWException.o \
 	build/asm/RevoSDK/TRK/ptmf.o \
+	build/asm/RevoSDK/TRK/runtime.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
