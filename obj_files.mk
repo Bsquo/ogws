@@ -278,6 +278,7 @@ TRK_O_FILES := \
 	build/asm/RevoSDK/TRK/__mem.o \
 	build/asm/RevoSDK/TRK/__va_arg.o \
 	build/asm/RevoSDK/TRK/global_destructor_chain.o \
+	build/asm/RevoSDK/TRK/NMWException.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
