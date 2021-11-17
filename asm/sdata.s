@@ -235,8 +235,8 @@ lbl_804BD6C8:
 .global lbl_804BD6D8
 lbl_804BD6D8:
 	.incbin "baserom.dol", 0x3C7358, 0x8
-.global lbl_804BD6E0
-lbl_804BD6E0:
+.global __OSCurrHeap
+__OSCurrHeap:
 	.incbin "baserom.dol", 0x3C7360, 0x8
 .global lbl_804BD6E8
 lbl_804BD6E8:
