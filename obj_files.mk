@@ -294,6 +294,7 @@ STL_O_FILES := \
 	build/asm/STL/buffer_io.o \
 	build/asm/STL/direct_io.o \
 	build/asm/STL/errno.o \
+	build/asm/STL/abort_exit_ppc_eabi.o \
 	build/asm/STL/file_io.o \
 	build/asm/STL/FILE_POS.o \
 	build/asm/STL/locale.o \
@@ -301,6 +302,7 @@ STL_O_FILES := \
 	build/asm/STL/mem.o \
 	build/asm/STL/mem_funcs.o \
 	build/asm/STL/math_api.o \
+	build/asm/STL/misc_io.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
