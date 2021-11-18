@@ -218,17 +218,17 @@ _index__fseek:
     .long 0x000001c4
     .long _unwind__fseek
 
-.global _index_func_800B4C80
-_index_func_800B4C80:
-    .long func_800B4C80
+.global _index_mbstowcs
+_index_mbstowcs:
+    .long mbstowcs
     .long 0x000000c0
-    .long _unwind_func_800B4C80
+    .long _unwind_mbstowcs
 
-.global _index_func_800B4D40
-_index_func_800B4D40:
-    .long func_800B4D40
+.global _index_wcstombs
+_index_wcstombs:
+    .long wcstombs
     .long 0x000000b8
-    .long _unwind_func_800B4D40
+    .long _unwind_wcstombs
 
 .global _index_func_800B4DF8
 _index_func_800B4DF8:

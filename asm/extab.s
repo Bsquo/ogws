@@ -194,13 +194,13 @@ _unwind__fseek:
     .long 0x10080000
     .long 0x00000000
 
-.global _unwind_func_800B4C80
-_unwind_func_800B4C80:
+.global _unwind_mbstowcs
+_unwind_mbstowcs:
     .long 0x30080000
     .long 0x00000000
 
-.global _unwind_func_800B4D40
-_unwind_func_800B4D40:
+.global _unwind_wcstombs
+_unwind_wcstombs:
     .long 0x30080000
     .long 0x00000000
 
