@@ -194,11 +194,11 @@ _index___flush_buffer:
     .long 0x000000b8
     .long _unwind___flush_buffer
 
-.global _index_func_800B4498
-_index_func_800B4498:
-    .long func_800B4498
+.global _index___fwrite
+_index___fwrite:
+    .long __fwrite
     .long 0x00000308
-    .long _unwind_func_800B4498
+    .long _unwind___fwrite
 
 .global _index_func_800B47A0
 _index_func_800B47A0:

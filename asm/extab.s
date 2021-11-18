@@ -174,8 +174,8 @@ _unwind___flush_buffer:
     .long 0x10080000
     .long 0x00000000
 
-.global _unwind_func_800B4498
-_unwind_func_800B4498:
+.global _unwind___fwrite
+_unwind___fwrite:
     .long 0x38080000
     .long 0x00000000
 
