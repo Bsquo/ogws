@@ -200,23 +200,23 @@ _index___fwrite:
     .long 0x00000308
     .long _unwind___fwrite
 
-.global _index_func_800B47A0
-_index_func_800B47A0:
-    .long func_800B47A0
+.global _index_fclose
+_index_fclose:
+    .long fclose
     .long 0x000000bc
-    .long _unwind_func_800B47A0
+    .long _unwind_fclose
 
-.global _index_func_800B485C
-_index_func_800B485C:
-    .long func_800B485C
+.global _index_fflush
+_index_fflush:
+    .long fflush
     .long 0x00000134
-    .long _unwind_func_800B485C
+    .long _unwind_fflush
 
-.global _index_func_800B4A3C
-_index_func_800B4A3C:
-    .long func_800B4A3C
+.global _index__fseek
+_index__fseek:
+    .long _fseek
     .long 0x000001c4
-    .long _unwind_func_800B4A3C
+    .long _unwind__fseek
 
 .global _index_func_800B4C80
 _index_func_800B4C80:

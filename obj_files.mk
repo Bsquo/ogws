@@ -293,6 +293,9 @@ STL_O_FILES := \
 	build/asm/STL/arith.o \
 	build/asm/STL/buffer_io.o \
 	build/asm/STL/direct_io.o \
+	build/asm/STL/errno.o \
+	build/asm/STL/file_io.o \
+	build/asm/STL/FILE_POS.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \

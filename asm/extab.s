@@ -179,18 +179,18 @@ _unwind___fwrite:
     .long 0x38080000
     .long 0x00000000
 
-.global _unwind_func_800B47A0
-_unwind_func_800B47A0:
+.global _unwind_fclose
+_unwind_fclose:
     .long 0x18080000
     .long 0x00000000
 
-.global _unwind_func_800B485C
-_unwind_func_800B485C:
+.global _unwind_fflush
+_unwind_fflush:
     .long 0x10080000
     .long 0x00000000
 
-.global _unwind_func_800B4A3C
-_unwind_func_800B4A3C:
+.global _unwind__fseek
+_unwind__fseek:
     .long 0x10080000
     .long 0x00000000
 
