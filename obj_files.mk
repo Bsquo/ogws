@@ -303,6 +303,7 @@ STL_O_FILES := \
 	build/asm/STL/mem_funcs.o \
 	build/asm/STL/math_api.o \
 	build/asm/STL/misc_io.o \
+	build/asm/STL/printf.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
