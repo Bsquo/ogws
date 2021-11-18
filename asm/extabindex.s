@@ -230,11 +230,11 @@ _index_wcstombs:
     .long 0x000000b8
     .long _unwind_wcstombs
 
-.global _index_func_800B4DF8
-_index_func_800B4DF8:
-    .long func_800B4DF8
+.global _index_memmove
+_index_memmove:
+    .long memmove
     .long 0x000000cc
-    .long _unwind_func_800B4DF8
+    .long _unwind_memmove
 
 .global _index_func_800B5238
 _index_func_800B5238:

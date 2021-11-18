@@ -204,8 +204,8 @@ _unwind_wcstombs:
     .long 0x30080000
     .long 0x00000000
 
-.global _unwind_func_800B4DF8
-_unwind_func_800B4DF8:
+.global _unwind_memmove
+_unwind_memmove:
     .long 0x08080000
     .long 0x00000000
 

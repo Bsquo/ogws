@@ -298,6 +298,7 @@ STL_O_FILES := \
 	build/asm/STL/FILE_POS.o \
 	build/asm/STL/locale.o \
 	build/asm/STL/mbstring.o \
+	build/asm/STL/mem.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
