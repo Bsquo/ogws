@@ -4,9 +4,6 @@
 
 .balign 0x8
 
-.global lbl_804BD540
-lbl_804BD540:
-	.incbin "baserom.dol", 0x3C71C0, 0x8
 .global __float_nan
 __float_nan:
 	.incbin "baserom.dol", 0x3C71C8, 0x4
