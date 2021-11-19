@@ -248,11 +248,11 @@ _index___fpclassifyd:
     .long 0x00000080
     .long _unwind___fpclassifyd
 
-.global _index_parse_format
-_index_parse_format:
-    .long parse_format
+.global _index_parse_format_printf_o
+_index_parse_format_printf_o:
+    .long parse_format_printf_o
     .long 0x000005fc
-    .long _unwind_parse_format
+    .long _unwind_parse_format_printf_o
 
 .global _index_longlong2str
 _index_longlong2str:
@@ -320,23 +320,23 @@ _index_sprintf:
     .long 0x000000d0
     .long _unwind_sprintf
 
-.global _index_func_800B76C8
-_index_func_800B76C8:
-    .long func_800B76C8
+.global _index_parse_format_scanf_o
+_index_parse_format_scanf_o:
+    .long parse_format_scanf_o
     .long 0x000006b4
-    .long _unwind_func_800B76C8
+    .long _unwind_parse_format_scanf_o
 
-.global _index_func_800B7D7C
-_index_func_800B7D7C:
-    .long func_800B7D7C
+.global _index___sformatter
+_index___sformatter:
+    .long __sformatter
     .long 0x00000d60
-    .long _unwind_func_800B7D7C
+    .long _unwind___sformatter
 
-.global _index_func_800B8B6C
-_index_func_800B8B6C:
-    .long func_800B8B6C
+.global _index_sscanf
+_index_sscanf:
+    .long sscanf
     .long 0x000000c8
-    .long _unwind_func_800B8B6C
+    .long _unwind_sscanf
 
 .global _index_func_800B8FA8
 _index_func_800B8FA8:

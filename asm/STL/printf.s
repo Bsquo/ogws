@@ -33,8 +33,10 @@ lbl_804C0B20:
 	.double 0e0
 
 .section .text, "ax"
-.global parse_format
-parse_format:
+# "parse_format" (local in printf.o)
+# Renamed to avoid name collision (symbol needs to be global for extab)
+.global parse_format_printf_o
+parse_format_printf_o:
 /* 800B52E0 000B01E0  94 21 FF D0 */	stwu r1, -0x30(r1)
 /* 800B52E4 000B01E4  7C 08 02 A6 */	mflr r0
 /* 800B52E8 000B01E8  38 E0 00 00 */	li r7, 0
@@ -1828,7 +1830,7 @@ lbl_800B6B2C:
 /* 800B6B2C 000B1A2C  7F 03 C3 78 */	mr r3, r24
 /* 800B6B30 000B1A30  7E 64 9B 78 */	mr r4, r19
 /* 800B6B34 000B1A34  38 A1 00 70 */	addi r5, r1, 0x70
-/* 800B6B38 000B1A38  4B FF E7 A9 */	bl parse_format
+/* 800B6B38 000B1A38  4B FF E7 A9 */	bl parse_format_printf_o
 /* 800B6B3C 000B1A3C  88 01 00 75 */	lbz r0, 0x75(r1)
 /* 800B6B40 000B1A40  7C 77 1B 78 */	mr r23, r3
 /* 800B6B44 000B1A44  2C 00 00 68 */	cmpwi r0, 0x68

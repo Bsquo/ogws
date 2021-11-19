@@ -219,8 +219,8 @@ _unwind___fpclassifyd:
     .long 0x00080000
     .long 0x00000000
 
-.global _unwind_parse_format
-_unwind_parse_format:
+.global _unwind_parse_format_printf_o
+_unwind_parse_format_printf_o:
     .long 0x18080000
     .long 0x00000000
 
@@ -279,18 +279,18 @@ _unwind_sprintf:
     .long 0x28080000
     .long 0x00000000
 
-.global _unwind_func_800B76C8
-_unwind_func_800B76C8:
+.global _unwind_parse_format_scanf_o
+_unwind_parse_format_scanf_o:
     .long 0x10080000
     .long 0x00000000
 
-.global _unwind_func_800B7D7C
-_unwind_func_800B7D7C:
+.global _unwind___sformatter
+_unwind___sformatter:
     .long 0x880a0000
     .long 0x00000000
 
-.global _unwind_func_800B8B6C
-_unwind_func_800B8B6C:
+.global _unwind_sscanf
+_unwind_sscanf:
     .long 0x08080000
     .long 0x00000000
 

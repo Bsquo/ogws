@@ -305,6 +305,8 @@ STL_O_FILES := \
 	build/asm/STL/misc_io.o \
 	build/asm/STL/printf.o \
 	build/asm/STL/rand.o \
+	build/asm/STL/scanf.o \
+	build/asm/STL/float.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
