@@ -307,6 +307,8 @@ STL_O_FILES := \
 	build/asm/STL/rand.o \
 	build/asm/STL/scanf.o \
 	build/asm/STL/string.o \
+	build/asm/STL/strtold.o \
+	build/asm/STL/wctype.o \
 	build/asm/STL/float.o \
 
 GROUP_1_O_FILES := \

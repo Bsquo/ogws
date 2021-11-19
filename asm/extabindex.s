@@ -338,17 +338,17 @@ _index_sscanf:
     .long 0x000000c8
     .long _unwind_sscanf
 
-.global _index_func_800B8FA8
-_index_func_800B8FA8:
-    .long func_800B8FA8
+.global _index___strtold
+_index___strtold:
+    .long __strtold
     .long 0x000013f4
-    .long _unwind_func_800B8FA8
+    .long _unwind___strtold
 
-.global _index_func_800BA39C
-_index_func_800BA39C:
-    .long func_800BA39C
+.global _index_atof
+_index_atof:
+    .long atof
     .long 0x00000084
-    .long _unwind_func_800BA39C
+    .long _unwind_atof
 
 .global _index_func_800BA420
 _index_func_800BA420:
