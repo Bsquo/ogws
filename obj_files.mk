@@ -316,6 +316,7 @@ STL_O_FILES := \
 	build/asm/STL/uart_console_io_gcn.o \
 	build/asm/STL/abort_exit_ppc_eabi.o \
 	build/asm/STL/math_sun.o \
+	build/asm/STL/math_float.o \
 	build/asm/STL/float.o \
 
 GROUP_1_O_FILES := \
