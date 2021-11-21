@@ -294,7 +294,6 @@ STL_O_FILES := \
 	build/asm/STL/buffer_io.o \
 	build/asm/STL/direct_io.o \
 	build/asm/STL/errno.o \
-	build/asm/STL/abort_exit_ppc_eabi.o \
 	build/asm/STL/file_io.o \
 	build/asm/STL/FILE_POS.o \
 	build/asm/STL/locale.o \
@@ -309,12 +308,14 @@ STL_O_FILES := \
 	build/asm/STL/string.o \
 	build/asm/STL/strtold.o \
 	build/asm/STL/strtoul.o \
+	build/asm/STL/wctype.o \
 	build/asm/STL/wmem.o \
 	build/asm/STL/wprintf.o \
 	build/asm/STL/wstring.o \
 	build/asm/STL/wchar_io.o \
 	build/asm/STL/uart_console_io_gcn.o \
-	build/asm/STL/wctype.o \
+	build/asm/STL/abort_exit_ppc_eabi.o \
+	build/asm/STL/math_sun.o \
 	build/asm/STL/float.o \
 
 GROUP_1_O_FILES := \
