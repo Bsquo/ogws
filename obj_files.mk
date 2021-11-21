@@ -311,6 +311,7 @@ STL_O_FILES := \
 	build/asm/STL/strtoul.o \
 	build/asm/STL/wmem.o \
 	build/asm/STL/wprintf.o \
+	build/asm/STL/wstring.o \
 	build/asm/STL/wctype.o \
 	build/asm/STL/float.o \
 
