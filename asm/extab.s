@@ -304,13 +304,13 @@ _unwind_atof:
     .long 0x000a0000
     .long 0x00000000
 
-.global _unwind_func_800BA420
-_unwind_func_800BA420:
+.global _unwind___strtoul
+_unwind___strtoul:
     .long 0x80080000
     .long 0x00000000
 
-.global _unwind_func_800BA850
-_unwind_func_800BA850:
+.global _unwind___strtoull
+_unwind___strtoull:
     .long 0x90080000
     .long 0x00000000
 

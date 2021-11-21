@@ -350,17 +350,17 @@ _index_atof:
     .long 0x00000084
     .long _unwind_atof
 
-.global _index_func_800BA420
-_index_func_800BA420:
-    .long func_800BA420
+.global _index___strtoul
+_index___strtoul:
+    .long __strtoul
     .long 0x00000430
-    .long _unwind_func_800BA420
+    .long _unwind___strtoul
 
-.global _index_func_800BA850
-_index_func_800BA850:
-    .long func_800BA850
+.global _index___strtoull
+_index___strtoull:
+    .long __strtoull
     .long 0x000004c4
-    .long _unwind_func_800BA850
+    .long _unwind___strtoull
 
 .global _index_func_800BAD44
 _index_func_800BAD44:
