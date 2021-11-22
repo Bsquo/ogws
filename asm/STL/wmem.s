@@ -1,13 +1,13 @@
 .include "macros.inc"
 
 .section .text, "ax"
-.global func_800BAD14
-func_800BAD14:
+.global wmemcpy
+wmemcpy:
 /* 800BAD14 000B5C14  54 A5 08 3C */	slwi r5, r5, 1
 /* 800BAD18 000B5C18  4B F4 92 E8 */	b memcpy
 
-.global func_800BAD1C
-func_800BAD1C:
+.global wmemchr
+wmemchr:
 /* 800BAD1C 000B5C1C  7C A9 03 A6 */	mtctr r5
 /* 800BAD20 000B5C20  2C 05 00 00 */	cmpwi r5, 0
 /* 800BAD24 000B5C24  41 82 00 18 */	beq lbl_800BAD3C
