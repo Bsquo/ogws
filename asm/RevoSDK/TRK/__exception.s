@@ -36,8 +36,8 @@ machine_check_exception_handler:
 /* 800043B4 000004B4  7C 60 00 A6 */	mfmsr r3
 /* 800043B8 000004B8  60 63 00 30 */	ori r3, r3, 0x30
 /* 800043BC 000004BC  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 800043C0 000004C0  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 800043C4 000004C4  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 800043C0 000004C0  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 800043C4 000004C4  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 800043C8 000004C8  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800043CC 000004CC  38 60 02 00 */	li r3, 0x200
 /* 800043D0 000004D0  4C 00 00 64 */	rfi 
@@ -54,8 +54,8 @@ dsi_exception_handler:
 /* 8000449C 0000059C  7C 60 00 A6 */	mfmsr r3
 /* 800044A0 000005A0  60 63 00 30 */	ori r3, r3, 0x30
 /* 800044A4 000005A4  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 800044A8 000005A8  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 800044AC 000005AC  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 800044A8 000005A8  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 800044AC 000005AC  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 800044B0 000005B0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800044B4 000005B4  38 60 03 00 */	li r3, 0x300
 /* 800044B8 000005B8  4C 00 00 64 */	rfi 
@@ -72,8 +72,8 @@ isi_exception_handler:
 /* 8000459C 0000069C  7C 60 00 A6 */	mfmsr r3
 /* 800045A0 000006A0  60 63 00 30 */	ori r3, r3, 0x30
 /* 800045A4 000006A4  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 800045A8 000006A8  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 800045AC 000006AC  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 800045A8 000006A8  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 800045AC 000006AC  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 800045B0 000006B0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800045B4 000006B4  38 60 04 00 */	li r3, 0x400
 /* 800045B8 000006B8  4C 00 00 64 */	rfi 
@@ -90,8 +90,8 @@ external_interrupt_exception_handler:
 /* 8000469C 0000079C  7C 60 00 A6 */	mfmsr r3
 /* 800046A0 000007A0  60 63 00 30 */	ori r3, r3, 0x30
 /* 800046A4 000007A4  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 800046A8 000007A8  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 800046AC 000007AC  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 800046A8 000007A8  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 800046AC 000007AC  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 800046B0 000007B0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800046B4 000007B4  38 60 05 00 */	li r3, 0x500
 /* 800046B8 000007B8  4C 00 00 64 */	rfi 
@@ -108,8 +108,8 @@ alignment_exception_handler:
 /* 8000479C 0000089C  7C 60 00 A6 */	mfmsr r3
 /* 800047A0 000008A0  60 63 00 30 */	ori r3, r3, 0x30
 /* 800047A4 000008A4  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 800047A8 000008A8  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 800047AC 000008AC  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 800047A8 000008A8  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 800047AC 000008AC  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 800047B0 000008B0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800047B4 000008B4  38 60 06 00 */	li r3, 0x600
 /* 800047B8 000008B8  4C 00 00 64 */	rfi 
@@ -126,8 +126,8 @@ program_exception_handler:
 /* 8000489C 0000099C  7C 60 00 A6 */	mfmsr r3
 /* 800048A0 000009A0  60 63 00 30 */	ori r3, r3, 0x30
 /* 800048A4 000009A4  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 800048A8 000009A8  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 800048AC 000009AC  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 800048A8 000009A8  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 800048AC 000009AC  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 800048B0 000009B0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800048B4 000009B4  38 60 07 00 */	li r3, 0x700
 /* 800048B8 000009B8  4C 00 00 64 */	rfi 
@@ -144,8 +144,8 @@ floating_point_unavailable_exception_handler:
 /* 8000499C 00000A9C  7C 60 00 A6 */	mfmsr r3
 /* 800049A0 00000AA0  60 63 00 30 */	ori r3, r3, 0x30
 /* 800049A4 00000AA4  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 800049A8 00000AA8  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 800049AC 00000AAC  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 800049A8 00000AA8  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 800049AC 00000AAC  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 800049B0 00000AB0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800049B4 00000AB4  38 60 08 00 */	li r3, 0x800
 /* 800049B8 00000AB8  4C 00 00 64 */	rfi 
@@ -162,8 +162,8 @@ decrementer_exception_handler:
 /* 80004A9C 00000B9C  7C 60 00 A6 */	mfmsr r3
 /* 80004AA0 00000BA0  60 63 00 30 */	ori r3, r3, 0x30
 /* 80004AA4 00000BA4  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 80004AA8 00000BA8  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 80004AAC 00000BAC  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 80004AA8 00000BA8  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 80004AAC 00000BAC  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 80004AB0 00000BB0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 80004AB4 00000BB4  38 60 09 00 */	li r3, 0x900
 /* 80004AB8 00000BB8  4C 00 00 64 */	rfi 
@@ -186,8 +186,8 @@ system_call_exception_handler:
 /* 80004D9C 00000E9C  7C 60 00 A6 */	mfmsr r3
 /* 80004DA0 00000EA0  60 63 00 30 */	ori r3, r3, 0x30
 /* 80004DA4 00000EA4  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 80004DA8 00000EA8  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 80004DAC 00000EAC  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 80004DA8 00000EA8  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 80004DAC 00000EAC  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 80004DB0 00000EB0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 80004DB4 00000EB4  38 60 0C 00 */	li r3, 0xc00
 /* 80004DB8 00000EB8  4C 00 00 64 */	rfi 
@@ -204,8 +204,8 @@ trace_exception_handler:
 /* 80004E9C 00000F9C  7C 60 00 A6 */	mfmsr r3
 /* 80004EA0 00000FA0  60 63 00 30 */	ori r3, r3, 0x30
 /* 80004EA4 00000FA4  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 80004EA8 00000FA8  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 80004EAC 00000FAC  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 80004EA8 00000FA8  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 80004EAC 00000FAC  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 80004EB0 00000FB0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 80004EB4 00000FB4  38 60 0D 00 */	li r3, 0xd00
 /* 80004EB8 00000FB8  4C 00 00 64 */	rfi 
@@ -227,8 +227,8 @@ performance_monitor_exception_handler:
 /* 80004F9C 0000109C  7C 60 00 A6 */	mfmsr r3
 /* 80004FA0 000010A0  60 63 00 30 */	ori r3, r3, 0x30
 /* 80004FA4 000010A4  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 80004FA8 000010A8  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 80004FAC 000010AC  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 80004FA8 000010A8  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 80004FAC 000010AC  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 80004FB0 000010B0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 80004FB4 000010B4  38 60 0E 00 */	li r3, 0xe00
 /* 80004FB8 000010B8  4C 00 00 64 */	rfi 
@@ -251,8 +251,8 @@ break_point_exception_handler:
 /* 800050BC 000011BC  7C 60 00 A6 */	mfmsr r3
 /* 800050C0 000011C0  60 63 00 30 */	ori r3, r3, 0x30
 /* 800050C4 000011C4  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 800050C8 000011C8  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 800050CC 000011CC  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 800050C8 000011C8  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 800050CC 000011CC  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 800050D0 000011D0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800050D4 000011D4  38 60 0F 20 */	li r3, 0xf20
 /* 800050D8 000011D8  4C 00 00 64 */	rfi 
@@ -265,8 +265,8 @@ lbl_800050DC:
 /* 800050F0 000011F0  7C 60 00 A6 */	mfmsr r3
 /* 800050F4 000011F4  60 63 00 30 */	ori r3, r3, 0x30
 /* 800050F8 000011F8  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 800050FC 000011FC  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 80005100 00001200  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 800050FC 000011FC  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 80005100 00001200  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 80005104 00001204  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 80005108 00001208  38 60 0F 00 */	li r3, 0xf00
 /* 8000510C 0000120C  4C 00 00 64 */	rfi 
@@ -299,8 +299,8 @@ lbl_800051B8:
 /* 800051D8 000012D8  7C 60 00 A6 */	mfmsr r3
 /* 800051DC 000012DC  60 63 00 30 */	ori r3, r3, 0x30
 /* 800051E0 000012E0  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 800051E4 000012E4  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 800051E8 000012E8  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 800051E4 000012E4  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 800051E8 000012E8  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 800051EC 000012EC  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800051F0 000012F0  38 60 10 00 */	li r3, 0x1000
 /* 800051F4 000012F4  4C 00 00 64 */	rfi 
@@ -337,8 +337,8 @@ lbl_800052B8:
 /* 800052D8 000013D8  7C 60 00 A6 */	mfmsr r3
 /* 800052DC 000013DC  60 63 00 30 */	ori r3, r3, 0x30
 /* 800052E0 000013E0  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 800052E4 000013E4  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 800052E8 000013E8  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 800052E4 000013E4  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 800052E8 000013E8  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 800052EC 000013EC  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800052F0 000013F0  38 60 11 00 */	li r3, 0x1100
 /* 800052F4 000013F4  4C 00 00 64 */	rfi 
@@ -369,8 +369,8 @@ lbl_800053B8:
 /* 800053D8 000014D8  7C 60 00 A6 */	mfmsr r3
 /* 800053DC 000014DC  60 63 00 30 */	ori r3, r3, 0x30
 /* 800053E0 000014E0  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 800053E4 000014E4  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 800053E8 000014E8  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 800053E4 000014E4  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 800053E8 000014E8  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 800053EC 000014EC  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800053F0 000014F0  38 60 12 00 */	li r3, 0x1200
 /* 800053F4 000014F4  4C 00 00 64 */	rfi 
@@ -385,8 +385,8 @@ lbl_800053B8:
 /* 8000549C 0000159C  7C 60 00 A6 */	mfmsr r3
 /* 800054A0 000015A0  60 63 00 30 */	ori r3, r3, 0x30
 /* 800054A4 000015A4  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 800054A8 000015A8  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 800054AC 000015AC  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 800054A8 000015A8  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 800054AC 000015AC  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 800054B0 000015B0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800054B4 000015B4  38 60 13 00 */	li r3, 0x1300
 /* 800054B8 000015B8  4C 00 00 64 */	rfi 
@@ -401,8 +401,8 @@ lbl_800053B8:
 /* 8000559C 0000169C  7C 60 00 A6 */	mfmsr r3
 /* 800055A0 000016A0  60 63 00 30 */	ori r3, r3, 0x30
 /* 800055A4 000016A4  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 800055A8 000016A8  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 800055AC 000016AC  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 800055A8 000016A8  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 800055AC 000016AC  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 800055B0 000016B0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800055B4 000016B4  38 60 14 00 */	li r3, 0x1400
 /* 800055B8 000016B8  4C 00 00 64 */	rfi 
@@ -417,8 +417,8 @@ lbl_800053B8:
 /* 8000579C 0000189C  7C 60 00 A6 */	mfmsr r3
 /* 800057A0 000018A0  60 63 00 30 */	ori r3, r3, 0x30
 /* 800057A4 000018A4  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 800057A8 000018A8  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 800057AC 000018AC  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 800057A8 000018A8  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 800057AC 000018AC  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 800057B0 000018B0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800057B4 000018B4  38 60 16 00 */	li r3, 0x1600
 /* 800057B8 000018B8  4C 00 00 64 */	rfi 
@@ -433,8 +433,8 @@ lbl_800053B8:
 /* 8000589C 0000199C  7C 60 00 A6 */	mfmsr r3
 /* 800058A0 000019A0  60 63 00 30 */	ori r3, r3, 0x30
 /* 800058A4 000019A4  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 800058A8 000019A8  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 800058AC 000019AC  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 800058A8 000019A8  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 800058AC 000019AC  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 800058B0 000019B0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800058B4 000019B4  38 60 17 00 */	li r3, 0x1700
 /* 800058B8 000019B8  4C 00 00 64 */	rfi 
@@ -449,8 +449,8 @@ lbl_800053B8:
 /* 80005D9C 00001E9C  7C 60 00 A6 */	mfmsr r3
 /* 80005DA0 00001EA0  60 63 00 30 */	ori r3, r3, 0x30
 /* 80005DA4 00001EA4  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 80005DA8 00001EA8  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 80005DAC 00001EAC  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 80005DA8 00001EA8  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 80005DAC 00001EAC  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 80005DB0 00001EB0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 80005DB4 00001EB4  38 60 1C 00 */	li r3, 0x1c00
 /* 80005DB8 00001EB8  4C 00 00 64 */	rfi 
@@ -465,8 +465,8 @@ lbl_800053B8:
 /* 80005E9C 00001F9C  7C 60 00 A6 */	mfmsr r3
 /* 80005EA0 00001FA0  60 63 00 30 */	ori r3, r3, 0x30
 /* 80005EA4 00001FA4  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 80005EA8 00001FA8  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 80005EAC 00001FAC  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 80005EA8 00001FA8  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 80005EAC 00001FAC  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 80005EB0 00001FB0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 80005EB4 00001FB4  38 60 1D 00 */	li r3, 0x1d00
 /* 80005EB8 00001FB8  4C 00 00 64 */	rfi 
@@ -481,8 +481,8 @@ lbl_800053B8:
 /* 80005F9C 0000209C  7C 60 00 A6 */	mfmsr r3
 /* 80005FA0 000020A0  60 63 00 30 */	ori r3, r3, 0x30
 /* 80005FA4 000020A4  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 80005FA8 000020A8  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 80005FAC 000020AC  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 80005FA8 000020A8  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 80005FAC 000020AC  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 80005FB0 000020B0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 80005FB4 000020B4  38 60 1E 00 */	li r3, 0x1e00
 /* 80005FB8 000020B8  4C 00 00 64 */	rfi 
@@ -497,8 +497,8 @@ lbl_800053B8:
 /* 8000609C 0000219C  7C 60 00 A6 */	mfmsr r3
 /* 800060A0 000021A0  60 63 00 30 */	ori r3, r3, 0x30
 /* 800060A4 000021A4  7C 7B 03 A6 */	mtspr 0x1b, r3
-/* 800060A8 000021A8  3C 60 80 0C */	lis r3, lbl_800C3AF8@h
-/* 800060AC 000021AC  60 63 3A F8 */	ori r3, r3, lbl_800C3AF8@l
+/* 800060A8 000021A8  3C 60 80 0C */	lis r3, TRKInterruptHandler@h
+/* 800060AC 000021AC  60 63 3A F8 */	ori r3, r3, TRKInterruptHandler@l
 /* 800060B0 000021B0  7C 7A 03 A6 */	mtspr 0x1a, r3
 /* 800060B4 000021B4  38 60 1F 00 */	li r3, 0x1f00
 /* 800060B8 000021B8  4C 00 00 64 */	rfi 

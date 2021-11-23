@@ -1227,7 +1227,7 @@ __ct__Q23EGG17CoreControllerMgrFv:
 /* 800A6958 000A1858  38 C6 82 8C */	addi r6, r6, __vt__Q23EGG32TBuffer$$0PQ23EGG14CoreController$$1@l
 /* 800A695C 000A185C  38 63 82 70 */	addi r3, r3, __vt__Q23EGG29TBuffer$$0Q23EGG12eCoreDevType$$1@l
 /* 800A6960 000A1860  90 BD 00 00 */	stw r5, 0(r29)
-/* 800A6964 000A1864  3C 80 80 38 */	lis r4, lbl_80380004@ha
+/* 800A6964 000A1864  3C 80 80 38 */	lis r4, $$2283@ha
 /* 800A6968 000A1868  38 A0 00 00 */	li r5, 0
 /* 800A696C 000A186C  90 DD 00 14 */	stw r6, 0x14(r29)
 /* 800A6970 000A1870  90 1D 00 18 */	stw r0, 0x18(r29)
@@ -1236,7 +1236,7 @@ __ct__Q23EGG17CoreControllerMgrFv:
 /* 800A697C 000A187C  90 1D 00 28 */	stw r0, 0x28(r29)
 /* 800A6980 000A1880  90 1D 00 2C */	stw r0, 0x2c(r29)
 /* 800A6984 000A1884  84 64 A5 80 */	lwzu r3, -0x5a80(r4)
-/* 800A6988 000A1888  80 E4 00 04 */	lwz r7, lbl_80380004@l(r4)
+/* 800A6988 000A1888  80 E4 00 04 */	lwz r7, $$2283@l(r4)
 /* 800A698C 000A188C  80 C4 00 08 */	lwz r6, 8(r4)
 /* 800A6990 000A1890  80 04 00 0C */	lwz r0, 0xc(r4)
 /* 800A6994 000A1894  80 8D 99 38 */	lwz r4, mConfigData__Q23EGG10BaseSystem-_SDA_BASE_(r13)

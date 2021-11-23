@@ -18,14 +18,14 @@ switch_80398F88:
 .global parse_format_scanf_o
 parse_format_scanf_o:
 /* 800B76C8 000B25C8  94 21 FF C0 */	stwu r1, -0x40(r1)
-/* 800B76CC 000B25CC  3C C0 80 38 */	lis r6, lbl_80380004@ha
+/* 800B76CC 000B25CC  3C C0 80 38 */	lis r6, $$2283@ha
 /* 800B76D0 000B25D0  8C A3 00 01 */	lbzu r5, 1(r3)
 /* 800B76D4 000B25D4  93 E1 00 3C */	stw r31, 0x3c(r1)
 /* 800B76D8 000B25D8  7C A5 07 74 */	extsb r5, r5
 /* 800B76DC 000B25DC  93 C1 00 38 */	stw r30, 0x38(r1)
 /* 800B76E0 000B25E0  2C 05 00 25 */	cmpwi r5, 0x25
 /* 800B76E4 000B25E4  84 06 B9 10 */	lwzu r0, -0x46f0(r6)
-/* 800B76E8 000B25E8  83 C6 00 04 */	lwz r30, lbl_80380004@l(r6)
+/* 800B76E8 000B25E8  83 C6 00 04 */	lwz r30, $$2283@l(r6)
 /* 800B76EC 000B25EC  83 E6 00 08 */	lwz r31, 8(r6)
 /* 800B76F0 000B25F0  81 86 00 0C */	lwz r12, 0xc(r6)
 /* 800B76F4 000B25F4  81 66 00 10 */	lwz r11, 0x10(r6)
