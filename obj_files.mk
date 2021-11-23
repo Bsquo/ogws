@@ -374,6 +374,7 @@ TRK_DEBUGGER_O_FILES := \
 	build/asm/RevoSDK/TRK/debugger/target_options.o \
 	build/asm/RevoSDK/TRK/debugger/UDP_Stubs.o \
 	build/asm/RevoSDK/TRK/gamedev/main.o \
+	build/asm/RevoSDK/TRK/gamedev/CircleBuffer.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
