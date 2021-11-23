@@ -366,6 +366,7 @@ TRK_DEBUGGER_O_FILES := \
 	build/asm/RevoSDK/TRK/debugger/targimpl.o \
 	build/asm/RevoSDK/TRK/debugger/targsupp.o \
 	build/asm/RevoSDK/TRK/debugger/mpc_7xx_603e.o \
+	build/asm/RevoSDK/TRK/debugger/mslsupp.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
