@@ -371,6 +371,7 @@ TRK_DEBUGGER_O_FILES := \
 	build/asm/RevoSDK/TRK/debugger/main_TRK.o \
 	build/asm/RevoSDK/TRK/debugger/dolphin_trk_glue.o \
 	build/asm/RevoSDK/TRK/debugger/targcont.o \
+	build/asm/RevoSDK/TRK/debugger/target_options.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \

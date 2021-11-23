@@ -1,17 +1,5 @@
 .include "macros.inc"
 
-.global func_800C622C
-func_800C622C:
-/* 800C622C 000C112C  3C 60 80 41 */	lis r3, lbl_8040DC30@ha
-/* 800C6230 000C1130  38 63 DC 30 */	addi r3, r3, lbl_8040DC30@l
-/* 800C6234 000C1134  88 63 00 00 */	lbz r3, 0(r3)
-/* 800C6238 000C1138  4E 80 00 20 */	blr 
-
-.global func_800C623C
-func_800C623C:
-/* 800C623C 000C113C  3C 80 80 41 */	lis r4, lbl_8040DC30@ha
-/* 800C6240 000C1140  98 64 DC 30 */	stb r3, lbl_8040DC30@l(r4)
-/* 800C6244 000C1144  4E 80 00 20 */	blr 
 .global lbl_800C6248
 lbl_800C6248:
 /* 800C6248 000C1148  38 60 FF FF */	li r3, -1
