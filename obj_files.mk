@@ -353,6 +353,7 @@ TRK_DEBUGGER_O_FILES := \
 	build/asm/RevoSDK/TRK/debugger/nubevent.o \
 	build/asm/RevoSDK/TRK/debugger/nubinit.o \
 	build/asm/RevoSDK/TRK/debugger/msg.o \
+	build/asm/RevoSDK/TRK/debugger/msgbuf.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
