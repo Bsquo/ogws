@@ -351,6 +351,7 @@ STL_O_FILES := \
 TRK_DEBUGGER_O_FILES := \
 	build/asm/RevoSDK/TRK/debugger/mainloop.o \
 	build/asm/RevoSDK/TRK/debugger/nubevent.o \
+	build/asm/RevoSDK/TRK/debugger/nubinit.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
