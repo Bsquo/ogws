@@ -1,5 +1,11 @@
 .include "macros.inc"
 
+.section .ctors$10, "a"
+# __init_cpp_exceptions_reference
+.global global_ctors
+global_ctors:
+.4byte func_800B2288 # __init_cpp_exceptions
+
 .section .sdata, "wa"
 .balign 0x8
 .global fragmentID
