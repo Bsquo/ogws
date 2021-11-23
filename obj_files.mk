@@ -368,7 +368,6 @@ GROUP_1_O_FILES := \
 	build/asm/data_b.o \
 	build/asm/sdata_b.o \
 	build/asm/ctors_2.o \
-	build/asm/dtors.o \
 	build/asm/file.o \
 	build/asm/rodata.o \
 	build/asm/bss.o \

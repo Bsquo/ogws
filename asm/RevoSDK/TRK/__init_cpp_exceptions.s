@@ -6,6 +6,20 @@
 global_ctors:
 .4byte func_800B2288 # __init_cpp_exceptions
 
+.section .dtors$10, "a"
+.global global_dtors
+global_dtors:
+# __destroy_global_chain_reference
+.4byte func_800B184C # __destroy_global_chain
+
+# TO-DO: Put this in .dtors$15
+.section .dtors$10, "a"
+# __fini_cpp_exceptions_reference
+.4byte func_800B22C4 # __fini_cpp_exceptions
+
+# _dtors$99?
+.long 0
+
 .section .sdata, "wa"
 .balign 0x8
 .global fragmentID
