@@ -2,12 +2,6 @@
 
 .section .bss, "wa"  # 0x803CAF00 - 0x804BD380
 .balign 0x8
-.global lbl_8040DC38
-lbl_8040DC38:
-	.skip 0x500
-.global lbl_8040E138
-lbl_8040E138:
-	.skip 0x20
 .global lbl_8040E158
 lbl_8040E158:
 	.skip 0x14A8

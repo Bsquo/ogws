@@ -373,6 +373,7 @@ TRK_DEBUGGER_O_FILES := \
 	build/asm/RevoSDK/TRK/debugger/targcont.o \
 	build/asm/RevoSDK/TRK/debugger/target_options.o \
 	build/asm/RevoSDK/TRK/debugger/UDP_Stubs.o \
+	build/asm/RevoSDK/TRK/gamedev/main.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
