@@ -2,7 +2,6 @@
 
 .section .data, "wa"
 .balign 0x8
-.global TRK_ISR_OFFSETS
 TRK_ISR_OFFSETS:
 	.incbin "baserom.dol", 0x3954B0, 0x40
 
