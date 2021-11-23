@@ -319,6 +319,34 @@ STL_O_FILES := \
 	build/asm/STL/math_float.o \
 	build/asm/STL/extras.o \
 	build/asm/STL/float.o \
+	build/asm/STL/e_acos.o \
+	build/asm/STL/e_asin.o \
+	build/asm/STL/e_atan2.o \
+	build/asm/STL/e_fmod.o \
+	build/asm/STL/e_pow.o \
+	build/asm/STL/e_rem_pio2.o \
+	build/asm/STL/k_cos.o \
+	build/asm/STL/k_rem_pio2.o \
+	build/asm/STL/k_sin.o \
+	build/asm/STL/k_tan.o \
+	build/asm/STL/s_atan.o \
+	build/asm/STL/s_ceil.o \
+	build/asm/STL/s_copysign.o \
+	build/asm/STL/s_cos.o \
+	build/asm/STL/s_floor.o \
+	build/asm/STL/s_frexp.o \
+	build/asm/STL/s_ldexp.o \
+	build/asm/STL/s_modf.o \
+	build/asm/STL/s_sin.o \
+	build/asm/STL/s_tan.o \
+	build/asm/STL/w_acos.o \
+	build/asm/STL/w_asin.o \
+	build/asm/STL/w_atan2.o \
+	build/asm/STL/w_fmod.o \
+	build/asm/STL/w_pow.o \
+	build/asm/STL/e_sqrt.o \
+	build/asm/STL/math_ppc.o \
+	build/asm/STL/w_sqrt.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \

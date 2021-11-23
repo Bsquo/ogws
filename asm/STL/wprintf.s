@@ -16,6 +16,11 @@ lbl_80399280:
     # wStringBase
 	.incbin "baserom.dol", 0x395380, 0x58
 
+.section .rodata, "a"
+.balign 0x8
+# wStringBase
+	.incbin "baserom.dol", 0x378048, 0x8
+
 .section .sdata2, "a"
 .balign 0x8
 .global lbl_804C0B60
