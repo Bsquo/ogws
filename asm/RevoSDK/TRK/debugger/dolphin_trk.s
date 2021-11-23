@@ -1,5 +1,11 @@
 .include "macros.inc"
 
+.section .data, "wa"
+.balign 0x8
+.global TRK_ISR_OFFSETS
+TRK_ISR_OFFSETS:
+	.incbin "baserom.dol", 0x3954B0, 0x40
+
 .section .bss, "wa"
 .balign 0x8
 lc_base:
@@ -136,10 +142,10 @@ lbl_800C5B9C:
 /* 800C5B9C 000C0A9C  3C 60 80 00 */	lis r3, 0x80000044@ha
 /* 800C5BA0 000C0AA0  38 A3 00 44 */	addi r5, r3, 0x80000044@l
 lbl_800C5BA4:
-/* 800C5BA4 000C0AA4  3C 80 80 3A */	lis r4, lbl_803993B0@ha
+/* 800C5BA4 000C0AA4  3C 80 80 3A */	lis r4, TRK_ISR_OFFSETS@ha
 /* 800C5BA8 000C0AA8  3C 60 80 41 */	lis r3, gTRKCPUState@ha
 /* 800C5BAC 000C0AAC  83 A5 00 00 */	lwz r29, 0(r5)
-/* 800C5BB0 000C0AB0  3B E4 93 B0 */	addi r31, r4, lbl_803993B0@l
+/* 800C5BB0 000C0AB0  3B E4 93 B0 */	addi r31, r4, TRK_ISR_OFFSETS@l
 /* 800C5BB4 000C0AB4  3B 83 D7 40 */	addi r28, r3, gTRKCPUState@l
 /* 800C5BB8 000C0AB8  3B C0 00 00 */	li r30, 0
 lbl_800C5BBC:
