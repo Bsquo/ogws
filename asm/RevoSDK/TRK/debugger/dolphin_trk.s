@@ -50,7 +50,7 @@ InitMetroTRK:
 /* 800C5A60 000C0960  B8 03 00 00 */	.4byte 0xB8030000  /* illegal lmw r0, 0(r3) */
 /* 800C5A64 000C0964  4E 80 00 20 */	blr 
 lbl_800C5A68:
-/* 800C5A68 000C0968  48 00 02 8C */	b lbl_800C5CF4
+/* 800C5A68 000C0968  48 00 02 8C */	b TRK_main
 /* 800C5A6C 000C096C  4E 80 00 20 */	blr 
 
 .global InitMetroTRK_BBA
@@ -91,7 +91,7 @@ InitMetroTRK_BBA:
 /* 800C5AF4 000C09F4  B8 03 00 00 */	.4byte 0xB8030000  /* illegal lmw r0, 0(r3) */
 /* 800C5AF8 000C09F8  4E 80 00 20 */	blr 
 lbl_800C5AFC:
-/* 800C5AFC 000C09FC  48 00 01 F8 */	b lbl_800C5CF4
+/* 800C5AFC 000C09FC  48 00 01 F8 */	b TRK_main
 /* 800C5B00 000C0A00  4E 80 00 20 */	blr 
 
 .global TRKInitializeTarget

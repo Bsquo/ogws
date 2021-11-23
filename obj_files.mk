@@ -368,6 +368,7 @@ TRK_DEBUGGER_O_FILES := \
 	build/asm/RevoSDK/TRK/debugger/mpc_7xx_603e.o \
 	build/asm/RevoSDK/TRK/debugger/mslsupp.o \
 	build/asm/RevoSDK/TRK/debugger/dolphin_trk.o \
+	build/asm/RevoSDK/TRK/debugger/main_TRK.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
