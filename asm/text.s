@@ -1,20 +1,5 @@
 .include "macros.inc"
 
-.global func_800C38F0
-func_800C38F0:
-/* 800C38F0 000BE7F0  38 60 00 00 */	li r3, 0
-/* 800C38F4 000BE7F4  4E 80 00 20 */	blr 
-
-.global func_800C38F8
-func_800C38F8:
-/* 800C38F8 000BE7F8  38 60 00 00 */	li r3, 0
-/* 800C38FC 000BE7FC  4E 80 00 20 */	blr 
-
-.global func_800C3900
-func_800C3900:
-/* 800C3900 000BE800  38 60 00 00 */	li r3, 0
-/* 800C3904 000BE804  4E 80 00 20 */	blr 
-
 .global func_800C3908
 func_800C3908:
 /* 800C3908 000BE808  94 21 FF E0 */	stwu r1, -0x20(r1)
