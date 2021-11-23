@@ -256,27 +256,27 @@ InitMetroTRKCommTable:
 /* 800C6044 000C0F44  38 7D 00 48 */	addi r3, r29, 0x48
 /* 800C6048 000C0F48  4C C6 31 82 */	crclr 6
 /* 800C604C 000C0F4C  48 0B DE CD */	bl OSReport
-/* 800C6050 000C0F50  3D 80 80 0C */	lis r12, lbl_800C6288@ha
+/* 800C6050 000C0F50  3D 80 80 0C */	lis r12, udp_cc_initialize@ha
 /* 800C6054 000C0F54  3D 60 80 3A */	lis r11, gDBCommTable@ha
-/* 800C6058 000C0F58  3B EC 62 88 */	addi r31, r12, lbl_800C6288@l
-/* 800C605C 000C0F5C  3D 40 80 0C */	lis r10, lbl_800C6278@ha
+/* 800C6058 000C0F58  3B EC 62 88 */	addi r31, r12, udp_cc_initialize@l
+/* 800C605C 000C0F5C  3D 40 80 0C */	lis r10, udp_cc_open@ha
 /* 800C6060 000C0F60  39 8B 93 F0 */	addi r12, r11, gDBCommTable@l
 /* 800C6064 000C0F64  38 00 00 00 */	li r0, 0
-/* 800C6068 000C0F68  39 6A 62 78 */	addi r11, r10, lbl_800C6278@l
-/* 800C606C 000C0F6C  3D 20 80 0C */	lis r9, lbl_800C6270@ha
-/* 800C6070 000C0F70  39 49 62 70 */	addi r10, r9, lbl_800C6270@l
-/* 800C6074 000C0F74  3D 00 80 0C */	lis r8, lbl_800C6268@ha
-/* 800C6078 000C0F78  39 28 62 68 */	addi r9, r8, lbl_800C6268@l
-/* 800C607C 000C0F7C  3C E0 80 0C */	lis r7, lbl_800C6260@ha
-/* 800C6080 000C0F80  39 07 62 60 */	addi r8, r7, lbl_800C6260@l
-/* 800C6084 000C0F84  3C C0 80 0C */	lis r6, lbl_800C6280@ha
-/* 800C6088 000C0F88  38 E6 62 80 */	addi r7, r6, lbl_800C6280@l
-/* 800C608C 000C0F8C  3C A0 80 0C */	lis r5, lbl_800C6258@ha
-/* 800C6090 000C0F90  38 C5 62 58 */	addi r6, r5, lbl_800C6258@l
-/* 800C6094 000C0F94  3C 80 80 0C */	lis r4, lbl_800C6250@ha
-/* 800C6098 000C0F98  38 A4 62 50 */	addi r5, r4, lbl_800C6250@l
-/* 800C609C 000C0F9C  3C 60 80 0C */	lis r3, lbl_800C6248@ha
-/* 800C60A0 000C0FA0  38 83 62 48 */	addi r4, r3, lbl_800C6248@l
+/* 800C6068 000C0F68  39 6A 62 78 */	addi r11, r10, udp_cc_open@l
+/* 800C606C 000C0F6C  3D 20 80 0C */	lis r9, udp_cc_close@ha
+/* 800C6070 000C0F70  39 49 62 70 */	addi r10, r9, udp_cc_close@l
+/* 800C6074 000C0F74  3D 00 80 0C */	lis r8, udp_cc_read@ha
+/* 800C6078 000C0F78  39 28 62 68 */	addi r9, r8, udp_cc_read@l
+/* 800C607C 000C0F7C  3C E0 80 0C */	lis r7, udp_cc_write@ha
+/* 800C6080 000C0F80  39 07 62 60 */	addi r8, r7, udp_cc_write@l
+/* 800C6084 000C0F84  3C C0 80 0C */	lis r6, udp_cc_shutdown@ha
+/* 800C6088 000C0F88  38 E6 62 80 */	addi r7, r6, udp_cc_shutdown@l
+/* 800C608C 000C0F8C  3C A0 80 0C */	lis r5, udp_cc_peek@ha
+/* 800C6090 000C0F90  38 C5 62 58 */	addi r6, r5, udp_cc_peek@l
+/* 800C6094 000C0F94  3C 80 80 0C */	lis r4, udp_cc_pre_continue@ha
+/* 800C6098 000C0F98  38 A4 62 50 */	addi r5, r4, udp_cc_pre_continue@l
+/* 800C609C 000C0F9C  3C 60 80 0C */	lis r3, udp_cc_post_stop@ha
+/* 800C60A0 000C0FA0  38 83 62 48 */	addi r4, r3, udp_cc_post_stop@l
 /* 800C60A4 000C0FA4  3F C0 80 41 */	lis r30, TRK_Use_BBA@ha
 /* 800C60A8 000C0FA8  3B A0 00 01 */	li r29, 1
 /* 800C60AC 000C0FAC  93 EC 00 00 */	stw r31, 0(r12)
