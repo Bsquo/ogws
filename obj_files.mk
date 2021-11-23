@@ -362,6 +362,7 @@ TRK_DEBUGGER_O_FILES := \
 	build/asm/RevoSDK/TRK/debugger/notify.o \
 	build/asm/RevoSDK/TRK/debugger/flush_cache.o \
 	build/asm/RevoSDK/TRK/debugger/mem_TRK.o \
+	build/asm/RevoSDK/TRK/debugger/string_TRK.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
