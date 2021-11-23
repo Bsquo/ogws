@@ -357,6 +357,7 @@ TRK_DEBUGGER_O_FILES := \
 	build/asm/RevoSDK/TRK/debugger/serpoll.o \
 	build/asm/RevoSDK/TRK/debugger/usr_put.o \
 	build/asm/RevoSDK/TRK/debugger/dispatch.o \
+	build/asm/RevoSDK/TRK/debugger/msghndlr.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \

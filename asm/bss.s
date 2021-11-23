@@ -1,15 +1,8 @@
 .include "macros.inc"
 
 .section .bss, "wa"  # 0x803CAF00 - 0x804BD380
-
 .balign 0x8
 
-.global lbl_8040D690
-lbl_8040D690:
-	.skip 0x4
-.global lbl_8040D694
-lbl_8040D694:
-	.skip 0x4
 .global lbl_8040D698
 lbl_8040D698:
 	.skip 0x4
