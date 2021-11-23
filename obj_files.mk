@@ -348,6 +348,9 @@ STL_O_FILES := \
 	build/asm/STL/math_ppc.o \
 	build/asm/STL/w_sqrt.o \
 
+TRK_DEBUGGER_O_FILES := \
+	build/asm/RevoSDK/TRK/debugger/mainloop.o
+
 GROUP_1_O_FILES := \
 	build/asm/data.o \
 	build/asm/sdata.o \
@@ -366,4 +369,4 @@ GROUP_1_O_FILES := \
 	build/asm/sbss2.o \
 	build/asm/sdata2.o \
 
-O_FILES := $(GROUP_0_O_FILES) $(NW4R_O_FILES) $(EGG_O_FILES) $(TRK_RUNTIME_O_FILES) $(STL_O_FILES) $(GROUP_1_O_FILES) $(TRK_INIT_O_FILES)
+O_FILES := $(GROUP_0_O_FILES) $(NW4R_O_FILES) $(EGG_O_FILES) $(TRK_RUNTIME_O_FILES) $(STL_O_FILES) $(TRK_DEBUGGER_O_FILES) $(GROUP_1_O_FILES) $(TRK_INIT_O_FILES)
