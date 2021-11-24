@@ -377,6 +377,9 @@ TRK_DEBUGGER_O_FILES := \
 	build/asm/RevoSDK/TRK/gamedev/CircleBuffer.o \
 	build/asm/RevoSDK/TRK/gamedev/MWCriticalSection_gc.o \
 
+REVOSDK_O_FILES := \
+	build/asm/RevoSDK/DB/DebuggerDriver.o
+
 GROUP_1_O_FILES := \
 	build/asm/data.o \
 	build/asm/sdata.o \
@@ -394,4 +397,9 @@ GROUP_1_O_FILES := \
 	build/asm/sbss2.o \
 	build/asm/sdata2.o \
 
-O_FILES := $(CPP_EXCEPTION_O_FILES) $(NW4R_O_FILES) $(EGG_O_FILES) $(TRK_RUNTIME_O_FILES) $(STL_O_FILES) $(TRK_DEBUGGER_O_FILES) $(GROUP_1_O_FILES) $(TRK_INIT_O_FILES)
+O_FILES := \
+	$(CPP_EXCEPTION_O_FILES) \
+	$(NW4R_O_FILES) $(EGG_O_FILES) \
+	$(TRK_INIT_O_FILES) $(TRK_RUNTIME_O_FILES) $(STL_O_FILES) $(TRK_DEBUGGER_O_FILES) \
+	$(REVOSDK_O_FILES) \
+	$(GROUP_1_O_FILES) \
