@@ -378,7 +378,8 @@ TRK_DEBUGGER_O_FILES := \
 	build/asm/RevoSDK/TRK/gamedev/MWCriticalSection_gc.o \
 
 REVOSDK_O_FILES := \
-	build/asm/RevoSDK/DB/DebuggerDriver.o
+	build/asm/RevoSDK/DB/DebuggerDriver.o \
+	build/asm/RevoSDK/EXI/exi2.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
