@@ -25,7 +25,7 @@ tb3:
     .incbin "baserom.dol", 0x396618, 0x900
 # Strings
 lbl_8039ae18:
-    .incbin "baserom.dol", 0x396F18, 0x110
+    .incbin "baserom.dol", 0x396F18, 0xC8
 
 .section .text, "ax"
 .global WPADiCreateKey

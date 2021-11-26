@@ -388,6 +388,8 @@ REVOSDK_O_FILES := \
 	build/asm/RevoSDK/WPAD/WPADMem.o \
 	build/asm/RevoSDK/WPAD/debug_msg.o \
 	build/asm/RevoSDK/EUART/euart.o \
+	build/asm/RevoSDK/EXI/EXIBios.o \
+	build/asm/RevoSDK/EXI/EXICommon.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
