@@ -860,7 +860,7 @@ beginFrame__Q23EGG14CoreControllerFP9PADStatus:
 /* 800A6460 000A1360  38 9E 00 14 */	addi r4, r30, 0x14
 /* 800A6464 000A1364  93 A1 00 24 */	stw r29, 0x24(r1)
 /* 800A6468 000A1368  80 63 00 04 */	lwz r3, 4(r3)
-/* 800A646C 000A136C  48 02 31 99 */	bl func_800C9604
+/* 800A646C 000A136C  48 02 31 99 */	bl KPADRead
 /* 800A6470 000A1370  2C 03 00 00 */	cmpwi r3, 0
 /* 800A6474 000A1374  90 7E 08 54 */	stw r3, 0x854(r30)
 /* 800A6478 000A1378  40 81 00 EC */	ble lbl_800A6564
@@ -1264,7 +1264,7 @@ lbl_800A69DC:
 /* 800A69E8 000A18E8  38 63 68 80 */	addi r3, r3, alloc__Q23EGG27$$2unnamed$$2eggController_cpp$$2FUl@l
 /* 800A69EC 000A18EC  38 84 68 98 */	addi r4, r4, free__Q23EGG27$$2unnamed$$2eggController_cpp$$2FPv@l
 /* 800A69F0 000A18F0  48 02 59 55 */	bl func_800CC344
-/* 800A69F4 000A18F4  48 02 33 29 */	bl func_800C9D1C
+/* 800A69F4 000A18F4  48 02 33 29 */	bl KPADInit
 /* 800A69F8 000A18F8  81 9D 00 10 */	lwz r12, 0x10(r29)
 /* 800A69FC 000A18FC  7F A3 EB 78 */	mr r3, r29
 /* 800A6A00 000A1900  81 8C 00 08 */	lwz r12, 8(r12)
@@ -1995,22 +1995,22 @@ lbl_800A73EC:
 .global setAccParam__Q23EGG14CoreControllerFff
 setAccParam__Q23EGG14CoreControllerFff:
 /* 800A7404 000A2304  80 63 00 04 */	lwz r3, 4(r3)
-/* 800A7408 000A2308  48 01 FF AC */	b func_800C73B4
+/* 800A7408 000A2308  48 01 FF AC */	b KPADSetAccParam
 
 .global setDistParam__Q23EGG14CoreControllerFff
 setDistParam__Q23EGG14CoreControllerFff:
 /* 800A740C 000A230C  80 63 00 04 */	lwz r3, 4(r3)
-/* 800A7410 000A2310  48 01 FF 88 */	b func_800C7398
+/* 800A7410 000A2310  48 01 FF 88 */	b KPADSetDistParam
 
 .global setHoriParam__Q23EGG14CoreControllerFff
 setHoriParam__Q23EGG14CoreControllerFff:
 /* 800A7414 000A2314  80 63 00 04 */	lwz r3, 4(r3)
-/* 800A7418 000A2318  48 01 FF 64 */	b func_800C737C
+/* 800A7418 000A2318  48 01 FF 64 */	b KPADSetHoriParam
 
 .global setPosParam__Q23EGG14CoreControllerFff
 setPosParam__Q23EGG14CoreControllerFff:
 /* 800A741C 000A231C  80 63 00 04 */	lwz r3, 4(r3)
-/* 800A7420 000A2320  48 01 FF 40 */	b func_800C7360
+/* 800A7420 000A2320  48 01 FF 40 */	b KPADSetPosParam
 
 # allocate__Q23EGG29TBuffer<Q23EGG12eCoreDevType>Fii
 .global allocate__Q23EGG29TBuffer$$0Q23EGG12eCoreDevType$$1Fii
