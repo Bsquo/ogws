@@ -1,5 +1,12 @@
 .include "macros.inc"
 
+.section .sbss, "wa"
+.balign 0x8
+# Local symbol in BBA, maybe PADInit is getting inlined in OSInit? 
+.global Initialized
+Initialized:
+	.skip 0x8
+
 .section .text, "ax"
 .global __PADDisableRecalibration
 __PADDisableRecalibration:
