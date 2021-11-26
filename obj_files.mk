@@ -383,6 +383,7 @@ REVOSDK_O_FILES := \
 	build/asm/RevoSDK/KPAD/KPAD.o \
 	build/asm/RevoSDK/PAD/Pad.o \
 	build/asm/RevoSDK/WPAD/WPAD.o \
+	build/asm/RevoSDK/WPAD/WPADHIDParser.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
