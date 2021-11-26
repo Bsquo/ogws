@@ -381,6 +381,7 @@ REVOSDK_O_FILES := \
 	build/asm/RevoSDK/DB/DebuggerDriver.o \
 	build/asm/RevoSDK/EXI/exi2.o \
 	build/asm/RevoSDK/KPAD/KPAD.o \
+	build/asm/RevoSDK/PAD/Pad.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
