@@ -391,6 +391,7 @@ REVOSDK_O_FILES := \
 	build/asm/RevoSDK/EXI/EXIBios.o \
 	build/asm/RevoSDK/EXI/EXIUart.o \
 	build/asm/RevoSDK/EXI/EXICommon.o \
+	build/asm/RevoSDK/ISFS/fs.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
