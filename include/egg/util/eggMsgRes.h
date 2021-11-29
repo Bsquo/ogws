@@ -5,18 +5,6 @@
 
 namespace EGG
 {
-    // Escape sequence (Official name = "Tag")
-    const char cTagMark = 0x1A;
-    const u32 cMsgSectionMagic[] = {'INF1', 'DAT1', 'STR1', 'MID1', 'FLW1', 'FLI1'};
-    const u32 cShifts[]          = {0x00000020, 0x00000018, 0x00000010, 0x00000008, 0x00000000, 0x00000000};
-
-    struct MaskUnk
-    {
-        u32 INT_0x0;
-        u32 INT_0x4;
-    };
-    const MaskUnk cMasks[] = {{0xffffffff, 0x00000000}, {0xffffff00, 0x000000ff}, {0xffff0000, 0x0000ffff}, {0xff000000, 0x00ffffff}, {0x00000000, 0xffffffff}};
-
     struct MsgRes
     {
         struct MsgHeaderBlock
@@ -69,7 +57,7 @@ namespace EGG
             u32 mDataSize; // at 0x4
             u16 mNumEntries; // at 0x8
             u8 UNK_0xA;
-            u8 UNK_0xB;
+            u8 mIDFormat; // at 0xB
             u32 WORD_0xC;
             u32 mMsgIds[]; // at 0x10
         };
@@ -96,7 +84,7 @@ namespace EGG
             BLOCK_MSGID,     /* MID1 */
             BLOCK_FLOWCHART, /* FLW1 */
             BLOCK_FLOWLABEL, /* FLI1 */
-            BLOCK_ILLEGAL
+            BLOCK_MAX
         };
 
         MsgHeaderBlock *mMsgHeader;          // "MESGbmg1", at 0x0
@@ -128,18 +116,30 @@ namespace EGG
 
         MsgRes(const void *);
         virtual ~MsgRes();
-        static void analyzeTag(u16, const wchar_t*, u8*, unsigned int*, void **);
-        const wchar_t * getMsg(unsigned int, unsigned int);
-        MsgInfoBlockEntry * getMsgEntry(unsigned int, unsigned int) __attribute__((never_inline));
+        static void analyzeTag(u16, const wchar_t*, u8*, u32*, void **);
+        const wchar_t * getMsg(u32, u32);
+        MsgInfoBlockEntry * getMsgEntry(u32, u32);
         u32 getMsgID(u16); // inlined
-        EDataBlkKind analyzeDataBlkKind(unsigned int); // inlined
-        const void * extractMsgHeader(const void *); // inlined
-        const void * extractMsgInfoDataBlk(const void *); // inlined
-        const void * extractMsgDataBlk(const void *); // inlined
-        const void * extractStrAttrDataBlk(const void *); // inlined
-        const void * extractMsgIDDataBlk(const void *); // inlined
-        const void * extractFlowChartInfoDataBlk(const void *); // inlined
-        const void * extractFlowLabelInfoDataBlk(const void *); // inlined
+        EDataBlkKind analyzeDataBlkKind(u32); // inlined
+        void extractMsgHeader(const void *); // inlined
+        void extractMsgInfoDataBlk(const void *); // inlined
+        void extractMsgDataBlk(const void *); // inlined
+        void extractStrAttrDataBlk(const void *); // inlined
+        void extractMsgIDDataBlk(const void *); // inlined
+        void extractFlowChartInfoDataBlk(const void *); // inlined
+        void extractFlowLabelInfoDataBlk(const void *); // inlined
+
+        struct MsgIDMask
+        {
+            u32 top;
+            u32 bot;
+        };
+
+        // Escape sequence (Official name = "Tag")
+        static const char cTagMark = 0x1A;
+        static u32 cMsgBlkMagic[BLOCK_MAX];
+        static const u32 cIDShifts[6];
+        static const MsgIDMask cIDMasks[5];
     };
 }
 

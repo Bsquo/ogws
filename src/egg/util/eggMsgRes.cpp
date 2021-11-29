@@ -1,16 +1,10 @@
-#pragma pool_data on
 #pragma ipa file
 #pragma use_lmw_stmw on
-#pragma opt_strength_reduction off
 #include "eggMsgRes.h"
 #include "eggAssert.h"
 
 namespace EGG
 {
-    /*
-        This can't really be matched until analyzeDataBlkKind can be auto inlined.
-    */
-    #ifdef __DECOMP_NON_MATCHING
     MsgRes::MsgRes(const void *data)
     {
         #line 53
@@ -39,22 +33,28 @@ namespace EGG
             switch(analyzeDataBlkKind(kind))
             {
                 case BLOCK_MSGID:
-                    block = extractMsgIDDataBlk(current);
+                    extractMsgIDDataBlk(current);
+                    block = mMsgIDDataBlk;
                     break;
                 case BLOCK_MSGDATA:
-                    block = extractMsgDataBlk(current);
+                    extractMsgDataBlk(current);
+                    block = mMsgIDDataBlk;
                     break;
                 case BLOCK_MSGINFO:
-                    block = extractMsgInfoDataBlk(current);
+                    extractMsgInfoDataBlk(current);
+                    block = mMsgInfoDataBlk;
                     break;
                 case BLOCK_STRATTR:
-                    block = extractStrAttrDataBlk(current);
+                    extractStrAttrDataBlk(current);
+                    block = mMsgStrDataBlk;
                     break;
                 case BLOCK_FLOWLABEL:
-                    block = extractFlowLabelInfoDataBlk(current);
+                    extractFlowLabelInfoDataBlk(current);
+                    block = mMsgFlowLabelBlk;
                     break;
                 case BLOCK_FLOWCHART:
-                    block = extractFlowChartInfoDataBlk(current);
+                    extractFlowChartInfoDataBlk(current);
+                    block = mMsgFlowChartBlk;
                     break;
                 default:
                     #line 125
@@ -68,9 +68,6 @@ namespace EGG
             current = (void *)((u32)current + blkSize);
         }
     }
-    #else
-    #error This file has yet to be decompiled accurately. Use "eggMsgRes.s" instead.
-    #endif
 
     MsgRes::~MsgRes()
     {
@@ -78,7 +75,7 @@ namespace EGG
     }
 
     void MsgRes::analyzeTag(u16 code, const wchar_t *tag, u8 *tagLength,
-        unsigned int *tagID, void **param)
+        u32 *tagID, void **param)
     {
         #line 159
         EGG_ASSERT(tag);
@@ -100,7 +97,21 @@ namespace EGG
         }
     }
 
-    const wchar_t * MsgRes::getMsg(unsigned int r4, unsigned int r5)
+    MsgRes::EDataBlkKind MsgRes::analyzeDataBlkKind(u32 kind)
+    {
+        if      (kind == cMsgBlkMagic[BLOCK_MSGINFO])   return BLOCK_MSGINFO;
+        else if (kind == cMsgBlkMagic[BLOCK_MSGDATA])   return BLOCK_MSGDATA;
+        else if (kind == cMsgBlkMagic[BLOCK_STRATTR])   return BLOCK_STRATTR;
+        else if (kind == cMsgBlkMagic[BLOCK_MSGID])     return BLOCK_MSGID;
+        else if (kind == cMsgBlkMagic[BLOCK_FLOWCHART]) return BLOCK_FLOWCHART;
+        else if (kind == cMsgBlkMagic[BLOCK_FLOWLABEL]) return BLOCK_FLOWLABEL;
+
+        #line 366
+        EGG_ASSERT_MSG(false, "Illegal data block.");
+        return BLOCK_MAX;
+    }
+
+    const wchar_t * MsgRes::getMsg(u32 r4, u32 r5)
     {
         #line 189
         EGG_ASSERT(mMsgDataBlk);
@@ -111,123 +122,80 @@ namespace EGG
         return (wchar_t *)((u32)mMsgDataBlk->mStringPool + pEntry->mDataBlkOfs);
     }
 
-    const void * MsgRes::extractMsgHeader(const void *data)
+    void MsgRes::extractMsgHeader(const void *data)
     {
         #line 223
         EGG_ASSERT(data);
         mMsgHeader = (MsgHeaderBlock *)data;
-        return data;
     }
 
-    const void * MsgRes::extractMsgInfoDataBlk(const void *data)
+    void MsgRes::extractMsgInfoDataBlk(const void *data)
     {
         #line 251
         EGG_ASSERT(data);
         mMsgInfoDataBlk = (MsgInfoBlock *)data;
-        return data;
     }
 
-    const void * MsgRes::extractMsgDataBlk(const void *data)
+    void MsgRes::extractMsgDataBlk(const void *data)
     {
         #line 277
         EGG_ASSERT(data);
         mMsgDataBlk = (MsgDataBlock *)data;
-        return data;
     }   
 
-    const void * MsgRes::extractStrAttrDataBlk(const void *data)
+    void MsgRes::extractStrAttrDataBlk(const void *data)
     {
         #line 298
         EGG_ASSERT(data);
         mMsgStrDataBlk = (MsgStrAttrBlock *)data;
-        return data;
     }
 
-    const void * MsgRes::extractMsgIDDataBlk(const void *data)
+    void MsgRes::extractMsgIDDataBlk(const void *data)
     {
         #line 309
         EGG_ASSERT(data);
         mMsgIDDataBlk = (MsgIdBlock *)data;
-        return data;
     }
 
-    const void * MsgRes::extractFlowChartInfoDataBlk(const void *data)
+    void MsgRes::extractFlowChartInfoDataBlk(const void *data)
     {
         #line 334
         EGG_ASSERT(data);
         mMsgFlowChartBlk = (MsgFlowChartBlock *)data;
-        return data;
     }
 
-    const void * MsgRes::extractFlowLabelInfoDataBlk(const void *data)
+    void MsgRes::extractFlowLabelInfoDataBlk(const void *data)
     {
         #line 345
         EGG_ASSERT(data);
         mMsgFlowLabelBlk = (MsgFlowLabelBlock *)data;
-        return data;
     }
 
-    /*
-        cMsgSectionMagic needs to be pooled for this code to match (and also stay under inline_auto_max),
-        however it also needs to be in .rodata.
-
-        There must be something else at play here because pool_data doesn't touch const data,
-        only global/static.
-    */
-    #ifdef __DECOMP_NON_MATCHING
-    MsgRes::EDataBlkKind MsgRes::analyzeDataBlkKind(unsigned int kind)
-    {
-        if (kind == cMsgSectionMagic[BLOCK_MSGINFO]) return BLOCK_MSGINFO;
-        else if (kind == cMsgSectionMagic[BLOCK_MSGDATA]) return BLOCK_MSGDATA;
-        else if (kind == cMsgSectionMagic[BLOCK_STRATTR]) return BLOCK_STRATTR;
-        else if (kind == cMsgSectionMagic[BLOCK_MSGID]) return BLOCK_MSGID;
-        else if (kind == cMsgSectionMagic[BLOCK_FLOWCHART]) return BLOCK_FLOWCHART;
-        else if (kind == cMsgSectionMagic[BLOCK_FLOWLABEL]) return BLOCK_FLOWLABEL;
-        else
-        {
-            #line 366
-            EGG_ASSERT_MSG(false, "Illegal data block.");
-            return BLOCK_ILLEGAL;
-        }
-    }
-    #else
-    // #error
-    #endif
-
-    /*
-        Masks aren't being loaded properly.
-        The first one uses lwzx rather than lwz 0(r3).
-
-        This is probably because I haven't gotten the const data pooling to work yet.
-    */
-    #ifdef __DECOMP_NON_MATCHING
-    MsgRes::MsgInfoBlockEntry * MsgRes::getMsgEntry(unsigned int r4 , unsigned int r5)
+    MsgRes::MsgInfoBlockEntry * MsgRes::getMsgEntry(u32 id1, u32 id2)
     {
         #line 380
         EGG_ASSERT(mMsgInfoDataBlk);
         EGG_ASSERT(mMsgIDDataBlk);
+        
+        // The full message ID has packed attributes,
+        // so each format must be interpreted differently.
+        u32 shift = 32 - cIDShifts[mMsgIDDataBlk->mIDFormat];
+        const MsgIDMask *mask = &cIDMasks[mMsgIDDataBlk->mIDFormat];
 
-        MsgIdBlock *pMidBlk = mMsgIDDataBlk;
-        u32 shift = cShifts[pMidBlk->UNK_0xB];
-        u32 mask = cMasks[pMidBlk->UNK_0xB].INT_0x0;
-        u32 mask2 = cMasks[pMidBlk->UNK_0xB].INT_0x4;
         for (u16 i = 0; i < mMsgIDDataBlk->mNumEntries; i++)
         {
             u32 msgId = getMsgID(i);
-            if (r4 == (msgId & mask) >> (32 - shift) && r5 == (msgId & mask2))
+            if (id1 == (msgId & mask->top) >> (shift) && id2 == (msgId & mask->bot))
             {
                 #line 402
                 EGG_ASSERT(mMsgInfoDataBlk->mNumEntries > i);
 
-                return (MsgInfoBlockEntry *)((u32)mMsgInfoDataBlk->mMsgInfo + (i * mMsgInfoDataBlk->mItemSize));
+                return (MsgInfoBlockEntry *)((u32)mMsgInfoDataBlk->mMsgInfo + (mMsgInfoDataBlk->mItemSize * i));
             }
         }
 
         return NULL;
     }
-    #else
-    // #error
-    #endif
 
     u32 MsgRes::getMsgID(u16 i)
     {
@@ -235,4 +203,20 @@ namespace EGG
         EGG_ASSERT(mMsgIDDataBlk);
         return mMsgIDDataBlk->mMsgIds[i];
     }
+
+    u32 MsgRes::cMsgBlkMagic[BLOCK_MAX] = {
+        'INF1', 'DAT1', 'STR1', 'MID1', 'FLW1', 'FLI1'
+    };
+
+    const u32 MsgRes::cIDShifts[6] = {
+        32, 24, 16, 8, 0, 0
+    };
+
+    const MsgRes::MsgIDMask MsgRes::cIDMasks[5] = {
+        {0xffffffff, 0x00000000},
+        {0xffffff00, 0x000000ff},
+        {0xffff0000, 0x0000ffff},
+        {0xff000000, 0x00ffffff},
+        {0x00000000, 0xffffffff}
+    };
 }

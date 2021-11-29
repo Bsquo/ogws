@@ -48,8 +48,8 @@ lbl_8037B158:
 
 .section .data, "wa"
 .balign 8
-.global __vt__Q23EGG6MsgResFv
-__vt__Q23EGG6MsgResFv:
+.global __vt__Q23EGG6MsgRes
+__vt__Q23EGG6MsgRes:
 	.long 0
 	.long 0
 	.long __dt__Q23EGG6MsgResFv
@@ -64,10 +64,10 @@ stringBase:
 __ct__Q23EGG6MsgResFPCv:
 /* 800B106C 000ABF6C  94 21 FF C0 */	stwu r1, -0x40(r1)
 /* 800B1070 000ABF70  7C 08 02 A6 */	mflr r0
-/* 800B1074 000ABF74  3C A0 80 3A */	lis r5, __vt__Q23EGG6MsgResFv@ha
+/* 800B1074 000ABF74  3C A0 80 3A */	lis r5, __vt__Q23EGG6MsgRes@ha
 /* 800B1078 000ABF78  2C 04 00 00 */	cmpwi r4, 0
 /* 800B107C 000ABF7C  90 01 00 44 */	stw r0, 0x44(r1)
-/* 800B1080 000ABF80  38 A5 87 60 */	addi r5, r5, __vt__Q23EGG6MsgResFv@l
+/* 800B1080 000ABF80  38 A5 87 60 */	addi r5, r5, __vt__Q23EGG6MsgRes@l
 /* 800B1084 000ABF84  BE A1 00 14 */	stmw r21, 0x14(r1)
 /* 800B1088 000ABF88  7C 7E 1B 78 */	mr r30, r3
 /* 800B108C 000ABF8C  7C 9F 23 78 */	mr r31, r4
@@ -308,8 +308,8 @@ lbl_800B13A0:
 /* 800B13B4 000AC2B4  4E 80 00 20 */	blr 
 
 # Static
-.global analyzeTag__Q23EGG6MsgResFUsPCwPUcPUiPPv
-analyzeTag__Q23EGG6MsgResFUsPCwPUcPUiPPv:
+.global analyzeTag__Q23EGG6MsgResFUsPCwPUcPUlPPv
+analyzeTag__Q23EGG6MsgResFUsPCwPUcPUlPPv:
 /* 800B13B8 000AC2B8  94 21 FF E0 */	stwu r1, -0x20(r1)
 /* 800B13BC 000AC2BC  7C 08 02 A6 */	mflr r0
 /* 800B13C0 000AC2C0  2C 04 00 00 */	cmpwi r4, 0
@@ -386,8 +386,8 @@ lbl_800B14B4:
 /* 800B14C0 000AC3C0  38 21 00 20 */	addi r1, r1, 0x20
 /* 800B14C4 000AC3C4  4E 80 00 20 */	blr 
 
-.global getMsg__Q23EGG6MsgResFUiUi
-getMsg__Q23EGG6MsgResFUiUi:
+.global getMsg__Q23EGG6MsgResFUlUl
+getMsg__Q23EGG6MsgResFUlUl:
 /* 800B14C8 000AC3C8  94 21 FF E0 */	stwu r1, -0x20(r1)
 /* 800B14CC 000AC3CC  7C 08 02 A6 */	mflr r0
 /* 800B14D0 000AC3D0  90 01 00 24 */	stw r0, 0x24(r1)
@@ -411,7 +411,7 @@ lbl_800B1514:
 /* 800B1514 000AC414  7F 83 E3 78 */	mr r3, r28
 /* 800B1518 000AC418  7F A4 EB 78 */	mr r4, r29
 /* 800B151C 000AC41C  7F C5 F3 78 */	mr r5, r30
-/* 800B1520 000AC420  48 00 00 61 */	bl getMsgEntry__Q23EGG6MsgResFUiUi
+/* 800B1520 000AC420  48 00 00 61 */	bl getMsgEntry__Q23EGG6MsgResFUlUl
 /* 800B1524 000AC424  2C 03 00 00 */	cmpwi r3, 0
 /* 800B1528 000AC428  7C 7F 1B 78 */	mr r31, r3
 /* 800B152C 000AC42C  40 82 00 24 */	bne lbl_800B1550
@@ -437,8 +437,8 @@ lbl_800B1550:
 /* 800B1578 000AC478  38 21 00 20 */	addi r1, r1, 0x20
 /* 800B157C 000AC47C  4E 80 00 20 */	blr 
 
-.global getMsgEntry__Q23EGG6MsgResFUiUi
-getMsgEntry__Q23EGG6MsgResFUiUi:
+.global getMsgEntry__Q23EGG6MsgResFUlUl
+getMsgEntry__Q23EGG6MsgResFUlUl:
 /* 800B1580 000AC480  94 21 FF D0 */	stwu r1, -0x30(r1)
 /* 800B1584 000AC484  7C 08 02 A6 */	mflr r0
 /* 800B1588 000AC488  90 01 00 34 */	stw r0, 0x34(r1)
