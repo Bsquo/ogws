@@ -10,8 +10,8 @@ lbl_804BD528:
 
 .section .rodata, "a"
 .balign 8
-.global lbl_8037B100
-lbl_8037B100:
+.global cBlkMagic__Q23EGG6MsgRes
+cBlkMagic__Q23EGG6MsgRes:
     # Section names in U32 form
     # They are not strings because this has no null-terminator,
     # and is left out of the string table.
@@ -22,11 +22,11 @@ lbl_8037B100:
     .long 0x4D494431
     .long 0x464C5731
     .long 0x464C4931
-.global lbl_8037B118
-lbl_8037B118:
+.global cIDShifts__Q23EGG6MsgRes
+cIDShifts__Q23EGG6MsgRes:
 	.byte 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-.global lbl_8037B130
-lbl_8037B130:
+.global cIDMasks__Q23EGG6MsgRes
+cIDMasks__Q23EGG6MsgRes:
 	.byte 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0x00, 0x00
     .byte 0x00, 0x00, 0xff, 0xff,0xff, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff
 .global lbl_8037B158
@@ -98,11 +98,11 @@ lbl_800B10B0:
 /* 800B10EC 000ABFEC  4B FF 0E 1D */	bl system_halt
 lbl_800B10F0:
 /* 800B10F0 000ABFF0  93 FE 00 00 */	stw r31, 0(r30)
-/* 800B10F4 000ABFF4  3F 20 80 38 */	lis r25, lbl_8037B100@ha
+/* 800B10F4 000ABFF4  3F 20 80 38 */	lis r25, cBlkMagic__Q23EGG6MsgRes@ha
 /* 800B10F8 000ABFF8  3B 1F 00 20 */	addi r24, r31, 0x20
 /* 800B10FC 000ABFFC  3A C0 00 00 */	li r22, 0
 /* 800B1100 000AC000  82 FF 00 0C */	lwz r23, 0xc(r31)
-/* 800B1104 000AC004  3B 39 B1 00 */	addi r25, r25, lbl_8037B100@l
+/* 800B1104 000AC004  3B 39 B1 00 */	addi r25, r25, cBlkMagic__Q23EGG6MsgRes@l
 /* 800B1108 000AC008  3F 60 80 38 */	lis r27, 0x8038
 /* 800B110C 000AC00C  3F 40 80 3A */	lis r26, 0x803a
 /* 800B1110 000AC010  3F 80 80 3A */	lis r28, 0x803a
@@ -467,12 +467,12 @@ lbl_800B15C0:
 /* 800B15E0 000AC4E0  4B FF 09 29 */	bl system_halt
 lbl_800B15E4:
 /* 800B15E4 000AC4E4  80 DC 00 10 */	lwz r6, 0x10(r28)
-/* 800B15E8 000AC4E8  3C 80 80 38 */	lis r4, lbl_8037B118@ha
-/* 800B15EC 000AC4EC  3C 60 80 38 */	lis r3, lbl_8037B130@ha
+/* 800B15E8 000AC4E8  3C 80 80 38 */	lis r4, cIDShifts__Q23EGG6MsgRes@ha
+/* 800B15EC 000AC4EC  3C 60 80 38 */	lis r3, cIDMasks__Q23EGG6MsgRes@ha
 /* 800B15F0 000AC4F0  3B E0 00 00 */	li r31, 0
 /* 800B15F4 000AC4F4  88 06 00 0B */	lbz r0, 0xb(r6)
-/* 800B15F8 000AC4F8  38 84 B1 18 */	addi r4, r4, lbl_8037B118@l
-/* 800B15FC 000AC4FC  38 63 B1 30 */	addi r3, r3, lbl_8037B130@l
+/* 800B15F8 000AC4F8  38 84 B1 18 */	addi r4, r4, cIDShifts__Q23EGG6MsgRes@l
+/* 800B15FC 000AC4FC  38 63 B1 30 */	addi r3, r3, cIDMasks__Q23EGG6MsgRes@l
 /* 800B1600 000AC500  3F 20 80 38 */	lis r25, 0x8038
 /* 800B1604 000AC504  54 05 10 3A */	slwi r5, r0, 2
 /* 800B1608 000AC508  54 00 18 38 */	slwi r0, r0, 3

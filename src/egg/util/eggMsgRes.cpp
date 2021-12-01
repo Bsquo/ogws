@@ -99,12 +99,14 @@ namespace EGG
 
     MsgRes::EDataBlkKind MsgRes::analyzeDataBlkKind(u32 kind)
     {
-        if      (kind == cMsgBlkMagic[BLOCK_MSGINFO])   return BLOCK_MSGINFO;
-        else if (kind == cMsgBlkMagic[BLOCK_MSGDATA])   return BLOCK_MSGDATA;
-        else if (kind == cMsgBlkMagic[BLOCK_STRATTR])   return BLOCK_STRATTR;
-        else if (kind == cMsgBlkMagic[BLOCK_MSGID])     return BLOCK_MSGID;
-        else if (kind == cMsgBlkMagic[BLOCK_FLOWCHART]) return BLOCK_FLOWCHART;
-        else if (kind == cMsgBlkMagic[BLOCK_FLOWLABEL]) return BLOCK_FLOWLABEL;
+        const u32 *magic = (u32 *)&cBlkMagic;
+        
+        if (kind == magic[BLOCK_MSGINFO])   return BLOCK_MSGINFO;
+        if (kind == magic[BLOCK_MSGDATA])   return BLOCK_MSGDATA;
+        if (kind == magic[BLOCK_STRATTR])   return BLOCK_STRATTR;
+        if (kind == magic[BLOCK_MSGID])     return BLOCK_MSGID;
+        if (kind == magic[BLOCK_FLOWCHART]) return BLOCK_FLOWCHART;
+        if (kind == magic[BLOCK_FLOWLABEL]) return BLOCK_FLOWLABEL;
 
         #line 366
         EGG_ASSERT_MSG(false, "Illegal data block.");
@@ -204,7 +206,7 @@ namespace EGG
         return mMsgIDDataBlk->mMsgIds[i];
     }
 
-    u32 MsgRes::cMsgBlkMagic[BLOCK_MAX] = {
+    const MsgRes::MsgBlkMagic MsgRes::cBlkMagic = {
         'INF1', 'DAT1', 'STR1', 'MID1', 'FLW1', 'FLI1'
     };
 

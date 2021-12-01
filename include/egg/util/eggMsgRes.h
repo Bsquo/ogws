@@ -96,7 +96,7 @@ namespace EGG
         MsgFlowLabelBlock *mMsgFlowLabelBlk; // "FLI1", at 0x18
 
         // Unofficial symbol
-        inline u32 getBlkSize(const void *dataBlkHeader)
+        u32 getBlkSize(const void *dataBlkHeader)
         {
             #line 260
             EGG_ASSERT(dataBlkHeader);
@@ -106,7 +106,7 @@ namespace EGG
         }
 
         // Unofficial symbol
-        inline u32 getDataBlkKind(const void *data)
+        u32 getDataBlkKind(const void *data)
         {
             #line 271
             EGG_ASSERT(data);
@@ -114,13 +114,14 @@ namespace EGG
             return ((MsgInfoBlock *)data)->mMagic;
         }
 
+        EDataBlkKind analyzeDataBlkKind(u32 kind);
+
         MsgRes(const void *);
         virtual ~MsgRes();
         static void analyzeTag(u16, const wchar_t*, u8*, u32*, void **);
         const wchar_t * getMsg(u32, u32);
         MsgInfoBlockEntry * getMsgEntry(u32, u32);
         u32 getMsgID(u16); // inlined
-        EDataBlkKind analyzeDataBlkKind(u32); // inlined
         void extractMsgHeader(const void *); // inlined
         void extractMsgInfoDataBlk(const void *); // inlined
         void extractMsgDataBlk(const void *); // inlined
@@ -129,16 +130,26 @@ namespace EGG
         void extractFlowChartInfoDataBlk(const void *); // inlined
         void extractFlowLabelInfoDataBlk(const void *); // inlined
 
+        // Escape sequence (Official name = "Tag")
+        static const char cTagMark = 0x1A;
+
+        struct MsgBlkMagic
+        {
+            u32 msgInfo;
+            u32 msgData;
+            u32 strAttr;
+            u32 msgId;
+            u32 flowChart;
+            u32 flowLabel;
+        };
+        static const MsgBlkMagic cBlkMagic;
+
+        static const u32 cIDShifts[6];
         struct MsgIDMask
         {
             u32 top;
             u32 bot;
         };
-
-        // Escape sequence (Official name = "Tag")
-        static const char cTagMark = 0x1A;
-        static u32 cMsgBlkMagic[BLOCK_MAX];
-        static const u32 cIDShifts[6];
         static const MsgIDMask cIDMasks[5];
     };
 }
