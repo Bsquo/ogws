@@ -413,7 +413,7 @@ __ct__Q23EGG12ProcessMeterFb:
 /* 800AB4F8 000A63F8  41 82 00 10 */	beq lbl_800AB508
 /* 800AB4FC 000A63FC  3C 60 80 0B */	lis r3, callbackDrawSyncStatic__Q23EGG12ProcessMeterFUs@ha
 /* 800AB500 000A6400  38 63 B5 68 */	addi r3, r3, callbackDrawSyncStatic__Q23EGG12ProcessMeterFUs@l
-/* 800AB504 000A6404  48 03 31 69 */	bl func_800DE66C
+/* 800AB504 000A6404  48 03 31 69 */	bl GXSetDrawSyncCallback
 lbl_800AB508:
 /* 800AB508 000A6408  48 03 18 79 */	bl GXGetCurrentGXThread
 /* 800AB50C 000A640C  80 03 02 D0 */	lwz r0, 0x2d0(r3)
@@ -783,7 +783,7 @@ lbl_800ABA0C:
 /* 800ABA10 000A6910  93 DD 00 6C */	stw r30, 0x6c(r29)
 lbl_800ABA14:
 /* 800ABA14 000A6914  A0 7D 01 48 */	lhz r3, 0x148(r29)
-/* 800ABA18 000A6918  48 03 29 C9 */	bl func_800DE3E0
+/* 800ABA18 000A6918  48 03 29 C9 */	bl GXSetDrawSync
 /* 800ABA1C 000A691C  7F E3 FB 78 */	mr r3, r31
 /* 800ABA20 000A6920  48 04 5E C9 */	bl OSRestoreInterrupts
 /* 800ABA24 000A6924  80 01 00 A4 */	lwz r0, 0xa4(r1)
