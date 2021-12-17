@@ -410,6 +410,7 @@ REVOSDK_O_FILES := \
 	build/asm/RevoSDK/IPC/ipcMain.o \
 	build/asm/RevoSDK/IPC/ipcclt.o \
 	build/asm/RevoSDK/IPC/memory.o \
+	build/asm/RevoSDK/IPC/ipcProfile.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
