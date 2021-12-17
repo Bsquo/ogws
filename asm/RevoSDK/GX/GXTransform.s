@@ -19,7 +19,6 @@ lbl_804C11A8:
 	.incbin "baserom.dol", 0x3C9DE8, 0x8
 
 .section .text, "ax"
-
 .global __GXSetProjection
 __GXSetProjection:
 /* 800E3148 000DE048  3C 80 CC 01 */	lis r4, 0xCC008000@ha
