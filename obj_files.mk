@@ -397,6 +397,7 @@ REVOSDK_O_FILES := \
 	build/asm/RevoSDK/GX/GXAttr.o \
 	build/asm/RevoSDK/GX/GXMisc.o \
 	build/asm/RevoSDK/GX/GXGeometry.o \
+	build/asm/RevoSDK/GX/GXFrameBuf.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \

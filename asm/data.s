@@ -4,18 +4,6 @@
 
 .balign 0x8
 
-.global GXNtsc480IntDf
-GXNtsc480IntDf:
-	.incbin "baserom.dol", 0x397548, 0x3C
-.global GXMpal480IntDf
-GXMpal480IntDf:
-	.incbin "baserom.dol", 0x397584, 0x3C
-.global GXPal528IntDf
-GXPal528IntDf:
-	.incbin "baserom.dol", 0x3975C0, 0x3C
-.global GXEurgb60Hz480IntDf
-GXEurgb60Hz480IntDf:
-	.incbin "baserom.dol", 0x3975FC, 0x3C
 .global lbl_8039B538
 lbl_8039B538:
 	.incbin "baserom.dol", 0x397638, 0x20
