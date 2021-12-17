@@ -25,7 +25,6 @@ GXEurgb60Hz480IntDf:
 	.incbin "baserom.dol", 0x3975FC, 0x3C
 
 .section .text, "ax"
-
 .global GXSetDispCopySrc
 GXSetDispCopySrc:
 /* 800DEE14 000D9D14  38 E0 00 00 */	li r7, 0
