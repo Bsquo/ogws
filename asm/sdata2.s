@@ -3,39 +3,6 @@
 .section .sdata2, "a"  # 0x804BFA20 - 0x804C69E0
 .balign 0x8
 
-.global lbl_804C10D8
-lbl_804C10D8:
-	.incbin "baserom.dol", 0x3C9D18, 0x8
-.global lbl_804C10E0
-lbl_804C10E0:
-	.incbin "baserom.dol", 0x3C9D20, 0x8
-.global lbl_804C10E8
-lbl_804C10E8:
-	.incbin "baserom.dol", 0x3C9D28, 0x4
-.global lbl_804C10EC
-lbl_804C10EC:
-	.incbin "baserom.dol", 0x3C9D2C, 0x4
-.global lbl_804C10F0
-lbl_804C10F0:
-	.incbin "baserom.dol", 0x3C9D30, 0x4
-.global lbl_804C10F4
-lbl_804C10F4:
-	.incbin "baserom.dol", 0x3C9D34, 0x4
-.global lbl_804C10F8
-lbl_804C10F8:
-	.incbin "baserom.dol", 0x3C9D38, 0x4
-.global lbl_804C10FC
-lbl_804C10FC:
-	.incbin "baserom.dol", 0x3C9D3C, 0x4
-.global lbl_804C1100
-lbl_804C1100:
-	.incbin "baserom.dol", 0x3C9D40, 0x4
-.global lbl_804C1104
-lbl_804C1104:
-	.incbin "baserom.dol", 0x3C9D44, 0x4
-.global lbl_804C1108
-lbl_804C1108:
-	.incbin "baserom.dol", 0x3C9D48, 0x8
 .global lbl_804C1110
 lbl_804C1110:
 	.incbin "baserom.dol", 0x3C9D50, 0x8
