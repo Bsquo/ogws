@@ -407,6 +407,7 @@ REVOSDK_O_FILES := \
 	build/asm/RevoSDK/GX/GXDisplayList.o \
 	build/asm/RevoSDK/GX/GXTransform.o \
 	build/asm/RevoSDK/GX/GXPerf.o \
+	build/asm/RevoSDK/IPC/ipcMain.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \

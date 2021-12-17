@@ -11,7 +11,7 @@ __EXIVersion:
 IDSerialPort1:
 	.skip 0x8
 
-.section .data, "a"
+.section .data, "wa"
 .balign 0x8
 lbl_8039aee0:
     .string "<< RVL_SDK - EXI \trelease build: Nov 30 2006 03:26:56 (0x4199_60831) >>"
