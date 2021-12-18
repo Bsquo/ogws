@@ -420,6 +420,7 @@ REVOSDK_O_FILES := \
 	build/asm/RevoSDK/MTX/mtxvec.o \
 	build/asm/RevoSDK/MTX/mtx44.o \
 	build/asm/RevoSDK/MTX/vec.o \
+	build/asm/RevoSDK/MTX/quat.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \

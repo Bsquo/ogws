@@ -3,24 +3,6 @@
 .section .sdata2, "a"  # 0x804BFA20 - 0x804C69E0
 .balign 0x8
 
-.global lbl_804C1208
-lbl_804C1208:
-	.incbin "baserom.dol", 0x3C9E48, 0x4
-.global lbl_804C120C
-lbl_804C120C:
-	.incbin "baserom.dol", 0x3C9E4C, 0x4
-.global lbl_804C1210
-lbl_804C1210:
-	.incbin "baserom.dol", 0x3C9E50, 0x4
-.global lbl_804C1214
-lbl_804C1214:
-	.incbin "baserom.dol", 0x3C9E54, 0x4
-.global lbl_804C1218
-lbl_804C1218:
-	.incbin "baserom.dol", 0x3C9E58, 0x4
-.global lbl_804C121C
-lbl_804C121C:
-	.incbin "baserom.dol", 0x3C9E5C, 0x4
 .global lbl_804C1220
 lbl_804C1220:
 	.incbin "baserom.dol", 0x3C9E60, 0x1
