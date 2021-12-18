@@ -9,7 +9,7 @@ lbl_804BD670:
 .section .sbss, "wa"
 .balign 0x8
 s_counter$2995:
-	.skip 0x8
+	.skip 0x4
 
 .section .data, "wa"
 .balign 0x8
