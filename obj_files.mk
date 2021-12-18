@@ -415,6 +415,7 @@ REVOSDK_O_FILES := \
 	build/asm/RevoSDK/MEM/mem_expHeap.o \
 	build/asm/RevoSDK/MEM/mem_frameHeap.o \
 	build/asm/RevoSDK/MEM/mem_allocator.o \
+	build/asm/RevoSDK/MEM/mem_list.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
