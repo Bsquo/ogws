@@ -78,15 +78,8 @@ shutdownFuncRegistered$2238:
 .balign 0x8
 lbl_8039AF60:
     .string "<< RVL_SDK - GX \trelease build: Nov 30 2006 03:30:39 (0x4199_60831) >>"
-    # Compiler padding?
-    .balign 4
-    .long 0
-    .long 0
-    .long 0
-    .long 0
-    .long 0
-    .long 0
-DefaultTexData:
+    .balign 32
+DefaultTexData: # align 32
 	.incbin "baserom.dol", 0x3970C0, 0x20
 GXDefaultVATList:
 	.incbin "baserom.dol", 0x3970E0, 0xD0

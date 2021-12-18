@@ -1,5 +1,13 @@
 .include "macros.inc"
 
+.section .rodata, "a"
+.balign 0x8
+.global lbl_8037C4B0
+lbl_8037C4B0:
+.long 1
+.long 2
+.long 0
+
 .section .sdata2, "a"
 .balign 0x8
 .global lbl_804C1208
