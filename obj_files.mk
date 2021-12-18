@@ -422,6 +422,7 @@ REVOSDK_O_FILES := \
 	build/asm/RevoSDK/MTX/vec.o \
 	build/asm/RevoSDK/MTX/quat.o \
 	build/asm/RevoSDK/NAND/nand.o \
+	build/asm/RevoSDK/NAND/NANDOpenClose.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
