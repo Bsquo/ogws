@@ -58,8 +58,9 @@ ASM_DIRS := asm \
 	asm/RevoSDK asm/nw4r asm/egg \
 	asm/RevoSDK/TRK asm/RevoSDK/TRK/debugger asm/RevoSDK/TRK/gamedev \
 	\
-	asm/RevoSDK/DB asm/RevoSDK/EXI asm/RevoSDK/KPAD asm/RevoSDK/PAD asm/RevoSDK/WPAD asm/RevoSDK/EUART asm/RevoSDK/EUART \
-	asm/RevoSDK/FS asm/RevoSDK/GX asm/RevoSDK/IPC asm/RevoSDK/MEM asm/RevoSDK/MTX \
+	asm/RevoSDK/DB asm/RevoSDK/EXI asm/RevoSDK/KPAD asm/RevoSDK/PAD asm/RevoSDK/WPAD \
+	asm/RevoSDK/EUART asm/RevoSDK/EUART asm/RevoSDK/FS asm/RevoSDK/GX asm/RevoSDK/IPC \
+	asm/RevoSDK/MEM asm/RevoSDK/MTX asm/RevoSDK/NAND \
 	\
 	asm/STL \
 	asm/nw4r/ut asm/nw4r/ef asm/nw4r/math asm/nw4r/snd asm/nw4r/g3d asm/nw4r/lyt \
