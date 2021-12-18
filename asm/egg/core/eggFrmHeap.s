@@ -250,7 +250,7 @@ initAllocator__Q23EGG7FrmHeapFPQ23EGG9Allocatorl:
 /* 800A2C14 0009DB14  7C 66 1B 78 */	mr r6, r3
 /* 800A2C18 0009DB18  7C 83 23 78 */	mr r3, r4
 /* 800A2C1C 0009DB1C  80 86 00 10 */	lwz r4, 0x10(r6)
-/* 800A2C20 0009DB20  48 04 48 A8 */	b func_800E74C8
+/* 800A2C20 0009DB20  48 04 48 A8 */	b MEMInitAllocatorForFrmHeap
 
 .global getHeapKind__Q23EGG7FrmHeapCFv
 getHeapKind__Q23EGG7FrmHeapCFv:

@@ -251,7 +251,7 @@ initAllocator__Q23EGG7ExpHeapFPQ23EGG9Allocatorl:
 /* 800A2910 0009D810  7C 66 1B 78 */	mr r6, r3
 /* 800A2914 0009D814  7C 83 23 78 */	mr r3, r4
 /* 800A2918 0009D818  80 86 00 10 */	lwz r4, 0x10(r6)
-/* 800A291C 0009D81C  48 04 4B 90 */	b func_800E74AC
+/* 800A291C 0009D81C  48 04 4B 90 */	b MEMInitAllocatorForExpHeap
 
 .global getHeapKind__Q23EGG7ExpHeapCFv
 getHeapKind__Q23EGG7ExpHeapCFv:
