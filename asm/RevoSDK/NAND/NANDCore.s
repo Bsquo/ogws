@@ -31,7 +31,7 @@ lbl_804BD6A0:
 	.incbin "baserom.dol", 0x3C7320, 0x4
 .global lbl_804BD6A4
 lbl_804BD6A4:
-	.incbin "baserom.dol", 0x3C7324, 0x14
+	.incbin "baserom.dol", 0x3C7324, 0x4
 
 .section .sbss, "wa"
 .balign 0x8
@@ -71,22 +71,6 @@ lbl_8039B9E8:
 	.string "CAUTION!  Unexpected error code [%d] was found.\n"
     .balign 0x4
 	.string "Failed to set home directory.\n"
-    .balign 0x8
-    .string "/title/00010000"
-    .balign 0x4
-    .string "/title/00010001"
-    .balign 0x4
-    .string "/title/00010003"
-    .balign 0x4
-    .string "/title/00010004"
-    .balign 0x4
-    .string "/title/00010005"
-    .balign 0x4
-    .string "/title/00010006"
-    .balign 0x4
-    .string "/title/00010007"
-    .balign 0x4
-    .string "/shared2/title"
     .balign 0x4
 
 .section .bss, "wa"
