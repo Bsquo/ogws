@@ -413,6 +413,7 @@ REVOSDK_O_FILES := \
 	build/asm/RevoSDK/IPC/ipcProfile.o \
 	build/asm/RevoSDK/MEM/mem_heapCommon.o \
 	build/asm/RevoSDK/MEM/mem_expHeap.o \
+	build/asm/RevoSDK/MEM/mem_frameHeap.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
