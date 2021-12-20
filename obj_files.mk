@@ -429,6 +429,7 @@ REVOSDK_O_FILES := \
 	build/asm/RevoSDK/OS/OSAlarm.o \
 	build/asm/RevoSDK/OS/OSAlloc.o \
 	build/asm/RevoSDK/OS/OSArena.o \
+	build/asm/RevoSDK/OS/OSAudioSystem.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
