@@ -4,21 +4,6 @@
 
 .balign 0x8
 
-.global lbl_804BD6B8
-lbl_804BD6B8:
-	.incbin "baserom.dol", 0x3C7338, 0x4
-.global lbl_804BD6BC
-lbl_804BD6BC:
-	.incbin "baserom.dol", 0x3C733C, 0x8
-.global lbl_804BD6C4
-lbl_804BD6C4:
-	.incbin "baserom.dol", 0x3C7344, 0x4
-.global lbl_804BD6C8
-lbl_804BD6C8:
-	.incbin "baserom.dol", 0x3C7348, 0x10
-.global lbl_804BD6D8
-lbl_804BD6D8:
-	.incbin "baserom.dol", 0x3C7358, 0x8
 .global __OSCurrHeap
 __OSCurrHeap:
 	.incbin "baserom.dol", 0x3C7360, 0x8
