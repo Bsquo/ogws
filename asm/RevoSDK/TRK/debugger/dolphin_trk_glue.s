@@ -78,7 +78,7 @@ InitializeProgramEndTrap:
 /* 800C5DEC 000C0CEC  4B F3 E3 79 */	bl TRK_memcpy
 /* 800C5DF0 000C0CF0  38 7F 00 04 */	addi r3, r31, 4
 /* 800C5DF4 000C0CF4  38 80 00 04 */	li r4, 4
-/* 800C5DF8 000C0CF8  48 02 84 1D */	bl func_800EE214
+/* 800C5DF8 000C0CF8  48 02 84 1D */	bl ICInvalidateRange
 /* 800C5DFC 000C0CFC  38 7F 00 04 */	addi r3, r31, 4
 /* 800C5E00 000C0D00  38 80 00 04 */	li r4, 4
 /* 800C5E04 000C0D04  48 02 83 2D */	bl DCFlushRange
