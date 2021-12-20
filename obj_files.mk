@@ -427,6 +427,7 @@ REVOSDK_O_FILES := \
 	build/asm/RevoSDK/NAND/NANDCheck.o \
 	build/asm/RevoSDK/OS/OS.o \
 	build/asm/RevoSDK/OS/OSAlarm.o \
+	build/asm/RevoSDK/OS/OSAlloc.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
