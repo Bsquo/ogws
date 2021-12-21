@@ -1478,7 +1478,7 @@ OSDefaultExceptionHandler:
 /* 800ECFCC 000E7ECC  7C B2 02 A6 */	mfdsisr r5
 /* 800ECFD0 000E7ED0  7C D3 02 A6 */	mfdar r6
 /* 800ECFD4 000E7ED4  94 21 FF F8 */	stwu r1, -8(r1)
-/* 800ECFD8 000E7ED8  48 00 23 84 */	b lbl_800EF35C
+/* 800ECFD8 000E7ED8  48 00 23 84 */	b __OSUnhandledException
 
 .global __OSPSInit
 __OSPSInit:
