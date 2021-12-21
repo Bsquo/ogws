@@ -431,6 +431,7 @@ REVOSDK_O_FILES := \
 	build/asm/RevoSDK/OS/OSArena.o \
 	build/asm/RevoSDK/OS/OSAudioSystem.o \
 	build/asm/RevoSDK/OS/OSCache.o \
+	build/asm/RevoSDK/OS/OSContext.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \

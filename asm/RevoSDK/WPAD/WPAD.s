@@ -2060,7 +2060,7 @@ WPADiManageHandler0:
 /* 800CBE48 000C6D48  38 E7 B7 10 */	addi r7, r7, WPADiManageHandler@l
 /* 800CBE4C 000C6D4C  38 C0 00 00 */	li r6, 0
 /* 800CBE50 000C6D50  39 08 10 00 */	addi r8, r8, 0x1000
-/* 800CBE54 000C6D54  48 02 2D 18 */	b func_800EEB6C
+/* 800CBE54 000C6D54  48 02 2D 18 */	b OSSwitchFiberEx
 
 .global __ClearControlBlock
 __ClearControlBlock:
