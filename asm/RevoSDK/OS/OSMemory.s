@@ -563,7 +563,7 @@ __OSInitMemoryProtection:
 /* 800F2B08 000EDA08  4B FF EE 05 */	bl __OSSetInterruptHandler
 /* 800F2B0C 000EDA0C  3C 60 80 3A */	lis r3, ShutdownFunctionInfo@ha
 /* 800F2B10 000EDA10  38 63 D1 E8 */	addi r3, r3, ShutdownFunctionInfo@l
-/* 800F2B14 000EDA14  48 00 03 35 */	bl func_800F2E48
+/* 800F2B14 000EDA14  48 00 03 35 */	bl OSRegisterShutdownFunction
 /* 800F2B18 000EDA18  4B FF FE 2D */	bl BATConfig
 /* 800F2B1C 000EDA1C  3C 60 08 00 */	lis r3, 0x800
 /* 800F2B20 000EDA20  4B FF F1 B1 */	bl __OSUnmaskInterrupts

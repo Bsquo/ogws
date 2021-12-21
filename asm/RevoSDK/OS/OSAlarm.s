@@ -33,7 +33,7 @@ __OSInitAlarm:
 /* 800ED0F4 000E7FF4  4B FF FD D1 */	bl __OSSetExceptionHandler
 /* 800ED0F8 000E7FF8  3C 60 80 3A */	lis r3, ShutdownFunctionInfo@ha
 /* 800ED0FC 000E7FFC  38 63 BE E0 */	addi r3, r3, ShutdownFunctionInfo@l
-/* 800ED100 000E8000  48 00 5D 49 */	bl func_800F2E48
+/* 800ED100 000E8000  48 00 5D 49 */	bl OSRegisterShutdownFunction
 lbl_800ED104:
 /* 800ED104 000E8004  80 01 00 14 */	lwz r0, 0x14(r1)
 /* 800ED108 000E8008  7C 08 03 A6 */	mtlr r0

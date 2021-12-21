@@ -666,7 +666,7 @@ lbl_800EB0B8:
 /* 800EB0C8 000E5FC8  48 09 8E 51 */	bl OSReport
 lbl_800EB0CC:
 /* 800EB0CC 000E5FCC  38 7F 00 A0 */	addi r3, r31, 0xa0
-/* 800EB0D0 000E5FD0  48 00 7D 79 */	bl func_800F2E48
+/* 800EB0D0 000E5FD0  48 00 7D 79 */	bl OSRegisterShutdownFunction
 /* 800EB0D4 000E5FD4  48 00 67 ED */	bl OSDisableInterrupts
 /* 800EB0D8 000E5FD8  38 00 00 02 */	li r0, 2
 /* 800EB0DC 000E5FDC  90 0D 9B 80 */	stw r0, s_libState-_SDA_BASE_(r13)

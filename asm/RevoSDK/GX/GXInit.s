@@ -412,7 +412,7 @@ GXInit:
 /* 800DB2D4 000D61D4  40 82 00 14 */	bne lbl_800DB2E8
 /* 800DB2D8 000D61D8  3C 60 80 3A */	lis r3, GXShutdownFuncInfo@ha
 /* 800DB2DC 000D61DC  38 63 B1 90 */	addi r3, r3, GXShutdownFuncInfo@l
-/* 800DB2E0 000D61E0  48 01 7B 69 */	bl func_800F2E48
+/* 800DB2E0 000D61E0  48 01 7B 69 */	bl OSRegisterShutdownFunction
 /* 800DB2E4 000D61E4  93 AD 9B 04 */	stw r29, shutdownFuncRegistered$2238-_SDA_BASE_(r13)
 lbl_800DB2E8:
 /* 800DB2E8 000D61E8  48 00 35 11 */	bl __GXPEInit

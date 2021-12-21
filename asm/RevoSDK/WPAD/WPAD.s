@@ -2371,7 +2371,7 @@ WPADInit:
 /* 800CC2EC 000C71EC  40 82 00 18 */	bne lbl_800CC304
 /* 800CC2F0 000C71F0  3C 60 80 3A */	lis r3, ShutdownFunctionInfo@ha
 /* 800CC2F4 000C71F4  38 63 95 28 */	addi r3, r3, ShutdownFunctionInfo@l
-/* 800CC2F8 000C71F8  48 02 6B 51 */	bl func_800F2E48
+/* 800CC2F8 000C71F8  48 02 6B 51 */	bl OSRegisterShutdownFunction
 /* 800CC2FC 000C71FC  38 00 00 01 */	li r0, 1
 /* 800CC300 000C7200  98 0D 9A 50 */	stb r0, _regShutdown-_SDA_BASE_(r13)
 lbl_800CC304:
