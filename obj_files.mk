@@ -439,6 +439,7 @@ REVOSDK_O_FILES := \
 	build/asm/RevoSDK/OS/OSInterrupt.o \
 	build/asm/RevoSDK/OS/OSLink.o \
 	build/asm/RevoSDK/OS/OSMessage.o \
+	build/asm/RevoSDK/OS/OSMemory.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
