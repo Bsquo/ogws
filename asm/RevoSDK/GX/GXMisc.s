@@ -641,17 +641,17 @@ __GXPEInit:
 /* 800DE804 000D9704  38 60 00 12 */	li r3, 0x12
 /* 800DE808 000D9708  90 01 00 14 */	stw r0, 0x14(r1)
 /* 800DE80C 000D970C  38 84 E6 B0 */	addi r4, r4, GXTokenInterruptHandler@l
-/* 800DE810 000D9710  48 01 30 FD */	bl func_800F190C
+/* 800DE810 000D9710  48 01 30 FD */	bl __OSSetInterruptHandler
 /* 800DE814 000D9714  3C 80 80 0E */	lis r4, GXFinishInterruptHandler@ha
 /* 800DE818 000D9718  38 60 00 13 */	li r3, 0x13
 /* 800DE81C 000D971C  38 84 E7 78 */	addi r4, r4, GXFinishInterruptHandler@l
-/* 800DE820 000D9720  48 01 30 ED */	bl func_800F190C
+/* 800DE820 000D9720  48 01 30 ED */	bl __OSSetInterruptHandler
 /* 800DE824 000D9724  38 6D 9B 28 */	addi r3, r13, FinishQueue-_SDA_BASE_
 /* 800DE828 000D9728  48 01 59 21 */	bl OSInitThreadQueue
 /* 800DE82C 000D972C  38 60 20 00 */	li r3, 0x2000
-/* 800DE830 000D9730  48 01 34 A1 */	bl func_800F1CD0
+/* 800DE830 000D9730  48 01 34 A1 */	bl __OSUnmaskInterrupts
 /* 800DE834 000D9734  38 60 10 00 */	li r3, 0x1000
-/* 800DE838 000D9738  48 01 34 99 */	bl func_800F1CD0
+/* 800DE838 000D9738  48 01 34 99 */	bl __OSUnmaskInterrupts
 /* 800DE83C 000D973C  80 6D 9A E8 */	lwz r3, __peReg-_SDA_BASE_(r13)
 /* 800DE840 000D9740  A0 03 00 0A */	lhz r0, 0xa(r3)
 /* 800DE844 000D9744  60 00 00 0F */	ori r0, r0, 0xf

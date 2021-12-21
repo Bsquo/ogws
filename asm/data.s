@@ -4,9 +4,6 @@
 
 .balign 0x8
 
-.global lbl_8039D1B8
-lbl_8039D1B8:
-	.incbin "baserom.dol", 0x3992B8, 0x30
 .global lbl_8039D1E8
 lbl_8039D1E8:
 	.incbin "baserom.dol", 0x3992E8, 0x10

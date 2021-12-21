@@ -842,9 +842,9 @@ __GXFifoInit:
 /* 800DCB74 000D7A74  90 01 00 14 */	stw r0, 0x14(r1)
 /* 800DCB78 000D7A78  38 84 C0 48 */	addi r4, r4, GXCPInterruptHandler@l
 /* 800DCB7C 000D7A7C  93 E1 00 0C */	stw r31, 0xc(r1)
-/* 800DCB80 000D7A80  48 01 4D 8D */	bl func_800F190C
+/* 800DCB80 000D7A80  48 01 4D 8D */	bl __OSSetInterruptHandler
 /* 800DCB84 000D7A84  38 60 40 00 */	li r3, 0x4000
-/* 800DCB88 000D7A88  48 01 51 49 */	bl func_800F1CD0
+/* 800DCB88 000D7A88  48 01 51 49 */	bl __OSUnmaskInterrupts
 /* 800DCB8C 000D7A8C  48 01 75 CD */	bl OSGetCurrentThread
 /* 800DCB90 000D7A90  3B E0 00 00 */	li r31, 0
 /* 800DCB94 000D7A94  90 6D 9B 1C */	stw r3, __GXCurrentThread-_SDA_BASE_(r13)
