@@ -434,6 +434,7 @@ REVOSDK_O_FILES := \
 	build/asm/RevoSDK/OS/OSContext.o \
 	build/asm/RevoSDK/OS/OSError.o \
 	build/asm/RevoSDK/OS/OSExec.o \
+	build/asm/RevoSDK/OS/OSFatal.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
