@@ -103,7 +103,7 @@ lbl_800DC0C8:
 /* 800DC120 000D7020  B0 83 00 04 */	sth r4, 4(r3)
 /* 800DC124 000D7024  90 0D 9B 18 */	stw r0, GXOverflowSuspendInProgress-_SDA_BASE_(r13)
 /* 800DC128 000D7028  80 6D 9B 1C */	lwz r3, __GXCurrentThread-_SDA_BASE_(r13)
-/* 800DC12C 000D702C  48 01 8F A1 */	bl func_800F50CC
+/* 800DC12C 000D702C  48 01 8F A1 */	bl OSSuspendThread
 lbl_800DC130:
 /* 800DC130 000D7030  80 7F 00 08 */	lwz r3, 8(r31)
 /* 800DC134 000D7034  54 60 DF FF */	rlwinm. r0, r3, 0x1b, 0x1f, 0x1f

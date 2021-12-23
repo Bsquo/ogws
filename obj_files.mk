@@ -444,6 +444,7 @@ REVOSDK_O_FILES := \
 	build/asm/RevoSDK/OS/OSReset.o \
 	build/asm/RevoSDK/OS/OSRtc.o \
 	build/asm/RevoSDK/OS/OSSync.o \
+	build/asm/RevoSDK/OS/OSThread.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \

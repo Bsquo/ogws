@@ -358,7 +358,7 @@ OSFatal:
 /* 800EFD54 000EAC54  7C 9C 23 78 */	mr r28, r4
 /* 800EFD58 000EAC58  7C BD 2B 78 */	mr r29, r5
 /* 800EFD5C 000EAC5C  48 00 1B 65 */	bl OSDisableInterrupts
-/* 800EFD60 000EAC60  48 00 44 31 */	bl func_800F4190
+/* 800EFD60 000EAC60  48 00 44 31 */	bl OSDisableScheduler
 /* 800EFD64 000EAC64  3F 00 80 42 */	lis r24, FatalContext@ha
 /* 800EFD68 000EAC68  38 78 FE C0 */	addi r3, r24, FatalContext@l
 /* 800EFD6C 000EAC6C  4B FF EE 31 */	bl OSClearContext
