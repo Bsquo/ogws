@@ -450,6 +450,7 @@ REVOSDK_O_FILES := \
 	build/asm/RevoSDK/OS/OSIpc.o \
 	build/asm/RevoSDK/OS/OSStateTM.o \
 	build/asm/RevoSDK/OS/OSPlayRecord.o \
+	build/asm/RevoSDK/OS/OSStateFlags.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \
