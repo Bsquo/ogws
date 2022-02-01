@@ -88,6 +88,10 @@ namespace nw4r
 	
 	namespace g3d
 	{
+		struct AnmObjVis;
+		struct AnmObjVisNode;
+		struct AnmObjVisOR;
+		struct AnmObjVisRes;
 		struct ResFile;
 		struct ResMdl;
 		struct ResPltt;

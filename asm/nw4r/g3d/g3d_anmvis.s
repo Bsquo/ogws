@@ -13,13 +13,13 @@ $$27319:
 	.long 0x80000000
 
 .section .rodata, "a"
-.global lbl_803780C8
-lbl_803780C8:
+.global TYPE_NAME__Q34nw4r3g3d9AnmObjVis
+TYPE_NAME__Q34nw4r3g3d9AnmObjVis:
 	.long 0x0A
 	.string "AnmObjVis"
 	.balign 4
-.global lbl_803780D8
-lbl_803780D8:
+.global TYPE_NAME__Q34nw4r3g3d13AnmObjVisNode
+TYPE_NAME__Q34nw4r3g3d13AnmObjVisNode:
 	.long 0x0E
 	.string "AnmObjVisNode"
 	.balign 4
@@ -910,7 +910,7 @@ lbl_8005B630:
 /* 8005B684 00056584  90 81 00 0C */	stw r4, 0xc(r1)
 /* 8005B688 00056588  54 A5 10 3A */	slwi r5, r5, 2
 /* 8005B68C 0005658C  C0 02 88 94 */	lfs f0, $$26803-_SDA2_BASE_(r2)
-/* 8005B690 00056590  38 8D 80 98 */	addi r4, r13, lbl_804BD418-_SDA_BASE_
+/* 8005B690 00056590  38 8D 80 98 */	addi r4, r13, policyTable$483-_SDA_BASE_
 /* 8005B694 00056594  90 01 00 08 */	stw r0, 8(r1)
 /* 8005B698 00056598  38 63 67 80 */	addi r3, r3, __vt__Q34nw4r3g3d12AnmObjVisRes@l
 /* 8005B69C 0005659C  C8 62 88 98 */	lfd f3, $$27319-_SDA2_BASE_(r2)
@@ -987,7 +987,7 @@ UpdateFrame__Q34nw4r3g3d12AnmObjVisResFv:
 /* 8005B774 00056674  93 E1 00 0C */	stw r31, 0xc(r1)
 /* 8005B778 00056678  7C 7F 1B 78 */	mr r31, r3
 /* 8005B77C 0005667C  C0 43 00 1C */	lfs f2, 0x1c(r3)
-/* 8005B780 00056680  C0 2D 80 A0 */	lfs f1, lbl_804BD420-_SDA_BASE_(r13)
+/* 8005B780 00056680  C0 2D 80 A0 */	lfs f1, smBaseUpdateRate__Q34nw4r3g3d9FrameCtrl-_SDA_BASE_(r13)
 /* 8005B784 00056684  C0 03 00 18 */	lfs f0, 0x18(r3)
 /* 8005B788 00056688  EC 62 00 72 */	fmuls f3, f2, f1
 /* 8005B78C 0005668C  81 83 00 28 */	lwz r12, 0x28(r3)
@@ -1213,9 +1213,9 @@ IsDerivedFrom__Q34nw4r3g3d12AnmObjVisResCFQ44nw4r3g3d6G3dObj7TypeObj:
 /* 8005BA70 00056970  38 60 00 01 */	li r3, 1
 /* 8005BA74 00056974  4E 80 00 20 */	blr 
 lbl_8005BA78:
-/* 8005BA78 00056978  3C 60 80 38 */	lis r3, lbl_803780C8@ha
+/* 8005BA78 00056978  3C 60 80 38 */	lis r3, TYPE_NAME__Q34nw4r3g3d9AnmObjVis@ha
 /* 8005BA7C 0005697C  80 04 00 00 */	lwz r0, 0(r4)
-/* 8005BA80 00056980  38 63 80 C8 */	addi r3, r3, lbl_803780C8@l
+/* 8005BA80 00056980  38 63 80 C8 */	addi r3, r3, TYPE_NAME__Q34nw4r3g3d9AnmObjVis@l
 /* 8005BA84 00056984  7C 00 18 40 */	cmplw r0, r3
 /* 8005BA88 00056988  40 82 00 0C */	bne lbl_8005BA94
 /* 8005BA8C 0005698C  38 60 00 01 */	li r3, 1
@@ -1237,9 +1237,9 @@ lbl_8005BAAC:
 
 .global IsDerivedFrom__Q34nw4r3g3d9AnmObjVisCFQ44nw4r3g3d6G3dObj7TypeObj
 IsDerivedFrom__Q34nw4r3g3d9AnmObjVisCFQ44nw4r3g3d6G3dObj7TypeObj:
-/* 8005BAC4 000569C4  3C 60 80 38 */	lis r3, lbl_803780C8@ha
+/* 8005BAC4 000569C4  3C 60 80 38 */	lis r3, TYPE_NAME__Q34nw4r3g3d9AnmObjVis@ha
 /* 8005BAC8 000569C8  80 04 00 00 */	lwz r0, 0(r4)
-/* 8005BACC 000569CC  38 63 80 C8 */	addi r3, r3, lbl_803780C8@l
+/* 8005BACC 000569CC  38 63 80 C8 */	addi r3, r3, TYPE_NAME__Q34nw4r3g3d9AnmObjVis@l
 /* 8005BAD0 000569D0  7C 00 18 40 */	cmplw r0, r3
 /* 8005BAD4 000569D4  40 82 00 0C */	bne lbl_8005BAE0
 /* 8005BAD8 000569D8  38 60 00 01 */	li r3, 1
@@ -1304,9 +1304,9 @@ lbl_8005BB7C:
 
 .global IsDerivedFrom__Q34nw4r3g3d11AnmObjVisORCFQ44nw4r3g3d6G3dObj7TypeObj
 IsDerivedFrom__Q34nw4r3g3d11AnmObjVisORCFQ44nw4r3g3d6G3dObj7TypeObj:
-/* 8005BB94 00056A94  3C A0 80 38 */	lis r5, lbl_803780C8@ha
+/* 8005BB94 00056A94  3C A0 80 38 */	lis r5, TYPE_NAME__Q34nw4r3g3d9AnmObjVis@ha
 /* 8005BB98 00056A98  80 04 00 00 */	lwz r0, 0(r4)
-/* 8005BB9C 00056A9C  38 A5 80 C8 */	addi r5, r5, lbl_803780C8@l
+/* 8005BB9C 00056A9C  38 A5 80 C8 */	addi r5, r5, TYPE_NAME__Q34nw4r3g3d9AnmObjVis@l
 /* 8005BBA0 00056AA0  38 65 00 24 */	addi r3, r5, 0x24
 /* 8005BBA4 00056AA4  7C 00 18 40 */	cmplw r0, r3
 /* 8005BBA8 00056AA8  40 82 00 0C */	bne lbl_8005BBB4
@@ -1342,17 +1342,17 @@ lbl_8005BBF8:
 
 .global IsDerivedFrom__Q34nw4r3g3d13AnmObjVisNodeCFQ44nw4r3g3d6G3dObj7TypeObj
 IsDerivedFrom__Q34nw4r3g3d13AnmObjVisNodeCFQ44nw4r3g3d6G3dObj7TypeObj:
-/* 8005BC10 00056B10  3C 60 80 38 */	lis r3, lbl_803780D8@ha
+/* 8005BC10 00056B10  3C 60 80 38 */	lis r3, TYPE_NAME__Q34nw4r3g3d13AnmObjVisNode@ha
 /* 8005BC14 00056B14  80 04 00 00 */	lwz r0, 0(r4)
-/* 8005BC18 00056B18  38 63 80 D8 */	addi r3, r3, lbl_803780D8@l
+/* 8005BC18 00056B18  38 63 80 D8 */	addi r3, r3, TYPE_NAME__Q34nw4r3g3d13AnmObjVisNode@l
 /* 8005BC1C 00056B1C  7C 00 18 40 */	cmplw r0, r3
 /* 8005BC20 00056B20  40 82 00 0C */	bne lbl_8005BC2C
 /* 8005BC24 00056B24  38 60 00 01 */	li r3, 1
 /* 8005BC28 00056B28  4E 80 00 20 */	blr 
 lbl_8005BC2C:
-/* 8005BC2C 00056B2C  3C 60 80 38 */	lis r3, lbl_803780C8@ha
+/* 8005BC2C 00056B2C  3C 60 80 38 */	lis r3, TYPE_NAME__Q34nw4r3g3d9AnmObjVis@ha
 /* 8005BC30 00056B30  80 04 00 00 */	lwz r0, 0(r4)
-/* 8005BC34 00056B34  38 63 80 C8 */	addi r3, r3, lbl_803780C8@l
+/* 8005BC34 00056B34  38 63 80 C8 */	addi r3, r3, TYPE_NAME__Q34nw4r3g3d9AnmObjVis@l
 /* 8005BC38 00056B38  7C 00 18 40 */	cmplw r0, r3
 /* 8005BC3C 00056B3C  40 82 00 0C */	bne lbl_8005BC48
 /* 8005BC40 00056B40  38 60 00 01 */	li r3, 1
@@ -1450,8 +1450,8 @@ GetTypeName__Q34nw4r3g3d13AnmObjVisNodeCFv:
 
 .global GetTypeObj__Q34nw4r3g3d13AnmObjVisNodeCFv
 GetTypeObj__Q34nw4r3g3d13AnmObjVisNodeCFv:
-/* 8005BD70 00056C70  3C 60 80 38 */	lis r3, lbl_803780D8@ha
-/* 8005BD74 00056C74  38 63 80 D8 */	addi r3, r3, lbl_803780D8@l
+/* 8005BD70 00056C70  3C 60 80 38 */	lis r3, TYPE_NAME__Q34nw4r3g3d13AnmObjVisNode@ha
+/* 8005BD74 00056C74  38 63 80 D8 */	addi r3, r3, TYPE_NAME__Q34nw4r3g3d13AnmObjVisNode@l
 /* 8005BD78 00056C78  4E 80 00 20 */	blr 
 
 .global GetTypeName__Q34nw4r3g3d9AnmObjVisCFv
@@ -1471,6 +1471,6 @@ GetTypeName__Q34nw4r3g3d9AnmObjVisCFv:
 
 .global GetTypeObj__Q34nw4r3g3d9AnmObjVisCFv
 GetTypeObj__Q34nw4r3g3d9AnmObjVisCFv:
-/* 8005BDAC 00056CAC  3C 60 80 38 */	lis r3, lbl_803780C8@ha
-/* 8005BDB0 00056CB0  38 63 80 C8 */	addi r3, r3, lbl_803780C8@l
+/* 8005BDAC 00056CAC  3C 60 80 38 */	lis r3, TYPE_NAME__Q34nw4r3g3d9AnmObjVis@ha
+/* 8005BDB0 00056CB0  38 63 80 C8 */	addi r3, r3, TYPE_NAME__Q34nw4r3g3d9AnmObjVis@l
 /* 8005BDB4 00056CB4  4E 80 00 20 */	blr 

@@ -54,14 +54,6 @@ lbl_804BEB68:
 	.skip 0x8
 
 .section .sdata, "wa"
-.global lbl_804BD418
-lbl_804BD418:
-	.long PlayPolicy_Onetime__Q24nw4r3g3dFfff
-	.long PlayPolicy_Loop__Q24nw4r3g3dFfff
-.balign 0x8
-.global lbl_804BD420
-lbl_804BD420:
-	.single 0e1
 .balign 0x8
 .global lbl_804BD428
 lbl_804BD428:
