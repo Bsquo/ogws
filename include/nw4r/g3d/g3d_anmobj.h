@@ -109,7 +109,6 @@ namespace nw4r
             virtual f32 GetUpdateRate() const = 0; // at 0x2C
             virtual bool Bind(ResMdl) = 0; // at 0x30
             virtual void Release(); // at 0x34
-            virtual bool GetResult(u32) = 0; // at 0x38
 
             static const TypeObj GetTypeObjStatic()
             {

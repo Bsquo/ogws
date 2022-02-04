@@ -92,6 +92,10 @@ namespace nw4r
 		struct AnmObjVisNode;
 		struct AnmObjVisOR;
 		struct AnmObjVisRes;
+		struct AnmObjTexPat;
+		struct AnmObjTexPatNode;
+		struct AnmObjTexPatOverride;
+		struct AnmObjTexPatRes;
 		struct ResFile;
 		struct ResMdl;
 		struct ResPltt;
