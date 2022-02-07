@@ -8,8 +8,15 @@ extern "C" {
 
 typedef enum _GXTexMapID
 {
-	GX_TEX_MAP_ID_0,
-	GX_TEX_MAP_ID_INVALID = 0xFF
+	GX_TEXMAP_0,
+	GX_TEXMAP_1,
+	GX_TEXMAP_2,
+	GX_TEXMAP_3,
+	GX_TEXMAP_4,
+	GX_TEXMAP_5,
+	GX_TEXMAP_6,
+	GX_TEXMAP_7,
+	GX_TEXMAP_INVALID = 0xFF
 } GXTexMapID;
 
 typedef enum _GXTexFmt
@@ -33,6 +40,18 @@ typedef enum _GXTlutFmt
 {
 	GX_TLUT_FORMAT_0
 } GXTlutFmt;
+
+typedef enum _GXTlut
+{
+	GX_TLUT0,
+	GX_TLUT1,
+	GX_TLUT2,
+	GX_TLUT3,
+	GX_TLUT4,
+	GX_TLUT5,
+	GX_TLUT6,
+	GX_TLUT7,
+} GXTlut;
 
 typedef enum _GXTexFilter
 {
@@ -100,10 +119,14 @@ UNKWORD GXGetTexBufferSize(UNKWORD width, UNKWORD height, GXTexFmt format, UNKWO
 
 UNKTYPE GXInitTexObj(GXTexObj *, UNKTYPE *image, u16 width, UNKWORD height, UNKWORD texFormat, UNKWORD wrapModeS, UNKWORD wrapModeT, BOOL mipmap);
 UNKTYPE GXInitTexObjCI(GXTexObj *, UNKTYPE *, UNKWORD width, UNKWORD height, UNKWORD texFormat, UNKWORD wrapModeS, UNKWORD wrapModeT, BOOL mipmap, UNKWORD tlut);
-UNKTYPE GXInitTexObjLOD(GXTexObj *, int min_filt, int mag_filt, UNKWORD biasClampEnable, UNKWORD edgeLodEnable, UNKWORD anisotropy, f32 minLod, f32 maxLod, f32 lodBias);
+UNKTYPE GXInitTexObjLOD(GXTexObj *, int min_filt, int mag_filt, f32 minLod, f32 maxLod, f32 lodBias, UNKWORD biasClampEnable, UNKWORD edgeLodEnable, UNKWORD anisotropy);
 UNKTYPE GXLoadTexObj(GXTexObj *, GXTexMapID texMapID);
-UNKWORD GXGetTexObjTlut(GXTexObj *);
 UNKTYPE GXInitTlutObj(GXTlutObj *, UNKTYPE *palette, UNKWORD paletteFmt, UNKWORD paletteEntryNum);
+
+UNKWORD GXGetTexObjWrapS(GXTexObj *);
+UNKWORD GXGetTexObjWrapT(GXTexObj *);
+UNKTYPE GXGetTexObjLODAll(GXTexObj *, int *min_filt_out, int *mag_filt_out, f32 *minLod_out, f32 *maxLod_out, f32 *lodBias_out, UNKTYPE *biasClampEnable, UNKTYPE *edgeLodEnable, UNKWORD *anisotropy);
+UNKWORD GXGetTexObjTlut(GXTexObj *);
 
 #ifdef __cplusplus
 }

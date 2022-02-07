@@ -49,7 +49,7 @@ namespace nw4r
 
         void AnmObjVis::DetachAll()
         {
-            for (int i = 0; i < cMaxResources; i++)
+            for (int i = 0; i < MAX_RESOURCES; i++)
             {
                 Detach(i);
             }
@@ -118,7 +118,7 @@ namespace nw4r
                 for (u32 i = 0; i < mNumBinds; i++)
                 {
                     u16 bind = 0x8000;
-                    for (int j = 0; j < cMaxResources; j++)
+                    for (int j = 0; j < MAX_RESOURCES; j++)
                     {
                         AnmObjVisRes *res = mResources[j];
                         if (res != NULL && res->TestDefined(i))
@@ -140,7 +140,7 @@ namespace nw4r
 
         void AnmObjVisNode::UpdateFrame()
         {
-            for (int i = 0; i < cMaxResources; i++)
+            for (int i = 0; i < MAX_RESOURCES; i++)
             {
                 if (mResources[i] != NULL) mResources[i]->UpdateFrame();
             }
@@ -148,7 +148,7 @@ namespace nw4r
 
         void AnmObjVisNode::SetFrame(f32 frame)
         {
-            for (int i = 0; i < cMaxResources; i++)
+            for (int i = 0; i < MAX_RESOURCES; i++)
             {
                 if (mResources[i] != NULL) mResources[i]->SetFrame(frame);
             }
@@ -156,7 +156,7 @@ namespace nw4r
 
         f32 AnmObjVisNode::GetFrame() const
         {
-            for (int i = 0; i < cMaxResources; i++)
+            for (int i = 0; i < MAX_RESOURCES; i++)
             {
                 if (mResources[i] != NULL) return mResources[i]->GetFrame();
             }
@@ -166,7 +166,7 @@ namespace nw4r
 
         void AnmObjVisNode::SetUpdateRate(f32 rate)
         {
-            for (int i = 0; i < cMaxResources; i++)
+            for (int i = 0; i < MAX_RESOURCES; i++)
             {
                 if (mResources[i] != NULL) mResources[i]->SetUpdateRate(rate);
             }
@@ -174,7 +174,7 @@ namespace nw4r
 
         f32 AnmObjVisNode::GetUpdateRate() const
         {
-            for (int i = 0; i < cMaxResources; i++)
+            for (int i = 0; i < MAX_RESOURCES; i++)
             {
                 if (mResources[i] != NULL) return mResources[i]->GetUpdateRate();
             }
@@ -185,7 +185,7 @@ namespace nw4r
         bool AnmObjVisNode::Bind(ResMdl mdl)
         {
             bool success = false;
-            for (int i = 0; i < cMaxResources; i++)
+            for (int i = 0; i < MAX_RESOURCES; i++)
             {
                 AnmObjVisRes *res = mResources[i];
                 if (res != NULL)
@@ -206,7 +206,7 @@ namespace nw4r
 
         void AnmObjVisNode::Release()
         {
-            for (int i = 0; i < cMaxResources; i++)
+            for (int i = 0; i < MAX_RESOURCES; i++)
             {
                 if (mResources[i] != NULL) mResources[i]->Release();
             }
@@ -219,7 +219,7 @@ namespace nw4r
             switch(task)
             {
                 case G3DPROC_CHILD_DETACHED:
-                    for (int i = 0; i < cMaxResources; i++)
+                    for (int i = 0; i < MAX_RESOURCES; i++)
                     {
                         AnmObjVisRes *res = (AnmObjVisRes *)taskArg2;
                         if (mResources[i] == res)
@@ -258,7 +258,7 @@ namespace nw4r
 
         bool AnmObjVisOR::GetResult(u32 idx)
         {
-            for (int i = 0; i < cMaxResources; i++)
+            for (int i = 0; i < MAX_RESOURCES; i++)
             {
                 if (mResources[i] != NULL && mResources[i]->TestExistence(idx))
                     if (!mResources[i]->GetResult(idx))
@@ -327,7 +327,7 @@ namespace nw4r
             bool success = false;
             for (u16 i = 0; i < numNode; i++)
             {
-                const ResAnmVisNodeData * nodeAnm = mResAnmVis.GetNodeAnm(i);
+                const ResAnmVisNodeData *nodeAnm = mResAnmVis.GetNodeAnm(i);
                 ResName name((char *)ut::AddOffsetToPtr(nodeAnm, nodeAnm->WORD_0x0) - 4);
                 ResNode node(mdl.GetResNode(name));
                 if (node.IsValid())

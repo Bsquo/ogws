@@ -99,8 +99,8 @@ namespace nw4r
 			if (pCoordID) *pCoordID = r4;
 			if (pChannelID) *pChannelID = r8;
 			
-			//if (pMapID) *pMapID = !r0 ? GX_TEX_MAP_ID_INVALID : r3;
-			if (!r0) r3 = GX_TEX_MAP_ID_INVALID;
+			//if (pMapID) *pMapID = !r0 ? GX_TEXMAP_INVALID : r3;
+			if (!r0) r3 = GX_TEXMAP_INVALID;
 			if (pMapID) *pMapID = r3;
 			
 			return true;

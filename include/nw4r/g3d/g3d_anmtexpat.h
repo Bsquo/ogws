@@ -40,7 +40,7 @@ namespace nw4r
                 return GetTypeObj().GetTypeName();
             }
             virtual void Release(); // at 0x34
-            virtual bool GetResult(TexPatAnmResult *, u32) = 0; // at 0x38
+            virtual TexPatAnmResult * GetResult(TexPatAnmResult *, u32) = 0; // at 0x38
             virtual AnmObjTexPatRes * Attach(int, AnmObjTexPatRes *); // at 0x3C
             virtual AnmObjTexPatRes * Detach(int); // at 0x40
 			virtual void DetachAll(); // at 0x44
@@ -132,7 +132,7 @@ namespace nw4r
             {
                 return GetTypeObj().GetTypeName();
             }
-            virtual bool GetResult(TexPatAnmResult *, u32); // at 0x38
+            virtual TexPatAnmResult * GetResult(TexPatAnmResult *, u32); // at 0x38
 
             static const TypeObj GetTypeObjStatic()
             {
@@ -148,7 +148,7 @@ namespace nw4r
         class AnmObjTexPatRes : public AnmObjTexPat, public FrameCtrl
         {
         public:
-            AnmObjTexPatRes(MEMAllocator *, ResAnmVis, u16 *, int);
+            AnmObjTexPatRes(MEMAllocator *, ResAnmTexPat, u16 *, int, TexPatAnmResult *);
 
             virtual bool IsDerivedFrom(TypeObj other) const // at 0x8
             {
@@ -171,7 +171,7 @@ namespace nw4r
             virtual void SetUpdateRate(f32); // at 0x28
             virtual f32 GetUpdateRate() const; // at 0x2C
             virtual bool Bind(ResMdl); // at 0x30
-            virtual bool GetResult(TexPatAnmResult *, u32); // at 0x38
+            virtual TexPatAnmResult * GetResult(TexPatAnmResult *, u32); // at 0x38
             virtual AnmObjTexPatRes * Attach(int, AnmObjTexPatRes *); // at 0x3C
 
             static const TypeObj GetTypeObjStatic()
@@ -179,10 +179,14 @@ namespace nw4r
                 return TypeObj(TYPE_NAME);
             }
 
-            static AnmObjTexPatRes * Construct(MEMAllocator *, u32 *, ResAnmTexPat, ResMdl);
+            static AnmObjTexPatRes * Construct(MEMAllocator *, u32 *, ResAnmTexPat, ResMdl, bool);
+
+            void UpdateCache();
 
         private:
             ResAnmTexPat mAnmTexPat; // at 0x2C
+            TexPatAnmResult *mResultCache; // at 0x30 
+            
 
             NW4R_G3D_TYPE_OBJ_DECL(AnmObjTexPatRes);
 		};

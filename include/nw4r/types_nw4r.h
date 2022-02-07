@@ -101,6 +101,8 @@ namespace nw4r
 		struct ResPltt;
 		struct ResTex;
 		struct ResMat;
+		struct ResTexObj;
+		struct ResTlutObj;
 		struct ResTexPlttInfo;
 		struct ResShp;
 		struct ResFog;

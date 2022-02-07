@@ -1,5 +1,6 @@
 #pragma ipa file
 #include "g3d_anmtexpat.h"
+#include "g3d_resmat.h"
 #include "ut_algorithm.h"
 
 namespace nw4r
@@ -228,124 +229,192 @@ namespace nw4r
 
         // AnmObjTexPatOverride * AnmObjTexPatOverride::Construct(MEMAllocator *allocator, u32 *pSize, ResMdl mdl, int r6)
         // {
-        //     if (!mdl.mMdl.IsValid()) return NULL;
-
-        //     u32 numEntries = mdl.GetResMatNumEntries();
-        //     u32 r4 = numEntries * 2;
-        //     u32 size = r4 + sizeof(AnmObjTexPatOverride);
-
-        //     if (pSize != NULL) *pSize = size;
-        //     if (allocator == NULL) return NULL;
-
-        //     u8 *mem = (u8 *)Alloc(allocator, size);
-        //     if (mem == NULL) return NULL;
-
-        //     u16 *bindBuffer = (u16 *)(mem + sizeof(AnmObjTexPatOverride));
-        //     return new (mem) AnmObjTexPatOverride(allocator, bindBuffer, numEntries);
         // }
 
-        // bool AnmObjTexPatOverride::GetResult(u32 idx)
-        // {
-        //     for (int i = 0; i < mNumResources; i++)
-        //     {
-        //         if (mResources[i] != NULL && mResources[i]->TestExistence(idx))
-        //             if (!mResources[i]->GetResult(idx))
-        //                 return false;
-        //     }
+        TexPatAnmResult * AnmObjTexPatOverride::GetResult(TexPatAnmResult *result, u32 matId)
+        {
+            for (int i = mNumResources - 1; i >= 0; i--)
+            {
+                if (mResources[i] != NULL && mResources[i]->TestExistence(matId))
+                {
+                    TexPatAnmResult *childResult = mResources[i]->GetResult(result, matId);
+                    if (childResult->mTexFlags != 0 || childResult->mPlttFlags != 0)
+                        return childResult;
+                }
+            }
 
-        //     return true;
-        // }
+            result->mTexFlags = 0;
+            result->mPlttFlags = 0;
+            return result;
+        }
 
-        // // Nonmatching
-        // AnmObjTexPatRes * AnmObjTexPatRes::Construct(MEMAllocator *allocator, u32 *pSize, ResAnmVis texPat, ResMdl mdl)
-        // {
-        //     if (!texPat.mAnmVis.IsValid() || !mdl.mMdl.IsValid()) return NULL;
-            
-        //     u32 numEntries = mdl.GetResNodeNumEntries();
-        //     u32 r4 = numEntries * 2;
-        //     u32 size = r4 + sizeof(AnmObjTexPatRes);
-
-        //     if (pSize != NULL) *pSize = size;
-        //     if (allocator == NULL) return NULL;
-
-        //     u8 *mem = (u8 *)Alloc(allocator, size);
-        //     if (mem == NULL) return NULL;
-
-        //     u16 *bindBuffer = (u16 *)(mem + sizeof(AnmObjTexPatRes));
-        //     return new (mem) AnmObjTexPatRes(allocator, texPat, bindBuffer, numEntries);
-        // }
-
-        // AnmObjTexPatRes::AnmObjTexPatRes(MEMAllocator *allocator, ResAnmVis texPat, u16 *bindBuffer, int numBinds)
-        //     : AnmObjTexPat(allocator, bindBuffer, numBinds),
-        //     FrameCtrl(0.0f, texPat.GetNumFrame(), GetAnmPlayPolicy(texPat.GetAnmPolicy())),
-        //     mResAnmVis(texPat)
+        // AnmObjTexPatRes * AnmObjTexPatRes::Construct(MEMAllocator *, u32 *, ResAnmTexPat, ResMdl, bool)
         // {
         // }
 
-        // void AnmObjTexPatRes::SetFrame(f32 frame)
-        // {
-        //     SetFrm(frame);
-        //     G3dProc(G3DPROC_UPDATEFRAME, 0, NULL);
-        // }
+        AnmObjTexPatRes::AnmObjTexPatRes(MEMAllocator *allocator, ResAnmTexPat texPat,
+            u16 *bindBuffer, int numBinds, TexPatAnmResult *resultCache)
+            : AnmObjTexPat(allocator, bindBuffer, numBinds),
+            FrameCtrl(0.0f, texPat.GetNumFrame(), GetAnmPlayPolicy(texPat.GetAnmPolicy())),
+            mAnmTexPat(texPat)
+        {
+            if (mResultCache != NULL) UpdateCache();
+        }
+
+        void AnmObjTexPatRes::SetFrame(f32 frame)
+        {
+            SetFrm(frame);
+            if (mResultCache != NULL) UpdateCache();
+        }
         
-        // f32 AnmObjTexPatRes::GetFrame() const
-        // {
-        //     return GetFrm();
-        // }
+        f32 AnmObjTexPatRes::GetFrame() const
+        {
+            return GetFrm();
+        }
 
-        // void AnmObjTexPatRes::SetUpdateRate(f32 rate)
-        // {
-        //     SetRate(rate);
-        // }
+        void AnmObjTexPatRes::SetUpdateRate(f32 rate)
+        {
+            SetRate(rate);
+        }
 
-        // f32 AnmObjTexPatRes::GetUpdateRate() const
-        // {
-        //     return GetRate();
-        // }
+        f32 AnmObjTexPatRes::GetUpdateRate() const
+        {
+            return GetRate();
+        }
 
-        // void AnmObjTexPatRes::UpdateFrame()
-        // {
-        //     UpdateFrm();
-        //     G3dProc(G3DPROC_UPDATEFRAME, 0, NULL);
-        // }
+        void AnmObjTexPatRes::UpdateFrame()
+        {
+            UpdateFrm();
+            if (mResultCache != NULL) UpdateCache();
+        }
 
-        // bool AnmObjTexPatRes::Bind(ResMdl mdl)
-        // {
-        //     int numNode = mResAnmVis.GetNumNode();
-        //     bool success = false;
-        //     for (u16 i = 0; i < numNode; i++)
-        //     {
-        //         const ResAnmVisNodeData * nodeAnm = mResAnmVis.GetNodeAnm(i);
-        //         ResName name((char *)ut::AddOffsetToPtr(nodeAnm, nodeAnm->WORD_0x0) - 4);
-        //         ResNode node(mdl.GetResNode(name));
-        //         if (node.IsValid())
-        //         {
+        bool AnmObjTexPatRes::Bind(ResMdl mdl)
+        {
+            int numMat = mAnmTexPat.GetNumMaterial();
+            bool success = false;
+            for (u16 i = 0; i < numMat; i++)
+            {
+                const ResAnmTexPatMatData *matData = mAnmTexPat.GetMatAnm(i);
+                ResName name((char *)ut::AddOffsetToPtr(matData, matData->WORD_0x0) - 4);
+                ResMat mat(mdl.GetResMat(name));
+                if (mat.IsValid())
+                {
 
-        //             mBinds[node.GetID()] = i;
-        //             success = true;
-        //         }
-        //     }
+                    mBinds[mat.GetID()] = i;
+                    success = true;
+                }
+            }
 
-        //     SetAnmFlag(ANMFLAG_ISBOUND, true);
-        //     return success;
-        // }
+            SetAnmFlag(ANMFLAG_ISBOUND, true);
+            return success;
+        }
 
-        // bool AnmObjTexPatRes::GetResult(u32 idx)
-        // {
-        //     u16 bind = mBinds[idx];
-        //     if (bind & 0x4000 || bind & 0x8000) return true;
+        // NONMATCHING
+        TexPatAnmResult * AnmObjTexPatRes::GetResult(TexPatAnmResult *result, u32 matId)
+        {
+            if (mBinds[matId] & 0x8000)
+            {
+                result->mTexFlags = 0;
+                result->mPlttFlags = 0;
+                return result;
+            }
+            
+            if (mResultCache != NULL)
+            {
+                return &mResultCache[matId];
+            }
 
-        //     return mResAnmVis.GetAnmResult(bind, GetFrm());
-        // }
+            mAnmTexPat.GetAnmResult(result, mBinds[matId], GetFrm());
+            return result;
+        }
 
-        // void AnmObjTexPatRes::G3dProc(u32 task, u32 taskArg1, void *taskArg2)
-        // {
+        void AnmObjTexPatRes::UpdateCache()
+        {
+            f32 frame = GetFrm();
+            for (int i = 0; i < mNumBinds; i++)
+            {
+                u16 bind = mBinds[i];
+                if ((bind & 0x8000) == 0)
+                {
+                    u32 r5 = bind & 0x3FFF;
+                    mAnmTexPat.GetAnmResult(&mResultCache[r5], r5, frame);
+                }
+            }
+        }
 
-        // }
+        void AnmObjTexPatRes::G3dProc(u32 task, u32 taskArg1, void *taskArg2)
+        {
+            switch(task)
+            {
+                case G3DPROC_UPDATEFRAME:
+                    UpdateFrame();
+                    break;
+                case G3DPROC_DETACH_PARENT:
+                    SetParent(NULL);
+                    break;
+                case G3DPROC_ATTACH_PARENT:
+                    SetParent((G3dObj *)taskArg2);
+                    break;
+            }
+        }
 
-        // void ApplyTexPatAnmResult(ResTexObj tex, ResTlutObj tlut, const TexPatAnmResult *result)
-        // {
-        // }
+        // NONMATCHING
+        void ApplyTexPatAnmResult(ResTexObj texObj, ResTlutObj tlutObj, const TexPatAnmResult *result)
+        {
+            int i;
+            u32 texFlags = result->mTexFlags;
+            for (i = 0; texFlags != 0; texFlags >>= 1, i++)
+            {
+                if (texFlags & 1)
+                {
+                    ResTex tex = result->mTexs[i];
+                    GXTexObj *gxTex = texObj.GetTexObj((GXTexMapID)i);
+
+                    int min_filt, mag_filt;
+                    f32 minLod, maxLod, lodBias;
+                    u8 biasClamp, edgeLod, mipmap;
+                    UNKWORD anisotropy;
+                    void *image;
+                    u16 width, height;
+                    GXTexFmt fmt;
+                    GXCITexFmt ciFmt;
+
+                    GXGetTexObjLODAll(gxTex, &min_filt, &mag_filt, &minLod, &maxLod,
+                        &lodBias, &biasClamp, &edgeLod, &anisotropy);
+                    
+                    UNKWORD wrapS = GXGetTexObjWrapS(gxTex);
+                    UNKWORD wrapT = GXGetTexObjWrapT(gxTex);
+
+                    if (tex.IsCIFmt())
+                    {
+                        tex.GetTexObjCIParam(&image, &width, &height, &ciFmt, &minLod, &maxLod, &mipmap);
+                        GXInitTexObjCI(gxTex, image, width, height, ciFmt, wrapS, wrapT, mipmap, (GXTlut)i);
+                    }
+                    else
+                    {
+                        tex.GetTexObjParam(&image, &width, &height, &fmt, &minLod, &maxLod, &mipmap);
+                        GXInitTexObj(gxTex, image, width, height, fmt, wrapS, wrapT, mipmap);
+                    }
+
+                    GXInitTexObjLOD(gxTex, min_filt, mag_filt, minLod, maxLod,
+                        lodBias, biasClamp, edgeLod, anisotropy);
+                }
+            }
+
+            u32 plttFlags = result->mPlttFlags;
+            for (i = 0; plttFlags != 0; plttFlags >>= 1, i++)
+            {
+                if (plttFlags & 1)
+                {
+                    ResPltt pltt = result->mPltts[i];
+                    UNKTYPE *plttData = pltt.GetPlttData();
+                    UNKWORD format = pltt.GetFmt();
+                    u16 numEntries = pltt.GetNumEntries();
+                    GXTlutObj* gxTlut = tlutObj.GetTlut((GXTlut)i);
+                    GXInitTlutObj(gxTlut, plttData, format, numEntries);
+                }
+            }
+        }
 
         namespace
         {

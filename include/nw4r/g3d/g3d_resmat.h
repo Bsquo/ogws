@@ -3,6 +3,7 @@
 #include "types_nw4r.h"
 #include "g3d_rescommon.h"
 #include "math_types.h"
+#include <RevoSDK/GX/GXTexture.h>
 
 namespace nw4r
 {
@@ -28,7 +29,18 @@ namespace nw4r
 
         struct ResMatData
         {
-            // . . .
+            char UNK_0x0[0xC];
+            UNKWORD mId; // at 0xC
+        };
+
+        struct ResTexObjData
+        {
+
+        };
+
+        struct ResTlutObjData
+        {
+
         };
 
         struct ResMat
@@ -36,9 +48,34 @@ namespace nw4r
             ResCommon<ResMatData> mMat;
 
             inline ResMat(void * vptr) : mMat(vptr) {}
+
+            bool IsValid() const
+            {
+                return mMat.IsValid();
+            }
+
+            UNKWORD GetID() const
+            {
+                return mMat.ref().mId;
+            }
+
             bool Bind(ResFile);
             UNKTYPE Release();
             UNKTYPE Init();
+        };
+
+        struct ResTexObj
+        {
+            ResCommon<ResTexObjData> mTex;
+
+            GXTexObj * GetTexObj(GXTexMapID);
+        };
+
+        struct ResTlutObj
+        {
+            ResCommon<ResTlutObjData> mTlut;
+
+            GXTlutObj * GetTlut(GXTlut);
         };
     }
 }

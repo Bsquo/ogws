@@ -51,7 +51,7 @@ namespace nw4r
             void DetachAll();
 
         protected:
-            static const int cMaxResources = 4;
+            static const int MAX_RESOURCES = 4;
 
             int mNumBinds; // at 0x10
             u16 *mBinds; // at 0x14
@@ -103,7 +103,7 @@ namespace nw4r
             }
 
         protected:
-            AnmObjVisRes *mResources[cMaxResources]; // at 0x18
+            AnmObjVisRes *mResources[MAX_RESOURCES]; // at 0x18
 
             NW4R_G3D_TYPE_OBJ_DECL(AnmObjVisNode);
         };

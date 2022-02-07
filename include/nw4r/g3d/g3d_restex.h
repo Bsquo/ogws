@@ -35,6 +35,11 @@ namespace nw4r
 			char mMagic[4]; // "PLT0"; at 0x0
 			u32 mLength; // at 0x4
 			u32 mRevision; // at 0x8
+			char UNK_0xC[0x10 - 0xC];
+			s32 mPlttDataOfs; // at 0x10
+			char UNK_0x14[0x18 - 0x14];
+			UNKWORD mFormat; // at 0x18
+			u16 mNumEntries; // at 0x1C
 		};
 		
 		struct ResTex
@@ -53,19 +58,19 @@ namespace nw4r
 				return mTex.ref().mRevision == REVISION;
 			}
 
-			/*
-				Inlines used in BBA's GetTexObjCIParam (and most likely also GetTexObjParam)
-				I don't know where they are used though so for now they are declarations
-			*/
-			inline UNKTYPE GetTexData() const;
-			inline UNKTYPE GetWidth() const;
-			inline UNKTYPE GetHeight() const;
-
 			bool GetTexObjParam(void **, u16 *, u16 *, GXTexFmt *, f32 *, f32 *, u8 *) const;
 			bool GetTexObjCIParam(void **, u16 *, u16 *, GXCITexFmt *, f32 *, f32 *, u8 *) const;
 			void Init();
 
-			bool IsValid() const { return mTex.IsValid(); }
+			bool IsValid() const
+			{
+				return mTex.IsValid();
+			}
+
+			bool IsCIFmt() const
+			{
+				return (mTex.ref().mFormat & 1) == 0;
+			}
 		};
 		
 		struct ResPltt
@@ -82,6 +87,21 @@ namespace nw4r
 			inline bool CheckRevision() const
 			{
 				return mPltt.ref().mRevision == REVISION;
+			}
+
+			UNKTYPE * GetPlttData()
+			{
+				return mPltt.ofs_to_ptr<UNKTYPE>(mPltt.ref().mPlttDataOfs);
+			}
+
+			UNKWORD GetFmt() const
+			{
+				return mPltt.ref().mFormat;
+			}
+
+			u16 GetNumEntries() const
+			{
+				return mPltt.ref().mNumEntries;
 			}
 
 			void DCStore(bool);

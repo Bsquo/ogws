@@ -187,7 +187,7 @@ namespace EGG
 
         GXSetNumTexGens(1);
         GXSetTexCoordGen2(GX_TEX_COORD_ID_0, GX_TEX_GEN_TYPE_1, GX_TEX_GEN_SRC_4, 60, 0, 125);
-        GXLoadTexObj(&clear_z_tobj, GX_TEX_MAP_ID_0);
+        GXLoadTexObj(&clear_z_tobj, GX_TEXMAP_0);
 
         GXSetNumTevStages(1);
         GXSetTevColor(GX_TEV_REG_ID_1, color.mChannels);

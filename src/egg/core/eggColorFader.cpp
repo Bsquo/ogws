@@ -158,7 +158,7 @@ namespace EGG
 
         GXSetNumTevStages(1);
         GXSetTevOp(GX_TEV_STAGE_ID_0, 4);
-        GXSetTevOrder(GX_TEV_STAGE_ID_0, GX_TEX_COORD_ID_INVALID, GX_TEX_MAP_ID_INVALID, 4);
+        GXSetTevOrder(GX_TEV_STAGE_ID_0, GX_TEX_COORD_ID_INVALID, GX_TEXMAP_INVALID, 4);
 
         if (mColor.mChannels.a == 255)
         {

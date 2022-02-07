@@ -23,7 +23,7 @@ namespace nw4r
 		
 		struct ResAnmTexPatMatData
 		{
-			char UNK_0x0[0x4];
+			UNKWORD WORD_0x0;
 			u32 mFlags; // at 0x4
 			
 			union AnmData
@@ -48,9 +48,12 @@ namespace nw4r
 			s32 mPlttNameArrayOffset; // at 0x18
 			s32 mTexArrayOffset; // at 0x1c
 			s32 mPlttArrayOffset; // at 0x20
-			char UNK_0x24[0xC];
+			char UNK_0x24[0x2C - 0x24];
+			u16 mNumFrames; // at 0x2C
+			u16 mNumMaterials; // at 0x2E
 			u16 mTexCount; // at 0x30
 			u16 mPlttCount; // at 0x32
+			AnmPolicy mAnmPolicy; // at 0x34
 		};
 
 		struct ResAnmTexPat
@@ -63,12 +66,17 @@ namespace nw4r
 			ResCommon<ResAnmTexPatData> mAnmTexPat;
 			
 			inline ResAnmTexPat(void * vptr) : mAnmTexPat(vptr) {}
-			
+
 			inline ResAnmTexPatData & ref() const
 			{
 				return mAnmTexPat.ref();
 			}
 			
+			bool IsValid() const
+			{
+				return mAnmTexPat.IsValid();
+			}
+
 			inline bool CheckRevision() const
 			{
 				return ref().mRevision == REVISION;
@@ -79,6 +87,21 @@ namespace nw4r
 				return static_cast<const ResAnmTexPatMatData *>(mAnmTexPat.ofs_to_obj<ResDic>(ref().mMatDictOffset)[i]);
 			}
 			
+			int GetNumMaterial() const
+			{
+				return ref().mNumMaterials;
+			}
+
+			int GetNumFrame() const
+			{
+				return ref().mNumFrames;
+			}
+
+			AnmPolicy GetAnmPolicy() const
+			{
+				return ref().mAnmPolicy;
+			}
+
 			void GetAnmResult(TexPatAnmResult *, u32, float) const;
 			
 			bool Bind(ResFile);
