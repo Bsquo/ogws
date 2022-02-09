@@ -130,10 +130,7 @@ namespace EGG
 
    void CoreController::calc_posture_matrix(Matrix34f& mtx, bool needStable)
     {        
-        if (needStable)
-        {
-            if (!isStable(0x7)) return;
-        }
+        if (needStable && !isStable(0x7)) return;
 
         Vector3f accel = -getAccel();
         Vector3f accel_dir = accel;
