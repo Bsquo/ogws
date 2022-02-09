@@ -81,9 +81,12 @@ namespace EGG
     // but this is the only way I can inline it without inlining other small funcs
     #pragma push
     #pragma dont_inline on
-    void eggController_WEAK_INSTANCE()
+    namespace
     {
-        (void)(CoreController::CoreController());
+        void FORCE_WEAK_INSTANCE_eggController()
+        {
+            (void)(CoreController::CoreController());
+        }
     }
     #pragma pop
 
