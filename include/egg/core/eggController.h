@@ -93,6 +93,13 @@ namespace EGG
             stopRumbleMgr();
         }
 
+        // Unofficial symbol
+        // TODO: Is this some common operation?
+        f32 third_column_coeff(f32 a, f32 b)
+        {
+            return a * M34_0x8A8(2, 2) + (b * M34_0x8A8(0, 2) + b * M34_0x8A8(1, 2));
+        }
+
         void createRumbleMgr(u8);
         void startPatternRumble(const char *, int, bool);
         void startPowerFrameRumble(f32, int, bool);

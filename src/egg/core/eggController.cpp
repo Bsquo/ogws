@@ -17,15 +17,15 @@ namespace EGG
 {
     using namespace nw4r;
 
-    // EGG
     static NullController sNullGCCont;
-    // EGG::CoreControllerMgr
     CoreControllerMgr *CoreControllerMgr::sInstance;
     CoreControllerMgr::CoreControllerFactory CoreControllerMgr::sCoreControllerFactory;
     CoreControllerMgr::ConnectCallback CoreControllerMgr::sConnectCallback;
     int CoreControllerMgr::sWPADWorkSize = 0x32000;
-    // EGG::<unnamed>
-    namespace { static Allocator *sAllocator; }
+    namespace
+    {
+        static Allocator *sAllocator;
+    }
 
     u32 CoreStatus::getFSStickButton()
     {
@@ -125,81 +125,43 @@ namespace EGG
         return (&STATUS_0x14 + index);
     }
 
-    #ifdef __DECOMP_NON_MATCHING
-    // Stack is trashed, idk how these get ordered
-    void CoreController::calc_posture_matrix(Matrix34f& mtx, bool needStable)
-    {
-        // ?????
-        static f32 FLT_ZERO = 0.0f;
-        static f32 FLT_ONE = 1.0f;
-
-        // #define FLT_ZERO 0.0f
-        // #define FLT_ONE 1.0f
-
+   void CoreController::calc_posture_matrix(Matrix34f& mtx, bool needStable)
+    {        
         if (needStable)
         {
             if (!isStable(0x7)) return;
         }
 
-        // 800A612C
         Vector3f accel = -getAccel();
-
-        // 800A6144
         Vector3f accel_dir = accel;
         accel_dir.normalise();
 
-// ============================================================================
-//                             BEGIN NONMATCHING
-        // 800A6164
-        Vector3f sp8C;
-        sp8C = Vector3f(FLT_ZERO, FLT_ZERO, FLT_ONE);
-        Vector3f sp80;
-        sp80 = Vector3f(FLT_ONE, FLT_ZERO, FLT_ZERO);
+        Vector3f sp8C(0.0f, 0.0f, 1.0f);
+        Vector3f sp80(1.0f, 0.0f, 0.0f);
 
-        // 800A61A0
-        f32 f0 = FLT_ZERO * M34_0x8A8(0, 2) + FLT_ZERO * M34_0x8A8(1, 2);
-        f32 a = -1.0f * M34_0x8A8(2, 2) + f0;
-        f32 b = FLT_ONE * M34_0x8A8(2, 2) + f0;
+        Vector3f sp74(M34_0x8A8(0, 0), M34_0x8A8(1, 0), M34_0x8A8(2, 0));
+        Vector3f sp68(M34_0x8A8(0, 1), M34_0x8A8(1, 1), M34_0x8A8(2, 1));
+        Vector3f sp5C(M34_0x8A8(0, 2), M34_0x8A8(1, 2), M34_0x8A8(2, 2));
 
-        if (b < a)
+        Vector3f sp50(0.0f, 0.0f, -1.0f);
+        Vector3f sp44(-1.0f, 0.0f, 0.0f);
+
+        if (third_column_coeff(1.0f, 0.0f)
+            < third_column_coeff(-1.0f, 0.0f))
         {
-            // 800A6200
-            sp8C = Vector3f(FLT_ZERO, FLT_ZERO, FLT_ONE);
+            sp8C.mCoords.x = 0.0f;
+            sp8C.mCoords.y = 0.0f;
+            sp8C.mCoords.z = -1.0f;
         }
 
-        // 800A61C8
-        Vector3f sp74;
-        sp74 = Vector3f(M34_0x8A8(0, 0), M34_0x8A8(1, 0), M34_0x8A8(2, 0));
-
-        // 800A61CC
-        Vector3f sp68;
-        sp68 = Vector3f(M34_0x8A8(0, 1), M34_0x8A8(1, 1), M34_0x8A8(2, 1));
-
-        // 800A61D8
-        Vector3f sp5C;
-        sp5C = Vector3f(M34_0x8A8(0, 2), M34_0x8A8(1, 2), M34_0x8A8(2, 2));
-
-        // 800A61E4
-        Vector3f sp50;
-        sp50 = Vector3f(FLT_ZERO, FLT_ZERO, FLT_ONE);
-        // 800A61F0
-        Vector3f sp44;
-        sp44 = Vector3f(FLT_ONE, FLT_ZERO, FLT_ZERO);
-//                            END NONMATCHING
-// ============================================================================
-
-        // lbl_800A620C
         if (sp80.dot(sp74) < sp44.dot(sp74)) sp80 = sp44;
 
-        // lbl_800A625C
         f32 dot0 = accel_dir.dot(sp80);
-        dot0 = (dot0 > FLT_ZERO) ? dot0 : -dot0;
+        dot0 = (dot0 > 0.0f) ? dot0 : -dot0;
 
-        // lbl_800A6294
         f32 dot1 = accel_dir.dot(sp8C);
-        dot1 = (dot1 > FLT_ZERO) ? dot1 : -dot1;
+        dot1 = (dot1 > 0.0f) ? dot1 : -dot1;
 
-        // lbl_800A62CC
         if (dot1 < dot0)
         {
             sp80 = accel_dir.cross(sp8C);
@@ -217,20 +179,18 @@ namespace EGG
             sp80.normalise();
         }
 
-        // 800A6398
         mtx(0, 0) = sp80.mCoords.x;
         mtx(1, 0) = sp80.mCoords.y;
         mtx(2, 0) = sp80.mCoords.z;
 
         mtx(0, 1) = accel_dir.mCoords.x;
-        mtx(1, 1) = accel_dir.mCoords.x;
-        mtx(2, 1) = accel_dir.mCoords.x;
+        mtx(1, 1) = accel_dir.mCoords.y;
+        mtx(2, 1) = accel_dir.mCoords.z;
 
         mtx(0, 2) = sp8C.mCoords.x;
         mtx(1, 2) = sp8C.mCoords.y;
         mtx(2, 2) = sp8C.mCoords.z;
     }
-    #endif
 
     void CoreController::beginFrame(PADStatus *status)
     {
