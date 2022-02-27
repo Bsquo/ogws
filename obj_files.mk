@@ -453,6 +453,7 @@ REVOSDK_O_FILES := \
 	build/asm/RevoSDK/OS/OSStateFlags.o \
 	build/asm/RevoSDK/OS/OSNet.o \
 	build/asm/RevoSDK/OS/__ppc_eabi_init.o \
+	build/asm/RevoSDK/SC/scsystem.o \
 
 GROUP_1_O_FILES := \
 	build/asm/data.o \

@@ -48,8 +48,8 @@ lbl_800BCF70:
 /* 800BCF74 000B7E74  40 82 FF D4 */	bne lbl_800BCF48
 /* 800BCF78 000B7E78  4E 80 00 20 */	blr 
 
-.global wcsncat
-wcsncat:
+.global wcscat
+wcscat:
 /* 800BCF7C 000B7E7C  38 84 FF FE */	addi r4, r4, -2
 /* 800BCF80 000B7E80  38 A3 FF FE */	addi r5, r3, -2
 lbl_800BCF84:
