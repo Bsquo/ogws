@@ -61,6 +61,7 @@ ASM_DIRS := asm \
 	asm/RevoSDK/DB asm/RevoSDK/EXI asm/RevoSDK/KPAD asm/RevoSDK/PAD asm/RevoSDK/WPAD \
 	asm/RevoSDK/EUART asm/RevoSDK/EUART asm/RevoSDK/FS asm/RevoSDK/GX asm/RevoSDK/IPC \
 	asm/RevoSDK/MEM asm/RevoSDK/MTX asm/RevoSDK/NAND asm/RevoSDK/OS asm/RevoSDK/SC \
+	asm/RevoSDK/USB \
 	\
 	asm/STL \
 	asm/nw4r/ut asm/nw4r/ef asm/nw4r/math asm/nw4r/snd asm/nw4r/g3d asm/nw4r/lyt \
