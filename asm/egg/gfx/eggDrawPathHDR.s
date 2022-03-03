@@ -175,8 +175,8 @@ lbl_8008D6CC:
 /* 8008D6D4 000885D4  38 84 97 20 */	addi r4, r4, sCache__Q23EGG7StateGX@l
 /* 8008D6D8 000885D8  8B E4 00 0D */	lbz r31, 0xd(r4)
 /* 8008D6DC 000885DC  4B FF 74 7D */	bl GXSetAlphaUpdate__Q23EGG7StateGXFb
-/* 8008D6E0 000885E0  3C 60 80 41 */	lis r3, lbl_8040A9C0@ha
-/* 8008D6E4 000885E4  38 63 A9 C0 */	addi r3, r3, lbl_8040A9C0@l
+/* 8008D6E0 000885E0  3C 60 80 41 */	lis r3, spBufferSet__Q23EGG16ScreenEffectBase@ha
+/* 8008D6E4 000885E4  38 63 A9 C0 */	addi r3, r3, spBufferSet__Q23EGG16ScreenEffectBase@l
 /* 8008D6E8 000885E8  83 A3 00 18 */	lwz r29, 0x18(r3)
 /* 8008D6EC 000885EC  2C 1D 00 00 */	cmpwi r29, 0
 /* 8008D6F0 000885F0  40 82 00 1C */	bne lbl_8008D70C
