@@ -4,18 +4,20 @@
 
 namespace EGG
 {
-    struct AudioSystem
+    class AudioSystem
     {
+    public:
         AudioSystem();
         ~AudioSystem();
         void calc();
 
+    private:
         f32 FLOAT_0x0;
         UNKWORD WORD_0x4;
         UNKWORD WORD_0x8;
         UNKWORD WORD_0xC;
 
-        static AudioSystem *sInstance;
+        static AudioSystem *sInstanse;
     };
 }
 

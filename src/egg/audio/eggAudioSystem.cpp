@@ -9,7 +9,7 @@ namespace EGG
     AudioSystem::AudioSystem() : WORD_0x8(0), FLOAT_0x0(1.0f)
     {
         WORD_0x4 = 0;
-        sInstance = this;
+        sInstanse = this;
     }
 
     AudioSystem::~AudioSystem()
@@ -35,5 +35,5 @@ namespace EGG
         }
     }
 
-    AudioSystem *AudioSystem::sInstance;
+    AudioSystem *AudioSystem::sInstanse;
 }
