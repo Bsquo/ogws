@@ -7,6 +7,8 @@ extern "C" {
 typedef void (* AXCallback)(void);
 typedef void (* AXAuxCallback)(void *, void *);
 
+UNKTYPE AXInit(UNKTYPE);
+
 #ifdef __cplusplus
 }
 #endif

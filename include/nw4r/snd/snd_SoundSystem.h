@@ -11,7 +11,10 @@ namespace nw4r
         {
             struct SoundSystemParam
             {
-
+                UNKWORD WORD_0x0;
+                UNKWORD WORD_0x4;
+                UNKWORD WORD_0x8;
+                UNKWORD WORD_0xC;
             };
 
             static inline f32 GetMasterVolume()
@@ -24,11 +27,11 @@ namespace nw4r
                 detail::AxManager::GetInstance()->PrepareReset();
             }
 
-            void InitSoundSystem(s32, s32);
-            void InitSoundSystem(const SoundSystemParam&, void *, u32);
+            static void InitSoundSystem(s32, s32);
+            static void InitSoundSystem(const SoundSystemParam&, void *, u32);
             static void ShutdownSoundSystem();
             static void WaitForResetReady();
-            UNKWORD GetRequiredMemSize(const SoundSystemParam &);
+            static UNKWORD GetRequiredMemSize(const SoundSystemParam &);
         };
 	}
 }

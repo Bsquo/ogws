@@ -6,6 +6,8 @@ extern "C" {
 
 typedef void (* AIDMACallback)(void);
 
+UNKTYPE AIInit(UNKWORD);
+
 AIDMACallback AIRegisterDMACallback(AIDMACallback);
 
 #ifdef __cplusplus
