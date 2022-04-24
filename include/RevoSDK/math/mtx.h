@@ -10,6 +10,8 @@ typedef float Mtx[3][4];
 void PSMTXIdentity(Mtx);
 void PSMTXCopy(const Mtx, Mtx);
 void PSMTXInverse(const Mtx, Mtx);
+void PSMTXInvXpose(const Mtx, Mtx);
+void PSMTXRotRad(Mtx, UNKWORD, float);
 void PSMTXConcat(const Mtx, const Mtx, Mtx);
 void PSMTXRotAxisRad(Mtx, const struct Vec *, float);
 void PSMTXTransApply(const Mtx, Mtx, float, float, float);

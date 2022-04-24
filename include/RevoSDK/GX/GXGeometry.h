@@ -14,6 +14,8 @@ typedef enum _GXCullMode
 UNKTYPE GXBegin(UNKWORD, UNKWORD formatIndex, UNKWORD);
 static void GXEnd(void) {}
 
+UNKTYPE GXSetLineWidth(UNKWORD, UNKWORD);
+
 UNKTYPE GXSetCullMode(UNKWORD);
 
 UNKTYPE GXSetCoPlanar(UNKWORD);

@@ -34,6 +34,14 @@ static void GXPosition2f32(f32 x, f32 y)
     WGPIPE.f = y;
 }
 
+static void GXColor4u8(u8 r, u8 g, u8 b, u8 a)
+{
+    WGPIPE.c = r;
+    WGPIPE.c = g;
+    WGPIPE.c = b;
+    WGPIPE.c = a;
+}
+
 static void GXColor1u32(u32 c)
 {
     WGPIPE.i = c;

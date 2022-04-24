@@ -27,6 +27,7 @@ UNKTYPE GXSetIndTexCoordScale(GXIndTexStageID, GXIndTexScale, GXIndTexScale);
 UNKTYPE GXSetIndTexMtx(GXIndTexMtxID, const f32 *, UNKWORD);
 
 UNKTYPE GXSetNumIndStages(UNKWORD);
+UNKTYPE GXSetIndTexOrder(UNKWORD, UNKWORD, UNKWORD);
 UNKTYPE GXSetTevDirect(UNKWORD);
 
 UNKTYPE __GXSetIndirectMask(UNKWORD);

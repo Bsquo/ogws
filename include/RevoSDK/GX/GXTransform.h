@@ -16,7 +16,8 @@ UNKTYPE GXSetProjection(float (*)[4], u32);
 UNKTYPE GXSetProjectionv(const f32 *);
 UNKTYPE GXGetProjectionv(f32 *);
 
-UNKTYPE GXLoadPosMtxImm(float (*)[4], u32);
+UNKTYPE GXLoadPosMtxImm(const float (*)[4], u32);
+UNKTYPE GXLoadNrmMtxImm(const float (*)[4], u32);
 
 UNKTYPE GXLoadTexMtxImm(float (*)[4], UNKWORD, UNKWORD type);
 
